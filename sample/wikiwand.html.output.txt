@@ -28,7 +28,8 @@
 [Attribute Name ] type
 [Equal Sign     ] =
 [Attribute Value] text/css
-[Text           ] @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}
+[Tag End        ] >
+[Raw Text       ] @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}
 [End Tag        ] </style
 [Tag End        ] >
 [Comment        ] <!--header generic -->
@@ -108,14 +109,15 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikiwand_files/tracker.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <style
 [Attribute Name ] id
 [Equal Sign     ] =
 [Attribute Value] style-1-cropbar-clipper
-[Text           ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
+[Tag End        ] >
+[Raw Text       ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
 .en-markup-crop-options {
     top: 18px !important;
     left: 50% !important;
@@ -177,11 +179,12 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] http://www.google-analytics.com/analytics.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 
 		console.time('test');
 		var precache_from_extension = false;
@@ -271,7 +274,8 @@
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 		//console.log('have cdn file in generic header, this is cached');
 		var loadedFromCache = true;
 		var urlOnCdn = 'https://db0nus869y26v.cloudfront.net/en/HTML?rev=1428349079833';
@@ -294,14 +298,14 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikiwand_files/jquery.min.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikiwand_files/angular.min.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Comment        ] <!--
@@ -330,7 +334,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikiwand_files/wikiwand.early.min.6ef8ef4e.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Comment        ] <!-- BEGIN TRACKJS -->
@@ -338,7 +342,8 @@
 [Attribute Name ] type
 [Equal Sign     ] =
 [Attribute Value] text/javascript
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 		if (!precache_from_extension) {
 			window._trackJs = {
 				token: '9bcd9b3d130a4b8eb9f58ff06e6781b5',
@@ -385,7 +390,8 @@
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 		console.log = function() {};//disable all logs
 		console.time = function() {};//disable all logs
 		console.timeEnd = function() {};//disable all logs
@@ -393,7 +399,8 @@
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 
 
 			var serverData={"agent":{"string":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36","ua":{"family":"Chrome","major":"41","minor":"0","patch":"2272"},"userAgent":{"family":"Chrome","major":"41","minor":"0","patch":"2272"},"os":{"family":"Windows 7","major":null,"minor":null,"patch":null,"patchMinor":null},"device":{"family":"Other"},"family":"Chrome","major":41,"minor":0,"patch":2272,"isMobileRes":false,"clientLanguages":"en-US,en;q=0.8,zh-CN;q=0.6,zh-TW;q=0.4","extensionInstalled":true,"fromSearchWidget":false},"config":{"environment":"production","features":{"news":false,"map":true,"toc":true,"gallery":true,"partials":true,"apiCache":true,"invites":false,"citations":false,"articlePromo":true},"agent":{"string":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36","ua":{"family":"Chrome","major":"41","minor":"0","patch":"2272"},"userAgent":{"family":"Chrome","major":"41","minor":"0","patch":"2272"},"os":{"family":"Windows 7","major":null,"minor":null,"patch":null,"patchMinor":null},"device":{"family":"Other"},"family":"Chrome","major":41,"minor":0,"patch":2272,"isMobileRes":false,"clientLanguages":"en-US,en;q=0.8,zh-CN;q=0.6,zh-TW;q=0.4","extensionInstalled":true,"fromSearchWidget":false},"facebook":{"appId":"823404911083396"}},"cpu":7,"settings":{"tests":{"mon_footer":{"recommendations":10,"adsense":90},"mon_footer_b":{"ichrome":10,"wikipedia":90}},"monPlus":false}};
@@ -406,7 +413,8 @@
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <title
-[Text           ] HTML - Wikiwand
+[Tag End        ] >
+[Raw Text       ] HTML - Wikiwand
 [End Tag        ] </title
 [Tag End        ] >
 [Start Tag      ] <meta
@@ -1660,7 +1668,8 @@
 [Tag End        ] >
 [Comment        ] <!-- the styling below is used for the smooth transition between the partial content and the final content -->
 [Start Tag      ] <style
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 		.content-absolute{
 			position:absolute;
 			z-index:200;
@@ -41698,7 +41707,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <ins
@@ -41718,7 +41727,8 @@
 [End Tag        ] </ins
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 					if (!precache_from_extension){
 						(adsbygoogle = window.adsbygoogle || []).push({});
 					}
@@ -43874,7 +43884,8 @@
 [End Tag        ] </div
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 	if(!precache_from_extension) {
 		if (typeof (analytics) != 'undefined') {
 			analytics.gaVirtualPageView('virtualpageview/impression-article-page');
@@ -44656,7 +44667,8 @@
 [End Tag        ] </div
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] var totalServingTime=0;
+[Tag End        ] >
+[Raw Text       ] var totalServingTime=0;
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <div

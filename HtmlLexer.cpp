@@ -19,10 +19,11 @@ static const HtmlToken HtmlTokenInTagEqualSign     =   5; // "="
 // single/double quoted string in tag
 static const HtmlToken HtmlTokenInTagQuotedString  =   6;
 // HtmlTokenAttributeName or HtmlTokenAttributeValue
-static const HtmlToken HtmlTokenInTagText          =   8;
-static const HtmlToken HtmlTokenComment            =   9; // <!-- ... -->
-static const HtmlToken HtmlTokenCDATA              =  10; // <![CDATA[ ... ]]>
-static const HtmlToken HtmlTokenText               =  99; // text between tags
+static const HtmlToken HtmlTokenInTagText          =   7;
+static const HtmlToken HtmlTokenComment            =   8; // <!-- ... -->
+static const HtmlToken HtmlTokenCDATA              =   9; // <![CDATA[ ... ]]>
+static const HtmlToken HtmlTokenRawText            =  10; // raw text
+static const HtmlToken HtmlTokenText               =  99; // normal text
 /// [100...199] HTML tokens after further analysis base on lexer
 // HtmlTokenAttributeName is HtmlTokenInTagText which follows HtmlTokenStartTag,
 // HtmlTokenEndTag, HtmlTokenAttributeValue or
@@ -35,11 +36,11 @@ static const HtmlToken HtmlTokenAttributeValue     = 102;
 
 // HTML spaces characters are U+0020 SPACE, "tab" (U+0009), "LF" (U+000A),
 // "FF" (U+000C), and "CR" (U+000D)
-static std::string HtmlSpaces(" \r\n\t\x0c");
+static const std::string HtmlSpaces(" \r\n\t\x0c");
 // HTML Attribute name consists of chars other than space characters,
 // U+0000 NULL,U+0022 QUOTATION MARK ("), U+0027 APOSTROPHE ('), ">" (U+003E),
 // "/" (U+002F), and "=" (U+003D) characters
-static std::string HtmlInvalidAttributeChar("> \r\n\t\x0c\"'/=");
+static const std::string HtmlInvalidAttributeChar("> \r\n\t\x0c\"'/=");
 
 static inline bool isHtmlSpace(char c)
 {
@@ -117,6 +118,7 @@ static HtmlToken getHtmlToken(
             }
             else if (*it == '/')
             {
+                // This is for tag self-closing, not end tag slash.
                 htmlToken = HtmlTokenTagSelfClosing;
                 data = "/";
                 ++it;
@@ -225,7 +227,7 @@ int parseHtml(const std::string html)
 
     auto      begin           = html.cbegin();
     auto      end             = html.cend();
-    auto      it              = html.cbegin();
+    auto      it              = begin;
     bool      isIterInsideTag = false;
     bool      isStartTag      = false;
     HtmlToken htmlToken       = HtmlTokenNull;
@@ -268,7 +270,7 @@ int parseHtml(const std::string html)
                 (tagName == "script" || tagName == "style" ||
                  tagName == "textarea" || tagName == "title" ))
             {
-                first = it - begin;
+                first = size_t(it - begin);
                 size = tagName.size() + 2;
                 while (true)
                 {
@@ -279,9 +281,17 @@ int parseHtml(const std::string html)
                         if (last < html.size() &&
                             (html[last] == '>' || isHtmlSpace(html[last])))
                         {
-                            text = string(it, begin + first);
-                            htmlToken = HtmlTokenText;
-                            it = begin + first;
+                            if (first != size_t(it - begin))
+                            {
+                                text = string(it, begin + first);
+                                htmlToken = HtmlTokenRawText;
+                                it = begin + first;
+                            }
+                            // else
+                            // {
+                            //     // No raw text, keep it as HtmlTokenTagEnd
+                            // }
+
                             break;
                         }
                         else
@@ -384,6 +394,11 @@ int parseHtml(const std::string html)
             break;
         case HtmlTokenTagSelfClosing:
             cout << "[Self-closing   ] /" << endl;
+            break;
+        case HtmlTokenRawText:
+            // Tag end does not output if it is raw text element.
+            cout << "[Tag End        ] >" << endl;
+            cout << "[Raw Text       ] " << text << endl;
             break;
         case HtmlTokenText:
             cout << "[Text           ] " << text << endl;

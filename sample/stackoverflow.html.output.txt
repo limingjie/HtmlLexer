@@ -15,7 +15,8 @@
 [Attribute Value] text/html; charset=UTF-8
 [Tag End        ] >
 [Start Tag      ] <title
-[Text           ] Stack Overflow
+[Tag End        ] >
+[Raw Text       ] Stack Overflow
 [End Tag        ] </title
 [Tag End        ] >
 [Start Tag      ] <link
@@ -129,7 +130,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] http://engine.adzerk.net/ados?t=1428506791253&request={%22Placements%22:[{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk1274653550%22,%22ATA%22:[17,2221],%22Z%22:45}],%22Keywords%22:%22undefined%22,%22Referrer%22:%22%22,%22IsAsync%22:true}
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
@@ -139,7 +140,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./stackoverflow_files/quant.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
@@ -149,7 +150,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./stackoverflow_files/beacon.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
@@ -159,7 +160,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] http://www.google-analytics.com/analytics.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
@@ -172,21 +173,21 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./stackoverflow_files/ados.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./stackoverflow_files/stub.en.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <link
@@ -215,7 +216,8 @@
 [Attribute Value] http://stackoverflow.com/feeds
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
         StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1428506690,"networkMetaHostname":"meta.stackexchange.com","routeName":"Home/Index","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"75cf9d3d25b362f1fbf3b0a449c7ba02","isAnonymous":true}});
         StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"f29aeb4f2de5","js/moderator.en.js":"84e5b8595af4","js/full-anon.en.js":"d15737ef5cb4","js/full.en.js":"fb34d08dbf21","js/wmd.en.js":"5909b7350c3b","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"855f5dcd2ebc","js/help.en.js":"56d0a3a560ae","js/tageditor.en.js":"260ae44a356d","js/tageditornew.en.js":"e109c80d95b6","js/inline-tag-editing.en.js":"1498d8619942","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"1917e5c11162","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"cb5543f82854","js/explore-qlist.en.js":"c551cd4a04de","js/events.en.js":"e3d9b5ce33fd","js/keyboard-shortcuts.en.js":"93f78c1b8fc0","js/external-editor.en.js":"3eeabda7cfc9","js/external-editor.en.js":"3eeabda7cfc9","js/snippet-javascript.en.js":"b70d24a386a9","js/snippet-javascript-codemirror.en.js":"c0cb63dd394c"});
         StackExchange.using("gps", function() {
@@ -225,7 +227,8 @@
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
             StackExchange.ready(function () {
                 $('#nav-tour').click(function () {
                     StackExchange.using("gps", function() {
@@ -240,7 +243,8 @@
 [Attribute Name ] id
 [Equal Sign     ] =
 [Attribute Value] style-1-cropbar-clipper
-[Text           ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
+[Tag End        ] >
+[Raw Text       ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
 .en-markup-crop-options {
     top: 18px !important;
     left: 50% !important;
@@ -263,7 +267,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] http://static.adzerk.net/Extensions/adFeedback.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <link
@@ -889,7 +893,8 @@
 [End Tag        ] </div
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
         StackExchange.ready(function() { StackExchange.topbar.init(); });
     
 [End Tag        ] </script
@@ -1157,7 +1162,8 @@
 [End Tag        ] </div
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
         $('#herobox li').click(function () {
             StackExchange.using("gps", function () {
                 StackExchange.gps.track("aboutpage.click", { aboutclick_location: "hero" }, true);
@@ -1192,7 +1198,8 @@
 [End Tag        ] </div
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
         StackExchange.using("gps", function () {
             StackExchange.gps.track("hero.show", { hero_type: "hero" }, true);
         });
@@ -24567,7 +24574,8 @@ In function ...
 [End Tag        ] </h2
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
     StackExchange.ready(function() { StackExchange.question.initShareLinks(); });
 
 [End Tag        ] </script
@@ -24580,7 +24588,8 @@ In function ...
 [Attribute Value] sidebar
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
                 var ados = ados || {};ados.run = ados.run || [];
                 ados.run.push(function() { ados_add_placement(22,8277,"adzerk1274653550",[17,2221]).setZone(45) ; });
             
@@ -24658,7 +24667,8 @@ In function ...
 [Attribute Value] hireme
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 ;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r=setTimeout,h=document,q,b,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(t){var u=t.split("=");this[g(u[0])]=g(u[1])},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t){return a(t).html().replace(/\s+/g,"").length>0}function s(){var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y){return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags","theme"];var u=Object.keys(m).filter(function(y){return x.indexOf(y)!==-1}).map(function(y){return i(y)+"="+i(m[y])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            
 [End Tag        ] </script
 [Tag End        ] >
@@ -26490,11 +26500,13 @@ In function ...
 [End Tag        ] </noscript
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);
+[Tag End        ] >
+[Raw Text       ] var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
     var ados = ados || {};
     ados.run = ados.run || [];
     ados.run.push(function () { ; ados_load(); });
@@ -26502,7 +26514,8 @@ In function ...
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
             m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);

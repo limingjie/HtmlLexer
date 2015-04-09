@@ -45,7 +45,8 @@
 [Attribute Value] en
 [Tag End        ] >
 [Start Tag      ] <title
-[Text           ] GitHub
+[Tag End        ] >
+[Raw Text       ] GitHub
 [End Tag        ] </title
 [Tag End        ] >
 [Start Tag      ] <link
@@ -601,7 +602,8 @@
 [Attribute Name ] id
 [Equal Sign     ] =
 [Attribute Value] style-1-cropbar-clipper
-[Text           ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
+[Tag End        ] >
+[Raw Text       ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
 .en-markup-crop-options {
     top: 18px !important;
     left: 50% !important;
@@ -627,7 +629,7 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./GitHub_files/api.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [End Tag        ] </head
@@ -7570,7 +7572,7 @@ ctrl + …
 [Attribute Name ] placeholder
 [Equal Sign     ] =
 [Attribute Value] 
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </textarea
 [Tag End        ] >
 [Start Tag      ] <div
@@ -7678,7 +7680,7 @@ ctrl + …
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./GitHub_files/frameworks-2c8ae50712a47d2b83d740cb875d55cdbbb3fdbccf303951cc6b7e63731e0c38.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
@@ -7691,7 +7693,7 @@ ctrl + …
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./GitHub_files/github-e414061bf49eb32387944ff5979444ee757f6fbd60a9d9b101e6f5cff467837d.js
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [End Tag        ] </body

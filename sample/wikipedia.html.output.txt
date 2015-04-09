@@ -29,7 +29,8 @@
 [Attribute Value] UTF-8
 [Tag End        ] >
 [Start Tag      ] <title
-[Text           ] HTML - Wikipedia, the free encyclopedia
+[Tag End        ] >
+[Raw Text       ] HTML - Wikipedia, the free encyclopedia
 [End Tag        ] </title
 [Tag End        ] >
 [Start Tag      ] <meta
@@ -156,7 +157,8 @@
 [Attribute Value] http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&lang=en&modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cfeatured-articles-links%2CrefToolbar%2Cswitcher%2Cteahouse%7Cext.geshi.language.html4strict%2Chtml5%7Cext.geshi.local%7Cext.rtlcite%2Cwikihiero%2CwikimediaBadges%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.vector.styles%7Cwikibase.client.init&only=styles&skin=vector&*
 [Tag End        ] >
 [Start Tag      ] <style
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 .tipsy{padding:5px;position:absolute;z-index:100000;cursor:default}.tipsy-inner{padding:5px 8px 4px 8px; background-color:#ffffff;border:solid 1px #a7d7f9;color:black;max-width:15em;border-radius:4px; }.tipsy-arrow{position:absolute;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALAgMAAADUwp+1AAAACVBMVEX5+fmn1/n///9s6BFKAAAAAXRSTlMAQObYZgAAACpJREFUCB1jZBD4wMiQMoeRcUU4I9uSaYxSE54xZjn8AtMgPkgcJA9UBwAeDw1Qrb3pVAAAAABJRU5ErkJggg==) no-repeat top left;background:url(//bits.wikimedia.org/static-1.25wmf23/resources/src/jquery.tipsy/images/tipsy.png?2015-03-25T18:40:00Z) no-repeat top left!ie;width:11px;height:6px} .tipsy-n .tipsy-arrow{top:0px;left:50%;margin-left:-5px} .tipsy-nw .tipsy-arrow{top:1px;left:10px} .tipsy-ne .tipsy-arrow{top:1px;right:10px} .tipsy-s .tipsy-arrow{bottom:0px;left:50%;margin-left:-5px;background-position:bottom left} .tipsy-sw .tipsy-arrow{bottom:0px;left:10px;background-position:bottom left} .tipsy-se .tipsy-arrow{bottom:0px;right:10px;background-position:bottom left} .tipsy-e .tipsy-arrow{top:50%;margin-top:-5px;right:1px;width:5px;height:11px;background-position:top right} .tipsy-w .tipsy-arrow{top:50%;margin-top:-5px;left:0px;width:6px;height:11px} .tipsy{font-size:0.8em}
 /* cache key: enwiki:resourceloader:filter:minify-css:7:ac6b00df5150eb67429fe8f74617f623 */
 @media print{#centralNotice{display:none}}
@@ -170,7 +172,8 @@
 [End Tag        ] </style
 [Tag End        ] >
 [Start Tag      ] <style
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 .cite-accessibility-label{position:absolute !important; top:-99999px;clip:rect(1px 1px 1px 1px); clip:rect(1px,1px,1px,1px);padding:0 !important;border:0 !important;height:1px !important;width:1px !important;overflow:hidden}.mw-cite-backlink,.cite-accessibility-label{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none} ol.references li:target,sup.reference:target{background-color:#def; background-color:rgba(0,127,255,0.133)}@media print{.mw-cite-backlink{display:none}}
 /* cache key: enwiki:resourceloader:filter:minify-css:7:2970940d33044e6aa6a620ce3c93c662 */
 .referencetooltip{position:absolute;list-style:none;list-style-image:none;opacity:0;font-size:10px;margin:0;z-index:5;padding:0}.referencetooltip li{border:#080086 2px solid;max-width:260px;padding:10px 8px 13px 8px;margin:0px;background-color:#F7F7F7;box-shadow:2px 4px 2px rgba(0,0,0,0.3);-moz-box-shadow:2px 4px 2px rgba(0,0,0,0.3);-webkit-box-shadow:2px 4px 2px rgba(0,0,0,0.3)}.referencetooltip li+li{margin-left:7px;margin-top:-2px;border:0;padding:0;height:3px;width:0px;background-color:transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;border-top:12px #080086 solid;border-right:7px transparent solid;border-left:7px transparent solid}.referencetooltip>li+li::after{content:'';border-top:8px #F7F7F7 solid;border-right:5px transparent solid;border-left:5px transparent solid;margin-top:-12px;margin-left:-5px;z-index:1;height:0px;width:0px;display:block}.client-js body .referencetooltip li li{border:none;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;height:auto;width:auto;margin:auto;padding:0;position:static}.RTflipped{padding-top:13px}.referencetooltip.RTflipped li+li{position:absolute;top:2px;border-top:0;border-bottom:12px #080086 solid}.referencetooltip.RTflipped li+li::after{border-top:0;border-bottom:8px #F7F7F7 solid;position:absolute;margin-top:7px}.RTsettings{float:right;height:24px;width:24px;cursor:pointer;background-image:url(//upload.wikimedia.org/wikipedia/commons/thumb/7/77/Gear_icon.svg/24px-Gear_icon.svg.png);background-image:linear-gradient(transparent,transparent),url(//upload.wikimedia.org/wikipedia/commons/7/77/Gear_icon.svg);margin-top:-9px;margin-right:-7px;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-o-transition:opacity 0.15s;-ms-transition:opacity 0.15s;transition:opacity 0.15s;opacity:0.6;filter:alpha(opacity=60)}.RTsettings:hover{opacity:1;filter:alpha(opacity=100)}.RTTarget{border:#080086 2px solid}
@@ -192,7 +195,8 @@
 [End Tag        ] </style
 [Tag End        ] >
 [Start Tag      ] <style
-[Text           ] 
+[Tag End        ] >
+[Raw Text       ] 
 .suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}
 /* cache key: enwiki:resourceloader:filter:minify-css:7:ae3fa4570b5ac0c6cf7b3776c8ae4d6f */
 .mw-mmv-overlay{position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:1000;background-color:#000000}body.mw-mmv-lightbox-open{overflow-y:auto}body.mw-mmv-lightbox-open #mw-page-base,body.mw-mmv-lightbox-open #mw-head-base,body.mw-mmv-lightbox-open #mw-navigation,body.mw-mmv-lightbox-open #content,body.mw-mmv-lightbox-open #footer,body.mw-mmv-lightbox-open #globalWrapper // monobook{ display:none}body.mw-mmv-lightbox-open > *{ display:none}body.mw-mmv-lightbox-open > .mw-mmv-overlay,body.mw-mmv-lightbox-open > .mw-mmv-wrapper{display:block}.mw-mmv-filepage-buttons{margin-top:5px}.mw-mmv-filepage-buttons .mw-mmv-view-expanded,.mw-mmv-filepage-buttons .mw-mmv-view-config{display:block}.mw-mmv-filepage-buttons .mw-mmv-view-expanded.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3C%21--%20Created%20with%20Inkscape%20%28http%3A%2F%2Fwww.inkscape.org%2F%29%20--%3E%0A%0A%3Csvg%0A%20%20%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%22%0A%20%20%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativecommons.org%2Fns%23%22%0A%20%20%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%0A%20%20%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20%20version%3D%221.1%22%0A%20%20%20width%3D%22100%25%22%0A%20%20%20height%3D%22100%25%22%0A%20%20%20viewBox%3D%220%200%201024%20768%22%0A%20%20%20id%3D%22Layer_1%22%0A%20%20%20xml%3Aspace%3D%22preserve%22%3E%3Cmetadata%0A%20%20%20%20%20id%3D%22metadata17%22%3E%3Crdf%3ARDF%3E%3Ccc%3AWork%0A%20%20%20%20%20%20%20%20%20rdf%3Aabout%3D%22%22%3E%3Cdc%3Aformat%3Eimage%2Fsvg%2Bxml%3C%2Fdc%3Aformat%3E%3Cdc%3Atype%0A%20%20%20%20%20%20%20%20%20%20%20rdf%3Aresource%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Fdcmitype%2FStillImage%22%20%2F%3E%3Cdc%3Atitle%3E%3C%2Fdc%3Atitle%3E%3C%2Fcc%3AWork%3E%3C%2Frdf%3ARDF%3E%3C%2Fmetadata%3E%3Cdefs%0A%20%20%20%20%20id%3D%22defs15%22%20%2F%3E%3Cg%0A%20%20%20%20%20id%3D%22g3%22%3E%3Cpolygon%0A%20%20%20%20%20%20%20points%3D%22851.2%2C71.6%20690.7%2C232.1%20650.6%2C191.8%20641%2C356.6%20805.8%2C347.3%20765.5%2C306.9%20926%2C146.4%20984.5%2C204.9%20997.6%2C0%20792.7%2C13.1%20%22%0A%20%20%20%20%20%20%20id%3D%22polygon5%22%0A%20%20%20%20%20%20%20style%3D%22fill%3A%23777777%22%20%2F%3E%3Cpolygon%0A%20%20%20%20%20%20%20points%3D%22769.6%2C89.3%20611.9%2C89.3%20682.8%2C160.1%20690.7%2C167.6%20%22%0A%20%20%20%20%20%20%20id%3D%22polygon7%22%0A%20%20%20%20%20%20%20style%3D%22fill%3A%23777777%22%20%2F%3E%3Cpath%0A%20%20%20%20%20%20%20d%3D%22m%20643.6%2C402.2%20-51.2%2C3%203%2C-51.2%209.4%2C-164.4%205.8%2C-100.3%20H%2026.4%20V%20768%20H%20909.5%20V%20387%20l%20-100.9%2C5.8%20-165%2C9.4%20z%20M%20813.9%2C678%20H%20113.6%20l%20207.2%2C-270.2%2031.5%2C-12.9%20195.7%2C204.9%20105.9%2C-63.2%20159.8%2C140.8%200.2%2C0.6%200%2C0%20z%22%0A%20%20%20%20%20%20%20id%3D%22path9%22%0A%20%20%20%20%20%20%20style%3D%22fill%3A%23777777%22%20%2F%3E%3Cpolygon%0A%20%20%20%20%20%20%20points%3D%22909.5%2C386.1%20909.5%2C228%20830.4%2C306.9%20838.2%2C314.8%20%22%0A%20%20%20%20%20%20%20id%3D%22polygon11%22%0A%20%20%20%20%20%20%20style%3D%22fill%3A%23777777%22%20%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E);background-image:url(//bits.wikimedia.org/static-1.25wmf23/extensions/MultimediaViewer/resources/mmv/img/expand.svg?2015-03-25T18:43:20Z)!ie}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3C%21--%20Created%20with%20Inkscape%20%28http%3A%2F%2Fwww.inkscape.org%2F%29%20--%3E%0A%0A%3Csvg%0A%20%20%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%22%0A%20%20%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativecommons.org%2Fns%23%22%0A%20%20%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%0A%20%20%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20%20version%3D%221.1%22%0A%20%20%20width%3D%22100%25%22%0A%20%20%20height%3D%22100%25%22%0A%20%20%20viewBox%3D%220%200%201024%20768%22%0A%20%20%20id%3D%22Layer_1%22%0A%20%20%20xml%3Aspace%3D%22preserve%22%3E%3Cmetadata%0A%20%20%20%20%20id%3D%22metadata9%22%3E%3Crdf%3ARDF%3E%3Ccc%3AWork%0A%20%20%20%20%20%20%20%20%20rdf%3Aabout%3D%22%22%3E%3Cdc%3Aformat%3Eimage%2Fsvg%2Bxml%3C%2Fdc%3Aformat%3E%3Cdc%3Atype%0A%20%20%20%20%20%20%20%20%20%20%20rdf%3Aresource%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Fdcmitype%2FStillImage%22%20%2F%3E%3Cdc%3Atitle%3E%3C%2Fdc%3Atitle%3E%3C%2Fcc%3AWork%3E%3C%2Frdf%3ARDF%3E%3C%2Fmetadata%3E%3Cdefs%0A%20%20%20%20%20id%3D%22defs7%22%20%2F%3E%3Cpath%0A%20%20%20%20%20d%3D%22M%20897%2C454.6%20V%20313.4%20L%20810.4%2C299%20c%20-6.4%2C-23.3%20-16%2C-45.7%20-27.3%2C-65.8%20L%20833.6%2C161.8%20734.2%2C61.6%20662.8%2C112.1%20C%20641.9%2C100.9%20620.3%2C91.2%20597%2C84.8%20L%20582.6%2C-1%20H%20441.4%20L%20427%2C85.6%20c%20-23.3%2C6.4%20-45.7%2C16%20-65.8%2C27.3%20L%20289.8%2C62.4%20189.5%2C161.9%20240%2C233.3%20c%20-11.2%2C20.9%20-20.9%2C42.5%20-27.3%2C66.6%20L%20127%2C313.4%20v%20141.2%20l%2085.8%2C14.4%20c%206.4%2C23.3%2016%2C45.7%2027.3%2C66.6%20l%20-50.5%2C71.4%2099.5%2C99.5%2071.4%2C-50.5%20c%2020.9%2C11.2%2042.5%2C20.9%2066.6%2C27.3%20l%2014.4%2C85.8%20h%20141.2%20l%2014.4%2C-86.6%20c%2023.3%2C-6.4%2045.7%2C-16%2065.8%2C-27.3%20l%2071.4%2C50.5%2099.5%2C-99.5%20-50.5%2C-71.4%20c%2011.2%2C-20.9%2020.9%2C-42.5%2027.3%2C-66.6%20L%20897%2C454.6%20z%20m%20-385%2C77%20C%20430.2%2C531.6%20364.4%2C465%20364.4%2C384%20364.4%2C302.2%20431%2C236.4%20512%2C236.4%20c%2081%2C0%20147.6%2C65.8%20147.6%2C147.6%200%2C81.8%20-65.8%2C147.6%20-147.6%2C147.6%20z%22%0A%20%20%20%20%20id%3D%22path3%22%0A%20%20%20%20%20style%3D%22fill%3A%23777777%22%20%2F%3E%3C%2Fsvg%3E);background-image:url(//bits.wikimedia.org/static-1.25wmf23/extensions/MultimediaViewer/resources/mmv/img/gear_gray.svg?2015-03-25T18:43:20Z)!ie;opacity:0.75}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before:hover{opacity:1}
@@ -216,7 +220,8 @@
 [Attribute Value] http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&lang=en&modules=site&only=styles&skin=vector&*
 [Tag End        ] >
 [Start Tag      ] <style
-[Text           ] a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+[Tag End        ] >
+[Raw Text       ] a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
 /* cache key: enwiki:resourceloader:filter:minify-css:7:3904d24a08aa08f6a68dc338f9be277e */
 [End Tag        ] </style
 [Tag End        ] >
@@ -224,31 +229,34 @@
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikipedia_files/load.php
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikipedia_files/load(1).php
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] if(window.mw){
+[Tag End        ] >
+[Raw Text       ] if(window.mw){
 mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"HTML","wgTitle":"HTML","wgCurRevisionId":655164538,"wgRevisionId":655164538,"wgArticleId":13191,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["CS1 errors: chapter ignored","Wikipedia articles in need of updating from October 2014","All Wikipedia articles in need of updating","Articles containing potentially dated statements from 2013","All articles containing potentially dated statements","Commons category with local link same as on Wikidata","HTML","1990 introductions","Markup languages","Technical communication","World Wide Web Consortium standards"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"HTML","wgRelevantArticleId":13191,"wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"preview":false,"publish":false},"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr"},"wikilove-recipient":"","wikilove-anon":0,"wgGatherShouldShowTutorial":true,"wgGatherPageImageThumbnail":"//upload.wikimedia.org/wikipedia/commons/thumb/8/84/HTML.svg/86px-HTML.svg.png","wgPoweredByHHVM":true,"wgULSAcceptLanguageList":["en-us","en","zh-cn","zh-tw"],"wgULSCurrentAutonym":"English","wgBetaFeaturesFeatures":[],"wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgNoticeProject":"wikipedia","wgWikibaseItemId":"Q8811"});
 }
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] if(window.mw){
+[Tag End        ] >
+[Raw Text       ] if(window.mw){
 mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});},{},{},{});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});},{},{},{});
 /* cache key: enwiki:resourceloader:filter:minify-js:7:94007ea073e20ad4a3cdce36b2f2e369 */
 }
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] if(window.mw){
+[Tag End        ] >
+[Raw Text       ] if(window.mw){
 mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","mmv.head","ext.imageMetrics.head","ext.visualEditor.viewPageTarget.init","ext.uls.init","ext.uls.interface","ext.centralNotice.bannerController","skins.vector.js"]);
 }
 [End Tag        ] </script
@@ -257,7 +265,7 @@ mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikipedia_files/load(2).php
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <link
@@ -273,7 +281,8 @@ mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.
 [Attribute Name ] id
 [Equal Sign     ] =
 [Attribute Value] style-1-cropbar-clipper
-[Text           ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
+[Tag End        ] >
+[Raw Text       ] /* Copyright 2014 Evernote Corporation. All rights reserved. */
 .en-markup-crop-options {
     top: 18px !important;
     left: 50% !important;
@@ -41675,23 +41684,27 @@ additional terms may apply.  By using this site, you agree to the
 [End Tag        ] </div
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] /*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/
+[Tag End        ] >
+[Raw Text       ] /*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] if(window.mw){
+[Tag End        ] >
+[Raw Text       ] if(window.mw){
 mw.loader.state({"ext.globalCssJs.site":"ready","ext.globalCssJs.user":"ready","site":"loading","user":"ready","user.groups":"ready"});
 }
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] if(window.mw){
+[Tag End        ] >
+[Raw Text       ] if(window.mw){
 mw.loader.load(["ext.cite","mediawiki.toc","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.switcher","ext.gadget.featured-articles-links","ext.wikiEditor.init","mmv.bootstrap.autostart","ext.imageMetrics.loader","ext.visualEditor.targetLoader","ext.eventLogging.subscriber","ext.wikimediaEvents.statsd","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","ext.uls.interlanguage"],null,true);
 }
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] if(window.mw){
+[Tag End        ] >
+[Raw Text       ] if(window.mw){
 document.write("\u003Cscript src=\"//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false\u0026amp;lang=en\u0026amp;modules=site\u0026amp;only=scripts\u0026amp;skin=vector\u0026amp;*\"\u003E\u003C/script\u003E");
 }
 [End Tag        ] </script
@@ -41700,11 +41713,12 @@ document.write("\u003Cscript src=\"//bits.wikimedia.org/en.wikipedia.org/load.ph
 [Attribute Name ] src
 [Equal Sign     ] =
 [Attribute Value] ./wikipedia_files/load(3).php
-[Text           ] 
+[Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
-[Text           ] if(window.mw){
+[Tag End        ] >
+[Raw Text       ] if(window.mw){
 mw.config.set({"wgBackendResponseTime":135,"wgHostname":"mw1161"});
 }
 [End Tag        ] </script
