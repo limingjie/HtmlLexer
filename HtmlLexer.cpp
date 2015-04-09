@@ -55,18 +55,24 @@ static inline bool isValidHtmlAttributeChar(char c)
 static HtmlToken getHtmlToken(
     const std::string &html,
     std::string::const_iterator &it,
-    const std::string::const_iterator &begin,
-    const std::string::const_iterator &end,
-    const bool isIterInsideTag,
-    std::string &data // Output
-    )
+    const HtmlToken lastHtmlToken,
+    std::string &tagName,
+    bool &isIterInsideTag,
+    bool &isStartTag,
+    std::string &data)
 {
     using namespace std;
 
+    auto      begin     = html.cbegin();
+    auto      end       = html.cend();
     HtmlToken htmlToken = HtmlTokenNull;
+    size_t    first;
+    size_t    last;
+    size_t    size;
 
     data.clear();
 
+    // iteration
     while (it != end)
     {
         if (isIterInsideTag)
@@ -218,154 +224,146 @@ static HtmlToken getHtmlToken(
         ++it;
     }
 
-    return htmlToken;
-}
-
-int parseHtml(const std::string html)
-{
-    using namespace std;
-
-    auto      begin           = html.cbegin();
-    auto      end             = html.cend();
-    auto      it              = begin;
-    bool      isIterInsideTag = false;
-    bool      isStartTag      = false;
-    HtmlToken htmlToken       = HtmlTokenNull;
-    HtmlToken lastHtmlToken   = HtmlTokenNull;
-    size_t    first;
-    size_t    last;
-    size_t    size;
-    string    attributeName;
-    string    attributeValue;
-    string    data;
-    string    error;
-    string    tagName;
-    string    text;
-
-    while (it != end)
+    // token
+    switch (htmlToken)
     {
-        htmlToken = getHtmlToken(html, it, begin, end, isIterInsideTag, data);
-
-        // analysis pass 1
-        switch (htmlToken)
+    case HtmlTokenStartTag:
+        isStartTag = true;
+        isIterInsideTag = true;
+        tagName = data;
+        break;
+    case HtmlTokenEndTag:
+        isStartTag = false;
+        isIterInsideTag = true;
+        tagName = data;
+        break;
+    case HtmlTokenTagSelfClosing:
+        isStartTag = false;
+        break;
+    case HtmlTokenTagEnd:
+        isIterInsideTag = false;
+        // Raw text elements, <script>, <style>
+        // Escapable raw text elements, <textarea>, <title>
+        if (isStartTag &&
+            (tagName == "script" || tagName == "style" ||
+             tagName == "textarea" || tagName == "title" ))
         {
-        case HtmlTokenStartTag:
-            isStartTag = true;
-            isIterInsideTag = true;
-            tagName = data;
-            break;
-        case HtmlTokenEndTag:
-            isStartTag = false;
-            isIterInsideTag = true;
-            tagName = data;
-            break;
-        case HtmlTokenTagSelfClosing:
-            isStartTag = false;
-            break;
-        case HtmlTokenTagEnd:
-            isIterInsideTag = false;
-            // Raw text elements, <script>, <style>
-            // Escapable raw text elements, <textarea>, <title>
-            if (isStartTag &&
-                (tagName == "script" || tagName == "style" ||
-                 tagName == "textarea" || tagName == "title" ))
+            first = size_t(it - begin);
+            size = tagName.size() + 2;
+            while (true)
             {
-                first = size_t(it - begin);
-                size = tagName.size() + 2;
-                while (true)
+                first = html.find("</" + tagName, first);
+                if (first != string::npos)
                 {
-                    first = html.find("</" + tagName, first);
-                    if (first != string::npos)
+                    last = first + size;
+                    if (last < html.size() &&
+                        (html[last] == '>' || isHtmlSpace(html[last])))
                     {
-                        last = first + size;
-                        if (last < html.size() &&
-                            (html[last] == '>' || isHtmlSpace(html[last])))
+                        if (first != size_t(it - begin))
                         {
-                            if (first != size_t(it - begin))
-                            {
-                                text = string(it, begin + first);
-                                htmlToken = HtmlTokenRawText;
-                                it = begin + first;
-                            }
-                            // else
-                            // {
-                            //     // No raw text, keep it as HtmlTokenTagEnd
-                            // }
+                            data = string(it, begin + first);
+                            htmlToken = HtmlTokenRawText;
+                            it = begin + first;
+                        }
+                        // else
+                        // {
+                        //     // No raw text, keep it as HtmlTokenTagEnd
+                        // }
 
-                            break;
-                        }
-                        else
-                        {
-                            first = last;
-                            continue;
-                        }
+                        break;
                     }
                     else
                     {
-                        htmlToken = HtmlTokenInvalid;
-                        error = "HTML Syntax Error: "
-                                "Raw text elements does not end";
-                        it = end;
+                        first = last;
+                        continue;
                     }
-
-                    break;
+                }
+                else
+                {
+                    htmlToken = HtmlTokenInvalid;
+                    data = "HTML Syntax Error: "
+                           "Raw text elements does not end";
+                    it = end;
                 }
 
+                break;
             }
+
+        }
+        else
+        {
+            tagName.clear();
+        }
+        break;
+    case HtmlTokenInTagEqualSign:
+        if (lastHtmlToken != HtmlTokenAttributeName)
+        {
+            htmlToken = HtmlTokenInvalid;
+            data = "HTML Syntax Error: "
+                   "No attribute name before equal sign";
+        }
+        break;
+    case HtmlTokenInTagQuotedString:
+        if (lastHtmlToken == HtmlTokenInTagEqualSign)
+        {
+            htmlToken = HtmlTokenAttributeValue;
+        }
+        else
+        {
+            htmlToken = HtmlTokenInvalid;
+            data = "HTML Syntax Error: "
+                   "Quoted string should appear after equal sign.";
+        }
+        break;
+    case HtmlTokenInTagText:
+        switch (lastHtmlToken)
+        {
+        case HtmlTokenStartTag:
+        case HtmlTokenEndTag:
+        case HtmlTokenAttributeName:
+        case HtmlTokenAttributeValue:
+            htmlToken = HtmlTokenAttributeName;
             break;
         case HtmlTokenInTagEqualSign:
-            if (lastHtmlToken != HtmlTokenAttributeName)
-            {
-                htmlToken = HtmlTokenInvalid;
-                error = "HTML Syntax Error: "
-                        "No attribute name before equal sign";
-            }
-            break;
-        case HtmlTokenInTagQuotedString:
-            if (lastHtmlToken == HtmlTokenInTagEqualSign)
-            {
-                htmlToken = HtmlTokenAttributeValue;
-            }
-            else
-            {
-                htmlToken = HtmlTokenInvalid;
-                error = "HTML Syntax Error: "
-                        "Quoted string should appear after equal sign.";
-            }
-            break;
-        case HtmlTokenInTagText:
-            switch (lastHtmlToken)
-            {
-            case HtmlTokenStartTag:
-            case HtmlTokenEndTag:
-            case HtmlTokenAttributeName:
-            case HtmlTokenAttributeValue:
-                htmlToken = HtmlTokenAttributeName;
-                break;
-            case HtmlTokenInTagEqualSign:
-                htmlToken = HtmlTokenAttributeValue;
-                break;
-            }
-            break;
-        case HtmlTokenText:
-            first = data.find_first_not_of(HtmlSpaces);
-            if (first == string::npos)
-            {
-                htmlToken = HtmlTokenNull;
-            }
-            else
-            {
-                last = data.find_last_not_of(HtmlSpaces);
-                text = data.substr(first, last - first + 1);
-            }
-            break;
-        case HtmlTokenInvalid:
-            error = data;
-            break;
-        default:
-            // what?
+            htmlToken = HtmlTokenAttributeValue;
             break;
         }
+        break;
+    case HtmlTokenText:
+        first = data.find_first_not_of(HtmlSpaces);
+        if (first == string::npos)
+        {
+            htmlToken = HtmlTokenNull;
+        }
+        else
+        {
+            last = data.find_last_not_of(HtmlSpaces);
+            data = data.substr(first, last - first + 1);
+        }
+        break;
+    case HtmlTokenInvalid:
+        // error in data
+        break;
+    }
+
+    return htmlToken;
+}
+
+void printHtmlToken(const std::string html)
+{
+    using namespace std;
+
+    auto      end             = html.cend();
+    auto      it              = html.cbegin();
+    bool      isIterInsideTag = false;
+    bool      isStartTag      = false;
+    HtmlToken htmlToken       = HtmlTokenNull;
+    string    data;
+    string    tagName;
+
+    while (it != end)
+    {
+        htmlToken = getHtmlToken(html, it, htmlToken, tagName, isIterInsideTag, isStartTag, data);
 
         // analysis pass 2
         switch (htmlToken)
@@ -380,16 +378,14 @@ int parseHtml(const std::string html)
             cout << "[Tag End        ] >" << endl;
             break;
         case HtmlTokenAttributeName:
-            attributeName = data;
-            cout << "[Attribute Name ] " << attributeName << endl;
+            cout << "[Attribute Name ] " << data << endl;
             // TODO: add to attribute map
             break;
         case HtmlTokenInTagEqualSign:
             cout << "[Equal Sign     ] =" << endl;
             break;
         case HtmlTokenAttributeValue:
-            attributeValue = data;
-            cout << "[Attribute Value] " << attributeValue << endl;
+            cout << "[Attribute Value] " << data << endl;
             // TODO: add to attribute map
             break;
         case HtmlTokenTagSelfClosing:
@@ -398,10 +394,10 @@ int parseHtml(const std::string html)
         case HtmlTokenRawText:
             // Tag end does not output if it is raw text element.
             cout << "[Tag End        ] >" << endl;
-            cout << "[Raw Text       ] " << text << endl;
+            cout << "[Raw Text       ] " << data << endl;
             break;
         case HtmlTokenText:
-            cout << "[Text           ] " << text << endl;
+            cout << "[Text           ] " << data << endl;
             break;
         case HtmlTokenComment:
             cout << "[Comment        ] " << data << endl;
@@ -410,16 +406,10 @@ int parseHtml(const std::string html)
             cout << "[CDATA          ] " << data << endl;
             break;
         case HtmlTokenInvalid:
-            cout << "[Error          ] " << error << endl;
-            break;
-        default:
+            cout << "[Error          ] " << data << endl;
             break;
         }
-
-        lastHtmlToken = htmlToken;
     }
-
-    return 0;
 }
 
 int main(int argc, char **argv)
@@ -434,7 +424,7 @@ int main(int argc, char **argv)
             std::string content((std::istreambuf_iterator<char>(file)),
                                 (std::istreambuf_iterator<char>()    ));
             file.close();
-            parseHtml(content);
+            printHtmlToken(content);
         }
         else
         {
@@ -443,7 +433,7 @@ int main(int argc, char **argv)
     }
     else
     {
-        cout << "Usage: partHtml filename.html" << endl;
+        cout << "Usage: " << argv[0] << " filename.html" << endl;
     }
 
     return 0;
