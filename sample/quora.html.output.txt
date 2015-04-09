@@ -8,30 +8,28 @@
 [Start Tag      ] <script
 [Attribute Name ] type
 [Equal Sign     ] =
-[Attribute Value] text
-[Self-closing   ] /
-[Error          ] HTML Syntax Error: No attribute name before equal sign
-[Error          ] HTML Syntax Error: Quoted string should appear after equal sign.
+[Attribute Value] text/javascript
+[Attribute Name ] src
+[Equal Sign     ] =
+[Attribute Value] /instartlogic/nv/ii/week-148-3/loader/instart.js
 [Tag End        ] >
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
 [Attribute Name ] type
 [Equal Sign     ] =
-[Attribute Value] text
-[Self-closing   ] /
+[Attribute Value] text/javascript
 [Tag End        ] >
-[Text           ] INSTART.Init({"apiDomain":"vip05-assets.insnw.net","disableInjectionXhr":true,"disableInjectionXhrQueryParam":"instart_disable_injection","disableInstantLoadLinkCss":true,"disableInstantLoadUrls":[],"enableHtmlStreaming":true,"htmlStreamingVersion":"2","iframeCommunicationTimeout":3000,"partialImage":false,"rId":"34","release":"week-148-3","rum":true,"serveNanovisorSameDomain":true,"ver":"loader","virtualDomains":4,"virtualizeDomains":["^.*\\.quora\\.com$","^api\\.quora\\.com$","^geo\\.quora\\.com$","^qim\\.cf\\.quoracdn\\.net$","^qlx\\.cf\\.quoracdn\\.net$","^qph\\.cf\\.quoracdn\\.net$","^qsc\\.cf\\.quoracdn\\.net$","^qsf\\.cf\\.quoracdn\\.net$","^quora\\.com$","^www\\.quora\\.com$"]}
+[Raw Text       ] INSTART.Init({"apiDomain":"vip05-assets.insnw.net","disableInjectionXhr":true,"disableInjectionXhrQueryParam":"instart_disable_injection","disableInstantLoadLinkCss":true,"disableInstantLoadUrls":[],"enableHtmlStreaming":true,"htmlStreamingVersion":"2","iframeCommunicationTimeout":3000,"partialImage":false,"rId":"34","release":"week-148-3","rum":true,"serveNanovisorSameDomain":true,"ver":"loader","virtualDomains":4,"virtualizeDomains":["^.*\\.quora\\.com$","^api\\.quora\\.com$","^geo\\.quora\\.com$","^qim\\.cf\\.quoracdn\\.net$","^qlx\\.cf\\.quoracdn\\.net$","^qph\\.cf\\.quoracdn\\.net$","^qsc\\.cf\\.quoracdn\\.net$","^qsf\\.cf\\.quoracdn\\.net$","^quora\\.com$","^www\\.quora\\.com$"]}
 );
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <script
 [Attribute Name ] type
 [Equal Sign     ] =
-[Attribute Value] text
-[Self-closing   ] /
+[Attribute Value] text/javascript
 [Tag End        ] >
-[Text           ] INSTART.Streaming.PatchInit(9, 10)
+[Raw Text       ]  INSTART.Streaming.PatchInit(9, 10) 
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <link
@@ -82,10 +80,9 @@
 [Start Tag      ] <script
 [Attribute Name ] type
 [Equal Sign     ] =
-[Attribute Value] text
-[Self-closing   ] /
+[Attribute Value] text/javascript
 [Tag End        ] >
-[Text           ] INSTART.Streaming.InterceptNode()
+[Raw Text       ]  INSTART.Streaming.InterceptNode() 
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <title
@@ -99,10 +96,9 @@
 [Start Tag      ] <script
 [Attribute Name ] type
 [Equal Sign     ] =
-[Attribute Value] text
-[Self-closing   ] /
+[Attribute Value] text/javascript
 [Tag End        ] >
-[Text           ] INSTART.Streaming.InterceptNode()
+[Raw Text       ]  INSTART.Streaming.InterceptNode() 
 [End Tag        ] </script
 [Tag End        ] >
 [Start Tag      ] <link

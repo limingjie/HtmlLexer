@@ -1,10 +1,19 @@
 all: HtmlLexer.exe
 
-HtmlLexer.exe: HtmlLexer.cpp
-	@echo "==>Compiling HtmlLexer.cpp..."
-	g++ -Wall -O2 -std=c++11 -o HtmlLexer.exe HtmlLexer.cpp
+PrintToken.o: PrintToken.cpp
+	@echo "==>Compiling PrintToken.o..."
+	g++ -c -o PrintToken.o -Wall -O2 -std=c++11 PrintToken.cpp
+
+HtmlLexer.o: HtmlLexer.cpp HtmlLexer.hpp
+	@echo "==>Compiling HtmlLexer.o..."
+	g++ -c -o HtmlLexer.o -Wall -O2 -std=c++11 HtmlLexer.cpp
+
+HtmlLexer.exe: HtmlLexer.o PrintToken.o
+	@echo "==>Linking HtmlLexer.exe..."
+	g++ -Wall -O2 -std=c++11 -o HtmlLexer.exe HtmlLexer.o PrintToken.o
 
 test: HtmlLexer.exe sample/baidu.html sample/facebook.html sample/github.html sample/google.html sample/netease.html sample/quora.html sample/stackoverflow.html sample/wikipedia.html sample/wikiwand.html
+	@echo "==>Unit Test..."
 	HtmlLexer.exe sample/baidu.html         > sample/baidu.html.output.txt
 	HtmlLexer.exe sample/facebook.html      > sample/facebook.html.output.txt
 	HtmlLexer.exe sample/github.html        > sample/github.html.output.txt
@@ -16,5 +25,6 @@ test: HtmlLexer.exe sample/baidu.html sample/facebook.html sample/github.html sa
 	HtmlLexer.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
 
 clean:
+	rm -rf HtmlLexer.o PrintToken.o
 	rm -rf HtmlLexer.exe
-	rm -rf sample/*.txt
+	rm -rf sample/*.output.txt

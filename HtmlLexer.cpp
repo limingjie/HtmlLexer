@@ -1,195 +1,165 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <algorithm> // find()
+#include "HtmlLexer.hpp"
 
-// HTML data Type
-typedef int  HtmlToken;
+const std::string HtmlLexer::Spaces(" \r\n\t\x0c");
+const std::string HtmlLexer::InvalidAttributeNameChars("> \r\n\t\x0c\"'/=");
+const std::string HtmlLexer::InvalidUnquotedAttributeValueChars
+                      ("> \r\n\t\x0c\"'=<`");
 
-// Invalid HTML
-static const HtmlToken HtmlTokenInvalid            =  -1;
-// Null
-static const HtmlToken HtmlTokenNull               =   0;
-/// [1...99] HTML tokens return by lexer getHtmlToken()
-static const HtmlToken HtmlTokenStartTag           =   1; // "<" + TagName
-static const HtmlToken HtmlTokenEndTag             =   2; // "</" + TagName
-static const HtmlToken HtmlTokenTagEnd             =   3; // ">"
-static const HtmlToken HtmlTokenTagSelfClosing     =   4; // "/" of "/>"
-static const HtmlToken HtmlTokenInTagEqualSign     =   5; // "="
-// single/double quoted string in tag
-static const HtmlToken HtmlTokenInTagQuotedString  =   6;
-// HtmlTokenAttributeName or HtmlTokenAttributeValue
-static const HtmlToken HtmlTokenInTagText          =   7;
-static const HtmlToken HtmlTokenComment            =   8; // <!-- ... -->
-static const HtmlToken HtmlTokenCDATA              =   9; // <![CDATA[ ... ]]>
-static const HtmlToken HtmlTokenRawText            =  10; // raw text
-static const HtmlToken HtmlTokenText               =  99; // normal text
-/// [100...199] HTML tokens after further analysis base on lexer
-// HtmlTokenAttributeName is HtmlTokenInTagText which follows HtmlTokenStartTag,
-// HtmlTokenEndTag, HtmlTokenAttributeValue or
-// another HtmlTokenAttributeName (empty attribute)
-static const HtmlToken HtmlTokenAttributeName      = 101;
-// HtmlTokenAttributeValue is HtmlTokenInTagSingleQuoted, TokenInTagText or
-// HtmlTokenInTagDoubledQuoted that follows HtmlTokenAttributeName and
-// HtmlTokenInTagEqualSign
-static const HtmlToken HtmlTokenAttributeValue     = 102;
-
-// HTML spaces characters are U+0020 SPACE, "tab" (U+0009), "LF" (U+000A),
-// "FF" (U+000C), and "CR" (U+000D)
-static const std::string HtmlSpaces(" \r\n\t\x0c");
-// HTML Attribute name consists of chars other than space characters,
-// U+0000 NULL,U+0022 QUOTATION MARK ("), U+0027 APOSTROPHE ('), ">" (U+003E),
-// "/" (U+002F), and "=" (U+003D) characters
-static const std::string HtmlInvalidAttributeChar("> \r\n\t\x0c\"'/=");
-
-static inline bool isHtmlSpace(char c)
+HtmlLexer::HtmlLexer(const std::string &html)
 {
-    return (HtmlSpaces.find(c) != std::string::npos);
+    _html           = html;
+    _begin          = _html.cbegin();
+    _end            = _html.cend();
+    _it             = _html.cbegin();
+    isIterInsideTag = false;
+    isStartTag      = false;
+    htmlToken       = HtmlTokenNull;
+    lastHtmlToken   = HtmlTokenNull;
 }
 
-static inline bool isValidHtmlAttributeChar(char c)
-{
-    return (HtmlInvalidAttributeChar.find(c) == std::string::npos);
-}
-
-static HtmlToken getHtmlToken(
-    const std::string &html,
-    std::string::const_iterator &it,
-    const HtmlToken lastHtmlToken,
-    std::string &tagName,
-    bool &isIterInsideTag,
-    bool &isStartTag,
-    std::string &data)
+HtmlLexer::HtmlToken HtmlLexer::getToken()
 {
     using namespace std;
 
-    auto      begin     = html.cbegin();
-    auto      end       = html.cend();
-    HtmlToken htmlToken = HtmlTokenNull;
-    size_t    first;
-    size_t    last;
-    size_t    size;
+    size_t first;
+    size_t last;
+    size_t pos;
+    size_t size;
 
+    htmlToken = HtmlTokenNull;
     data.clear();
 
     // iteration
-    while (it != end)
+    while (_it != _end)
     {
         if (isIterInsideTag)
         {
-            if (data.size() > 0 && !isValidHtmlAttributeChar(*it))
+            if (data.size() > 0)
             {
-                htmlToken = HtmlTokenInTagText;
-                break;
+                if (lastHtmlToken == HtmlTokenInTagEqualSign
+                    && !isValidUnquotedAttributeValueChar(*_it))
+                {
+                    htmlToken = HtmlTokenAttributeValue;
+                    break;
+                }
+                else if ((lastHtmlToken == HtmlTokenStartTag
+                          || lastHtmlToken == HtmlTokenEndTag
+                          || lastHtmlToken == HtmlTokenAttributeName
+                          || lastHtmlToken == HtmlTokenAttributeValue )
+                         && !isValidAttributeNameChar(*_it))
+                {
+                    htmlToken = HtmlTokenAttributeName;
+                    break;
+                }
             }
-            else if (*it == '>')
+            else if (*_it == '>')
             {
                 htmlToken = HtmlTokenTagEnd;
                 data = ">";
-                ++it;
+                ++_it;
                 break;
             }
-            else if (isHtmlSpace(*it))
+            else if (isHtmlSpace(*_it))
             {
-                ++it; // Omit spaces inside tag
+                ++_it; // Omit spaces inside tag
                 continue;
             }
-            else if (*it == '=')
+            else if (*_it == '=')
             {
                 htmlToken = HtmlTokenInTagEqualSign;
                 data = "=";
-                ++it;
+                ++_it;
                 break;
             }
-            else if (*it == '\'' || *it == '"')
+            else if (*_it == '\'' || *_it == '"')
             {
                 // Values delimited by single or double quotes
-                auto findIt = it; // keep position
-                ++it;
-                findIt = find(it, end, *findIt);
-                if (findIt == end)
+                auto findIt = _it; // keep position
+                ++_it;
+                findIt = find(_it, _end, *findIt);
+                if (findIt == _end)
                 {
                     htmlToken = HtmlTokenInvalid;
-                    data = "Invalid HTML: No end quote.";
-                    it = end;
+                    data = "Invalid HTML: No _end quote.";
+                    _it = _end;
                 }
                 else
                 {
                     htmlToken = HtmlTokenInTagQuotedString;
-                    data = string(it, findIt);
-                    it = findIt + 1;
+                    data = string(_it, findIt);
+                    _it = findIt + 1;
                 }
 
                 break;
             }
-            else if (*it == '/')
+            else if (*_it == '/')
             {
-                // This is for tag self-closing, not end tag slash.
+                // This is for tag self-closing, not _end tag slash.
                 htmlToken = HtmlTokenTagSelfClosing;
                 data = "/";
-                ++it;
+                ++_it;
                 break;
             }
         }
         else
         {
-            if (data.size() != 0 && *it == '<')
+            if (data.size() != 0 && *_it == '<')
             {
                 htmlToken = HtmlTokenText;
                 break;
             }
-            else if (*it == '<')
+            else if (*_it == '<')
             {
-                // Check if it is CDATA or comment
-                if (string(it + 1, it + 4) == "!--")
+                // Check if _it is CDATA or comment
+                if (string(_it + 1, _it + 4) == "!--")
                 {
-                    size_t pos = html.find("-->", it - begin + 4);
+                    pos = _html.find("-->", _it - _begin + 4);
 
                     if (pos != string::npos)
                     {
-                        auto keepIt = it;
-                        it = begin + pos + 3;
+                        auto start = _it;
+                        _it = _begin + pos + 3;
                         htmlToken = HtmlTokenComment;
-                        data = string(keepIt, it);
+                        data = string(start, _it);
                     }
                     else
                     {
                         htmlToken = HtmlTokenInvalid;
-                        data = "Invalid HTML: Comment does not end.";
-                        it = end;
+                        data = "Invalid HTML: Comment does not _end.";
+                        _it = _end;
                     }
 
                     break;
                 }
-                else if (string(it + 1, it + 9) == "![CDATA[")
+                else if (string(_it + 1, _it + 9) == "![CDATA[")
                 {
-                    size_t pos = html.find("]]>", it - begin + 9);
+                    pos = _html.find("]]>", _it - _begin + 9);
 
                     if (pos != string::npos)
                     {
-                        auto keepIt = it;
-                        it = begin + pos + 3;
+                        auto start = _it;
+                        _it = _begin + pos + 3;
                         htmlToken = HtmlTokenCDATA;
-                        data = string(keepIt, it);
+                        data = string(start, _it);
                     }
                     else
                     {
                         htmlToken = HtmlTokenInvalid;
-                        data = "Invalid HTML: Comment does not end.";
-                        it = end;
+                        data = "Invalid HTML: Comment does not _end.";
+                        _it = _end;
                     }
 
                     break;
                 }
 
                 // Tag name
-                ++it;
-                if (it != end)
+                ++_it;
+                if (_it != _end)
                 {
-                    if (*it == '/')
+                    if (*_it == '/')
                     {
                         htmlToken = HtmlTokenEndTag;
-                        ++it;
+                        ++_it;
                     }
                     else
                     {
@@ -197,15 +167,15 @@ static HtmlToken getHtmlToken(
                     }
 
                     // Get tag name
-                    while (it != end)
+                    while (_it != _end)
                     {
-                        if (*it == '>' || isHtmlSpace(*it) || *it == '/')
+                        if (*_it == '>' || isHtmlSpace(*_it) || *_it == '/')
                         {
                             break;
                         }
 
-                        data.push_back(*it);
-                        ++it;
+                        data.push_back(*_it);
+                        ++_it;
                     }
 
                     if (data.size() == 0)
@@ -220,8 +190,8 @@ static HtmlToken getHtmlToken(
         }
 
         // Put anything else into string.
-        data.push_back(*it);
-        ++it;
+        data.push_back(*_it);
+        ++_it;
     }
 
     // token
@@ -248,26 +218,26 @@ static HtmlToken getHtmlToken(
             (tagName == "script" || tagName == "style" ||
              tagName == "textarea" || tagName == "title" ))
         {
-            first = size_t(it - begin);
+            first = size_t(_it - _begin);
             size = tagName.size() + 2;
             while (true)
             {
-                first = html.find("</" + tagName, first);
+                first = _html.find("</" + tagName, first);
                 if (first != string::npos)
                 {
                     last = first + size;
-                    if (last < html.size() &&
-                        (html[last] == '>' || isHtmlSpace(html[last])))
+                    if (last < _html.size() &&
+                        (_html[last] == '>' || isHtmlSpace(_html[last])))
                     {
-                        if (first != size_t(it - begin))
+                        if (first != size_t(_it - _begin))
                         {
-                            data = string(it, begin + first);
+                            data = string(_it, _begin + first);
                             htmlToken = HtmlTokenRawText;
-                            it = begin + first;
+                            _it = _begin + first;
                         }
                         // else
                         // {
-                        //     // No raw text, keep it as HtmlTokenTagEnd
+                        //     // No raw text, keep _it as HtmlTokenTagEnd
                         // }
 
                         break;
@@ -282,8 +252,8 @@ static HtmlToken getHtmlToken(
                 {
                     htmlToken = HtmlTokenInvalid;
                     data = "HTML Syntax Error: "
-                           "Raw text elements does not end";
-                    it = end;
+                           "Raw text elements does not _end";
+                    _it = _end;
                 }
 
                 break;
@@ -315,29 +285,15 @@ static HtmlToken getHtmlToken(
                    "Quoted string should appear after equal sign.";
         }
         break;
-    case HtmlTokenInTagText:
-        switch (lastHtmlToken)
-        {
-        case HtmlTokenStartTag:
-        case HtmlTokenEndTag:
-        case HtmlTokenAttributeName:
-        case HtmlTokenAttributeValue:
-            htmlToken = HtmlTokenAttributeName;
-            break;
-        case HtmlTokenInTagEqualSign:
-            htmlToken = HtmlTokenAttributeValue;
-            break;
-        }
-        break;
     case HtmlTokenText:
-        first = data.find_first_not_of(HtmlSpaces);
+        first = data.find_first_not_of(Spaces);
         if (first == string::npos)
         {
             htmlToken = HtmlTokenNull;
         }
         else
         {
-            last = data.find_last_not_of(HtmlSpaces);
+            last = data.find_last_not_of(Spaces);
             data = data.substr(first, last - first + 1);
         }
         break;
@@ -346,95 +302,7 @@ static HtmlToken getHtmlToken(
         break;
     }
 
+    lastHtmlToken = htmlToken;
+
     return htmlToken;
-}
-
-void printHtmlToken(const std::string html)
-{
-    using namespace std;
-
-    auto      end             = html.cend();
-    auto      it              = html.cbegin();
-    bool      isIterInsideTag = false;
-    bool      isStartTag      = false;
-    HtmlToken htmlToken       = HtmlTokenNull;
-    string    data;
-    string    tagName;
-
-    while (it != end)
-    {
-        htmlToken = getHtmlToken(html, it, htmlToken, tagName, isIterInsideTag, isStartTag, data);
-
-        // analysis pass 2
-        switch (htmlToken)
-        {
-        case HtmlTokenStartTag:
-            cout << "[Start Tag      ] <" << tagName << endl;
-            break;
-        case HtmlTokenEndTag:
-            cout << "[End Tag        ] </" << tagName << endl;
-            break;
-        case HtmlTokenTagEnd:
-            cout << "[Tag End        ] >" << endl;
-            break;
-        case HtmlTokenAttributeName:
-            cout << "[Attribute Name ] " << data << endl;
-            // TODO: add to attribute map
-            break;
-        case HtmlTokenInTagEqualSign:
-            cout << "[Equal Sign     ] =" << endl;
-            break;
-        case HtmlTokenAttributeValue:
-            cout << "[Attribute Value] " << data << endl;
-            // TODO: add to attribute map
-            break;
-        case HtmlTokenTagSelfClosing:
-            cout << "[Self-closing   ] /" << endl;
-            break;
-        case HtmlTokenRawText:
-            // Tag end does not output if it is raw text element.
-            cout << "[Tag End        ] >" << endl;
-            cout << "[Raw Text       ] " << data << endl;
-            break;
-        case HtmlTokenText:
-            cout << "[Text           ] " << data << endl;
-            break;
-        case HtmlTokenComment:
-            cout << "[Comment        ] " << data << endl;
-            break;
-        case HtmlTokenCDATA:
-            cout << "[CDATA          ] " << data << endl;
-            break;
-        case HtmlTokenInvalid:
-            cout << "[Error          ] " << data << endl;
-            break;
-        }
-    }
-}
-
-int main(int argc, char **argv)
-{
-    using namespace std;
-
-    if (argc == 2)
-    {
-        std::ifstream file(argv[1]);
-        if (file.is_open())
-        {
-            std::string content((std::istreambuf_iterator<char>(file)),
-                                (std::istreambuf_iterator<char>()    ));
-            file.close();
-            printHtmlToken(content);
-        }
-        else
-        {
-            cout << "Failed to open file: " << argv[1] << endl;
-        }
-    }
-    else
-    {
-        cout << "Usage: " << argv[0] << " filename.html" << endl;
-    }
-
-    return 0;
 }

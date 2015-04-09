@@ -8,16 +8,9 @@ The Lexer follows [HTML5 Specification](http://www.w3.org/TR/html5/) on sections
   - [Escapable raw text elements](http://www.w3.org/TR/html5/syntax.html#escapable-raw-text-elements)
   - [8.1.2.1 Start tags](http://www.w3.org/TR/html5/syntax.html#start-tags)
   - [8.1.2.2 End tags](http://www.w3.org/TR/html5/syntax.html#end-tags)
-  - [8.1.2.3 Attributes](http://www.w3.org/TR/html5/syntax.html#attributes-0) (See Known Issues #1)
+  - [8.1.2.3 Attributes](http://www.w3.org/TR/html5/syntax.html#attributes-0)
   - [8.1.5 CDATA sections](http://www.w3.org/TR/html5/syntax.html#cdata-sections)
   - [8.1.6 Comments](http://www.w3.org/TR/html5/syntax.html#comments)
-## Known Issues
-1. It does not parse "Unquoted attribute value syntax" if it contains `/`.
-See
-[sample/quora.html](https://github.com/limingjie/HtmlLexer/blob/master/sample/quora.html)
-and
-[sample/quora.html.output.txt](https://github.com/limingjie/HtmlLexer/blob/master/sample/quora.html.output.txt).
-`<script type=text/javascript>`
 
 ## License
 Public Domain
