@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "HtmlLexer.hpp"
+#include "Stopwatch.hpp"
 
 void printHtmlToken(const std::string &html)
 {
@@ -71,7 +72,9 @@ int main(int argc, char **argv)
             std::string content((std::istreambuf_iterator<char>(file)),
                                 (std::istreambuf_iterator<char>()    ));
             file.close();
+            Stopwatch<double> time("Stopwatch", true);
             printHtmlToken(content);
+            time.stop();
         }
         else
         {
