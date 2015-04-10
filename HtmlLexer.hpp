@@ -52,7 +52,7 @@ private:
     HtmlToken                   htmlToken;
     HtmlToken                   lastHtmlToken;
     std::string                 _html;
-    std::string                 data;
+    std::string                 text;
     std::string                 tagName;
     std::string::const_iterator _begin;
     std::string::const_iterator _end;
@@ -77,7 +77,7 @@ public:
     HtmlLexer(const std::string &html);
 
     HtmlToken   getToken();
-    std::string getTokenValue() {return data;}
+    std::string getTokenText()  {return text;}
     std::string getTagName()    {return tagName;}
-    bool        ends()          {return (_it == _end);}
+    bool        end()           {return (_it == _end);}
 };

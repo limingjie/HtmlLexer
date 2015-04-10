@@ -10,7 +10,7 @@ HtmlLexer::HtmlLexer(const std::string &html)
     _html           = html;
     _begin          = _html.cbegin();
     _end            = _html.cend();
-    _it             = _html.cbegin();
+    _it             = _begin;
     isIterInsideTag = false;
     isStartTag      = false;
     htmlToken       = HtmlTokenNull;
@@ -27,14 +27,14 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
     size_t size;
 
     htmlToken = HtmlTokenNull;
-    data.clear();
+    text.clear();
 
     // iteration
     while (_it != _end)
     {
         if (isIterInsideTag)
         {
-            if (data.size() > 0)
+            if (text.size() > 0)
             {
                 if (lastHtmlToken == HtmlTokenInTagEqualSign
                     && !isValidUnquotedAttributeValueChar(*_it))
@@ -55,7 +55,7 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
             else if (*_it == '>')
             {
                 htmlToken = HtmlTokenTagEnd;
-                data = ">";
+                text = ">";
                 ++_it;
                 break;
             }
@@ -67,7 +67,7 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
             else if (*_it == '=')
             {
                 htmlToken = HtmlTokenInTagEqualSign;
-                data = "=";
+                text = "=";
                 ++_it;
                 break;
             }
@@ -80,13 +80,13 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
                 if (findIt == _end)
                 {
                     htmlToken = HtmlTokenInvalid;
-                    data = "Invalid HTML: No _end quote.";
+                    text = "Invalid HTML: No _end quote.";
                     _it = _end;
                 }
                 else
                 {
                     htmlToken = HtmlTokenInTagQuotedString;
-                    data = string(_it, findIt);
+                    text = string(_it, findIt);
                     _it = findIt + 1;
                 }
 
@@ -96,14 +96,14 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
             {
                 // This is for tag self-closing, not _end tag slash.
                 htmlToken = HtmlTokenTagSelfClosing;
-                data = "/";
+                text = "/";
                 ++_it;
                 break;
             }
         }
         else
         {
-            if (data.size() != 0 && *_it == '<')
+            if (text.size() != 0 && *_it == '<')
             {
                 htmlToken = HtmlTokenText;
                 break;
@@ -120,12 +120,12 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
                         auto start = _it;
                         _it = _begin + pos + 3;
                         htmlToken = HtmlTokenComment;
-                        data = string(start, _it);
+                        text = string(start, _it);
                     }
                     else
                     {
                         htmlToken = HtmlTokenInvalid;
-                        data = "Invalid HTML: Comment does not _end.";
+                        text = "Invalid HTML: Comment does not _end.";
                         _it = _end;
                     }
 
@@ -140,12 +140,12 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
                         auto start = _it;
                         _it = _begin + pos + 3;
                         htmlToken = HtmlTokenCDATA;
-                        data = string(start, _it);
+                        text = string(start, _it);
                     }
                     else
                     {
                         htmlToken = HtmlTokenInvalid;
-                        data = "Invalid HTML: Comment does not _end.";
+                        text = "Invalid HTML: Comment does not _end.";
                         _it = _end;
                     }
 
@@ -174,14 +174,14 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
                             break;
                         }
 
-                        data.push_back(*_it);
+                        text.push_back(*_it);
                         ++_it;
                     }
 
-                    if (data.size() == 0)
+                    if (text.size() == 0)
                     {
                         htmlToken = HtmlTokenInvalid;
-                        data = "Invalid HTML: Invalid tag name.";
+                        text = "Invalid HTML: Invalid tag name.";
                     }
                 }
 
@@ -190,7 +190,7 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
         }
 
         // Put anything else into string.
-        data.push_back(*_it);
+        text.push_back(*_it);
         ++_it;
     }
 
@@ -200,12 +200,12 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
     case HtmlTokenStartTag:
         isStartTag = true;
         isIterInsideTag = true;
-        tagName = data;
+        tagName = text;
         break;
     case HtmlTokenEndTag:
         isStartTag = false;
         isIterInsideTag = true;
-        tagName = data;
+        tagName = text;
         break;
     case HtmlTokenTagSelfClosing:
         isStartTag = false;
@@ -231,7 +231,7 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
                     {
                         if (first != size_t(_it - _begin))
                         {
-                            data = string(_it, _begin + first);
+                            text = string(_it, _begin + first);
                             htmlToken = HtmlTokenRawText;
                             _it = _begin + first;
                         }
@@ -251,7 +251,7 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
                 else
                 {
                     htmlToken = HtmlTokenInvalid;
-                    data = "HTML Syntax Error: "
+                    text = "HTML Syntax Error: "
                            "Raw text elements does not _end";
                     _it = _end;
                 }
@@ -269,7 +269,7 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
         if (lastHtmlToken != HtmlTokenAttributeName)
         {
             htmlToken = HtmlTokenInvalid;
-            data = "HTML Syntax Error: "
+            text = "HTML Syntax Error: "
                    "No attribute name before equal sign";
         }
         break;
@@ -281,24 +281,24 @@ HtmlLexer::HtmlToken HtmlLexer::getToken()
         else
         {
             htmlToken = HtmlTokenInvalid;
-            data = "HTML Syntax Error: "
+            text = "HTML Syntax Error: "
                    "Quoted string should appear after equal sign.";
         }
         break;
     case HtmlTokenText:
-        first = data.find_first_not_of(Spaces);
+        first = text.find_first_not_of(Spaces);
         if (first == string::npos)
         {
             htmlToken = HtmlTokenNull;
         }
         else
         {
-            last = data.find_last_not_of(Spaces);
-            data = data.substr(first, last - first + 1);
+            last = text.find_last_not_of(Spaces);
+            text = text.substr(first, last - first + 1);
         }
         break;
     case HtmlTokenInvalid:
-        // error in data
+        // error in text
         break;
     }
 

@@ -8,60 +8,55 @@ void printHtmlToken(const std::string &html)
 
     HtmlLexer lexer(html);
 
-    HtmlLexer::HtmlToken htmlToken;
-    string data;
-    string tagName;
-
-    while (!lexer.ends())
+    while (!lexer.end())
     {
-        htmlToken = lexer.getToken();
-        data = lexer.getTokenValue();
-
         // analysis pass 2
-        switch (htmlToken)
+        switch (lexer.getToken())
         {
         case HtmlLexer::HtmlTokenStartTag:
-            cout << "[Start Tag      ] <" << lexer.getTagName() << endl;
+            cout << "[Start Tag      ] <" << lexer.getTokenText() << '\n';
             break;
         case HtmlLexer::HtmlTokenEndTag:
-            cout << "[End Tag        ] </" << lexer.getTagName() << endl;
+            cout << "[End Tag        ] </" << lexer.getTokenText() << '\n';
             break;
         case HtmlLexer::HtmlTokenTagEnd:
-            cout << "[Tag End        ] >" << endl;
+            cout << "[Tag End        ] >" << '\n';
             break;
         case HtmlLexer::HtmlTokenAttributeName:
-            cout << "[Attribute Name ] " << data << endl;
+            cout << "[Attribute Name ] " << lexer.getTokenText() << '\n';
             // TODO: add to attribute map
             break;
         case HtmlLexer::HtmlTokenInTagEqualSign:
-            cout << "[Equal Sign     ] =" << endl;
+            cout << "[Equal Sign     ] =" << '\n';
             break;
         case HtmlLexer::HtmlTokenAttributeValue:
-            cout << "[Attribute Value] " << data << endl;
+            cout << "[Attribute Value] " << lexer.getTokenText() << '\n';
             // TODO: add to attribute map
             break;
         case HtmlLexer::HtmlTokenTagSelfClosing:
-            cout << "[Self-closing   ] /" << endl;
+            cout << "[Self-closing   ] /" << '\n';
             break;
         case HtmlLexer::HtmlTokenRawText:
             // Tag end does not output if it is raw text element.
-            cout << "[Tag End        ] >" << endl;
-            cout << "[Raw Text       ] " << data << endl;
+            cout << "[Tag End        ] >" << '\n';
+            cout << "[Raw Text       ] " << lexer.getTokenText() << '\n';
             break;
         case HtmlLexer::HtmlTokenText:
-            cout << "[Text           ] " << data << endl;
+            cout << "[Text           ] " << lexer.getTokenText() << '\n';
             break;
         case HtmlLexer::HtmlTokenComment:
-            cout << "[Comment        ] " << data << endl;
+            cout << "[Comment        ] " << lexer.getTokenText() << '\n';
             break;
         case HtmlLexer::HtmlTokenCDATA:
-            cout << "[CDATA          ] " << data << endl;
+            cout << "[CDATA          ] " << lexer.getTokenText() << '\n';
             break;
         case HtmlLexer::HtmlTokenInvalid:
-            cout << "[Error          ] " << data << endl;
+            cout << "[Error          ] " << lexer.getTokenText() << '\n';
             break;
         }
     }
+
+    cout.flush();
 }
 
 int main(int argc, char **argv)
