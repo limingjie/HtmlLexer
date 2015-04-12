@@ -18,8 +18,9 @@ private:
     std::string::size_type  end;   // [start, end)
 
 public:
-    type() : line(0), start(0), end(0) {}
+    html_token() : line(0), start(0), end(0) {}
     virtual token_type type() = 0;
+    virtual void print() = 0;
 };
 
 class html_token_start_tag : public html_token
@@ -91,6 +92,17 @@ private:
         state_after_attribute_value_quoted
     };
 
+    // errors
+    enum error_type
+    {
+        error_invalid
+    };
+
     std::vector<html_token> tokens;
 
+public:
+    html_lexer();
+    html_lexer(std::string &html) {parse(html);}
+    bool parse(std::string &html);
+    void print();
 };
