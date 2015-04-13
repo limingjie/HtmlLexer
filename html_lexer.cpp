@@ -25,6 +25,7 @@ void html_lexer::emit_token(std::string::size_type end_position)
 
 void html_lexer::process_raw_text(std::string tag_name)
 {
+    // TODO: match case insensitive
     size_t first = _idx;
     while (true)
     {

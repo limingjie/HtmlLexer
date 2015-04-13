@@ -203,6 +203,7 @@ private:
         state_attribute_value_single_quoted,
         state_attribute_value_double_quoted,
         state_after_attribute_value_quoted
+        // TODO: 8.2.4.44 Bogus comment state
     };
 
     // errors
