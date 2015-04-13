@@ -83,6 +83,8 @@ public:
         else
         {
             // error
+                attribute_name.clear();
+                attribute_value.clear();
         }
     }
 
@@ -159,7 +161,7 @@ public:
 
     void print()
     {
-        std::cout << "[Text           ] " << data << '\n';
+        // std::cout << "[Text           ] " << data << '\n';
     }
 };
 

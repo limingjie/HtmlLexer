@@ -150,8 +150,9 @@ bool html_lexer::parse(std::string &html)
             {
                 // check raw text
                 temp_tag_name = ((html_tag_token *)token)->get_name();
-                if (((html_tag_token *)token)->start_tag() &&
-                    temp_tag_name == "script")
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
 
                 {
                     state = state_raw_text;
@@ -186,11 +187,23 @@ bool html_lexer::parse(std::string &html)
             }
             else if (c == '>')
             {
+                // check raw text
+                temp_tag_name = ((html_tag_token *)token)->get_name();
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
+
+                {
+                    state = state_raw_text;
+                }
+                else
+                {
+                    state = state_data;
+                }
                 // emit current tag token
                 token->set_end(idx + 1);
                 tokens.push_back(token);
                 token = nullptr;
-                state = state_data;
             }
             else if (isupper(c))
             {
@@ -226,12 +239,24 @@ bool html_lexer::parse(std::string &html)
             }
             else if (c == '>')
             {
-                // emit current tag token
                 ((html_tag_token *)token)->insert_attribute();
+                // check raw text
+                temp_tag_name = ((html_tag_token *)token)->get_name();
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
+
+                {
+                    state = state_raw_text;
+                }
+                else
+                {
+                    state = state_data;
+                }
+                // emit current tag token
                 token->set_end(idx + 1);
                 tokens.push_back(token);
                 token = nullptr;
-                state = state_data;
             }
             else if (isupper(c))
             {
@@ -267,13 +292,27 @@ bool html_lexer::parse(std::string &html)
             {
                 // emit current tag token
                 ((html_tag_token *)token)->insert_attribute();
+                // check raw text
+                temp_tag_name = ((html_tag_token *)token)->get_name();
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
+
+                {
+                    state = state_raw_text;
+                }
+                else
+                {
+                    state = state_data;
+                }
+                // emit current tag token
                 token->set_end(idx + 1);
                 tokens.push_back(token);
                 token = nullptr;
-                state = state_data;
             }
             else if (isupper(c))
             {
+                ((html_tag_token *)token)->insert_attribute();
                 ((html_tag_token *)token)->append_to_attribute_name(tolower(c));
             }
             else
@@ -284,6 +323,7 @@ bool html_lexer::parse(std::string &html)
                     // but treat it as anything else
                 }
 
+                ((html_tag_token *)token)->insert_attribute();
                 ((html_tag_token *)token)->append_to_attribute_name(c);
                 state = state_attribute_name;
             }
@@ -306,10 +346,23 @@ bool html_lexer::parse(std::string &html)
             {
                 // emit current tag token
                 ((html_tag_token *)token)->insert_attribute();
+                // check raw text
+                temp_tag_name = ((html_tag_token *)token)->get_name();
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
+
+                {
+                    state = state_raw_text;
+                }
+                else
+                {
+                    state = state_data;
+                }
+                // emit current tag token
                 token->set_end(idx + 1);
                 tokens.push_back(token);
                 token = nullptr;
-                state = state_data;
             }
             else
             {
@@ -358,10 +411,23 @@ bool html_lexer::parse(std::string &html)
             {
                 // emit current tag token
                 ((html_tag_token *)token)->insert_attribute();
+                // check raw text
+                temp_tag_name = ((html_tag_token *)token)->get_name();
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
+
+                {
+                    state = state_raw_text;
+                }
+                else
+                {
+                    state = state_data;
+                }
+                // emit current tag token
                 token->set_end(idx + 1);
                 tokens.push_back(token);
                 token = nullptr;
-                state = state_data;
             }
             else
             {
@@ -386,11 +452,23 @@ bool html_lexer::parse(std::string &html)
             }
             else if (c == '>')
             {
+                // check raw text
+                temp_tag_name = ((html_tag_token *)token)->get_name();
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
+
+                {
+                    state = state_raw_text;
+                }
+                else
+                {
+                    state = state_data;
+                }
                 // emit current tag token
                 token->set_end(idx + 1);
                 tokens.push_back(token);
                 token = nullptr;
-                state = state_data;
             }
             break;
         case state_self_closing_start_tag:
@@ -398,11 +476,23 @@ bool html_lexer::parse(std::string &html)
             if (c == '>')
             {
                 ((html_tag_token *)token)->set_self_closing();
+                // check raw text
+                temp_tag_name = ((html_tag_token *)token)->get_name();
+                if ( ((html_tag_token *)token)->start_tag() &&
+                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
+                      temp_tag_name == "script" || temp_tag_name == "title" ))
+
+                {
+                    state = state_raw_text;
+                }
+                else
+                {
+                    state = state_data;
+                }
                 // emit current tag token
                 token->set_end(idx + 1);
                 tokens.push_back(token);
                 token = nullptr;
-                state = state_data;
             }
             else
             {
@@ -413,55 +503,21 @@ bool html_lexer::parse(std::string &html)
             break;
         case state_raw_text:
             {
-                token = new html_text_token();
-                token->set_start(idx);
-
                 size_t first = idx;
-                size_t last;
-                size_t size_name = temp_tag_name.size() + 2;
-                std::string raw_text;
                 while (true)
                 {
                     first = _html.find("</" + temp_tag_name, first);
-                    std::cerr << first << std::endl;
+                    std::cerr << temp_tag_name << std::endl;
                     if (first != std::string::npos)
                     {
-                        last = first + size_name;
-                        if (last < size)
-                        {
-                            c = _html[last];
-                            if (c == '>' || c == '\t' || c == '\r' || c == '\n' || c == ' ')
-                            {
-                                if (first != idx)
-                                {
-                                    raw_text = _html.substr(idx, first - idx);
-                                    idx = first;
-                                }
-
-                                break;
-                            }
-                            else
-                            {
-                                first = last;
-                                continue;
-                            }
-                        }
+                        idx = first;
                     }
                     else
                     {
-                        raw_text = _html.substr(idx);
                         idx = size;
                     }
 
                     break;
-                }
-
-                if (raw_text.size() != 0)
-                {
-                    token->set_end(idx);
-                    ((html_text_token *)token)->set_text(raw_text);
-                    tokens.push_back(token);
-                    token = nullptr;
                 }
 
                 state = state_data;
