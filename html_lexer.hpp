@@ -26,105 +26,116 @@ enum token_type
 class html_token
 {
 private:
-    size_t                  line;  // for error message
-    std::string::size_type  start; // [start, end)
-    std::string::size_type  end;   // [start, end)
+    std::string::size_type  _start; // [start, end)
+    std::string::size_type  _end;   // [start, end)
 
 public:
-    html_token() : line(0), start(0), end(0) {}
+    html_token() : _start(0), _end(0) {}
     virtual ~html_token() {};
 
-    virtual token_type type() = 0;
-    virtual void print() = 0;
+    // setter
+    void set_start_position(std::string::size_type pos) {_start = pos;}
+    void set_end_position  (std::string::size_type pos) {_end   = pos;}
 
-    void set_start(std::string::size_type pos) {start = pos;}
-    void set_end(std::string::size_type pos) {end = pos;}
+    // getter
+    virtual token_type get_type() = 0;
+
+    virtual void finalize() = 0;
+    virtual void print()    = 0;
 };
 
 class html_tag_token : public html_token
 {
 private:
-    std::string                        tag_name;
-    //std::map<std::string, std::string> attributes;
-    std::vector<std::pair<std::string, std::string>> attributes;
-    bool                               is_start_tag;
-    bool                               is_self_closing;
-    std::string                        attribute_name;
-    std::string                        attribute_value;
+    std::string _tag_name;
 
 public:
-    html_tag_token(bool start_tag = true)
-        : is_self_closing(false)
+    html_tag_token() {}
+
+    // setter
+    void append_to_name(char c) {_tag_name.push_back(c);}
+    virtual void new_attribute() = 0;
+    virtual void append_to_attribute_name (char c) = 0;
+    virtual void append_to_attribute_value(char c) = 0;
+    virtual void set_self_closing() = 0;
+
+    // getter
+    std::string get_name() {return _tag_name;}
+};
+
+class html_start_tag_token : public html_tag_token
+{
+private:
+    std::vector<std::pair<std::string, std::string>> _attributes;
+    std::string                                      _attribute_name;
+    std::string                                      _attribute_value;
+    bool                                             _is_self_closing;
+
+public:
+    html_start_tag_token() : _is_self_closing(false) {}
+
+    // setter
+    void new_attribute()
     {
-        is_start_tag = start_tag;
+        if (_attribute_name.size() != 0)
+        {
+            _attributes.push_back(std::make_pair(_attribute_name, _attribute_value));
+        }
+
+        _attribute_name.clear();
+        _attribute_value.clear();
     }
+    void append_to_attribute_name (char c) {_attribute_name.push_back(c);}
+    void append_to_attribute_value(char c) {_attribute_value.push_back(c);}
+    void set_self_closing() {_is_self_closing = true;}
 
-    token_type type() {return token_start_tag;}
+    // getter
+    token_type  get_type() {return token_start_tag;}
 
-    bool start_tag() {return is_start_tag;}
-
-    void set_name(std::string &name) {tag_name = name;}
-    std::string get_name() {return tag_name;}
-    void append_to_name(char c) {tag_name.push_back(c);}
-
-    void append_to_attribute_name(char c) {attribute_name.push_back(c);}
-    void append_to_attribute_value(char c) {attribute_value.push_back(c);}
-    void insert_attribute()
+    void finalize ()
     {
-        if (is_start_tag)
-        {
-            if (attribute_name.size() != 0)
-            {
-                attributes.push_back(std::make_pair(attribute_name, attribute_value));
-                attribute_name.clear();
-                attribute_value.clear();
-            }
-        }
-        else
-        {
-            // error
-                attribute_name.clear();
-                attribute_value.clear();
-        }
-    }
-
-    void set_self_closing()
-    {
-        if (is_start_tag)
-        {
-            is_self_closing = true;
-        }
-        else
-        {
-            // errormake clean
-        }
+        // push attribute
+        new_attribute();
     }
 
     void print()
     {
-        if (is_start_tag)
+        std::cout << "[Start Tag      ] <" << get_name() << '\n';
+        for (auto attribute : _attributes)
         {
-            std::cout << "[Start Tag      ] <" << tag_name << '\n';
-            for (auto attribute : attributes)
+            std::cout << "[Attribute Name ] " << attribute.first << '\n';
+            if (attribute.second.size() != 0)
             {
-                std::cout << "[Attribute Name ] " << attribute.first << '\n';
-                if (attribute.second.size() != 0)
-                {
-                    std::cout << "[Equal Sign     ] =\n";
-                    std::cout << "[Attribute Value] " << attribute.second << '\n';
-                }
+                std::cout << "[Equal Sign     ] =\n";
+                std::cout << "[Attribute Value] " << attribute.second << '\n';
             }
-            if (is_self_closing)
-            {
-                std::cout << "[Self-closing   ] /\n";
-            }
-            std::cout << "[Tag End        ] >\n";
         }
-        else
+        if (_is_self_closing)
         {
-            std::cout << "[End Tag        ] </" << tag_name << '\n';
-            std::cout << "[Tag End        ] >\n";
+            std::cout << "[Self-closing   ] /\n";
         }
+        std::cout << "[Tag End        ] >\n";
+    }
+};
+
+class html_end_tag_token : public html_tag_token
+{
+public:
+    // setter
+    void new_attribute() {} // parse error
+    void append_to_attribute_name (char c) {} // parse error
+    void append_to_attribute_value(char c) {} // parse error
+    void set_self_closing() {} // parse error
+
+    // getter
+    token_type  get_type() {return token_end_tag;}
+
+    void finalize () {}
+
+    void print()
+    {
+        std::cout << "[End Tag        ] </" << get_name() << '\n';
+        std::cout << "[Tag End        ] >\n";
     }
 };
 
@@ -136,9 +147,13 @@ private:
 public:
     html_comment_token() {}
 
-    token_type type() {return token_comment;}
-
+    // setter
     void set_comment(std::string &comment) {data = comment;}
+
+    // getter
+    token_type get_type() {return token_comment;}
+
+    void finalize() {}
 
     void print()
     {
@@ -154,10 +169,14 @@ private:
 public:
     html_text_token() {}
 
-    token_type type() {return token_text;}
-
+    // setter
     void append(char c) {data.push_back(c);}
     void set_text(std::string &text) {data = text;}
+
+    // getter
+    token_type get_type() {return token_text;}
+
+    void finalize() {}
 
     void print()
     {
@@ -183,8 +202,7 @@ private:
         state_attribute_value_unquoted,
         state_attribute_value_single_quoted,
         state_attribute_value_double_quoted,
-        state_after_attribute_value_quoted,
-        state_raw_text
+        state_after_attribute_value_quoted
     };
 
     // errors
@@ -193,27 +211,35 @@ private:
         error_invalid
     };
 
-    std::string               _html;
-    std::vector<html_token *> tokens;
+    std::string                _html;
+    size_t                     _size;
+    size_t                     _idx;
+    char                       _c;
+    state_type                 _state;
+    html_token                *_token;
+    std::vector<html_token *>  _tokens;
 
 public:
     html_lexer() {};
     html_lexer(std::string &html) {parse(html);}
     ~html_lexer()
     {
-        for (auto token : tokens)
+        for (auto token : _tokens)
         {
             delete token;
         }
     }
 
     bool parse(std::string &html);
+    void emit_token(std::string::size_type end_position);
+    void process_raw_text(std::string tag_name);
 
     void print()
     {
-        for (auto token : tokens)
+        for (auto token : _tokens)
         {
             token->print();
+            std::cout.flush();
         }
     }
 };

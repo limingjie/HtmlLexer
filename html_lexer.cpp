@@ -1,537 +1,429 @@
 #include "html_lexer.hpp"
 
-    // enum state_type
-    // {
-    //     state_data,
-    //     state_tag_open,
-    //     state_end_tag_open,
-    //     state_tag_name,
-    //     state_self_closing_start_tag,
-    //     state_before_attribute_name,
-    //     state_attribute_name,
-    //     state_after_attribute_name,
-    //     state_before_attribute_value,
-    //     state_attribute_value_unquoted,
-    //     state_attribute_value_single_quoted,
-    //     state_attribute_value_double_quoted,
-    //     state_after_attribute_value_quoted
-    // };
+void html_lexer::emit_token(std::string::size_type end_position)
+{
+    if (_token != nullptr)
+    {
+        _token->set_end_position(end_position);
+        _token->finalize();
+        _tokens.push_back(_token);
+
+        if (_token->get_type() == token_start_tag)
+        {
+            std::string tag_name = ((html_tag_token *)_token)->get_name();
+
+            if (tag_name == "textarea" || tag_name == "style" ||
+                tag_name == "script"   || tag_name == "title" )
+            {
+                process_raw_text(tag_name);
+            }
+        }
+
+        _token = nullptr;
+    }
+}
+
+void html_lexer::process_raw_text(std::string tag_name)
+{
+    size_t first = _idx;
+    while (true)
+    {
+        first = _html.find("</" + tag_name, first);
+        // std::cerr << tag_name << std::endl;
+        if (first != std::string::npos)
+        {
+            _idx = first - 1;
+        }
+        else
+        {
+            _idx = _size - 1;
+        }
+
+        break;
+    }
+}
 
 bool html_lexer::parse(std::string &html)
 {
-    state_type state = state_data;
+    _html  = html; // Copy
+    _size  = _html.size();
+    _idx   = 0;
+    _state = state_data;
+    _token = nullptr;
 
-    _html             = html; // Copy
-    char   c;
-    size_t idx        = 0;
-    size_t size       = _html.size();
-    html_token *token = nullptr;
-    std::string temp_tag_name;
-
-    while (idx < size)
+    while (_idx < _size)
     {
-        c = _html[idx];
+        _c = _html[_idx];
 
-        switch (state)
+        switch (_state)
         {
+        // http://www.w3.org/TR/html5/syntax.html#data-_state
         case state_data:
 			// std::cerr << "state_data" << std::endl;
-            if (c == '<')
+            if (_c == '<')
             {
-                state = state_tag_open;
-                // emit text token
-                if (token != nullptr)
-                {
-                    token->set_end(idx);
-                    tokens.push_back(token);
-                    token = nullptr;
-                }
+                _state = state_tag_open;
+                emit_token(_idx);
             }
             else
             {
-                // TODO: character token
-                if (token == nullptr)
+                if (_token == nullptr)
                 {
-                    token = new html_text_token();
-                    token->set_start(idx);
+                    _token = new html_text_token();
+                    _token->set_start_position(_idx);
                 }
 
-                ((html_text_token *)token)->append(c);
+                ((html_text_token *)_token)->append(_c);
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#tag-open-_state
         case state_tag_open:
 			// std::cerr << "state_tag_open" << std::endl;
-            if (c == '!')
+            if (_c == '!')
             {
-                if (html[idx + 1] == '-' && html[idx + 2] == '-')
+                if (html[_idx + 1] == '-' && html[_idx + 2] == '-')
                 {
-                    token = new html_comment_token();
-                    token->set_start(idx - 1);
+                    _token = new html_comment_token();
+                    _token->set_start_position(_idx - 1);
 
-                    auto pos = _html.find("-->", idx + 3);
+                    auto pos = _html.find("-->", _idx + 3);
                     std::string comment;
                     if (pos == std::string::npos)
                     {
-                        comment = _html.substr(idx + 3);
-                        idx = size;
+                        comment = _html.substr(_idx + 3);
+                        _idx = _size;
                     }
                     else
                     {
-                        comment = _html.substr(idx + 3, pos - idx - 3);
-                        idx = pos + 3;
+                        comment = _html.substr(_idx + 3, pos - _idx - 3);
+                        _idx = pos + 3;
                     }
-                    ((html_comment_token *)token)->set_comment(comment);
-                    token->set_end(idx);
-                    tokens.push_back(token);
-                    token = nullptr;
-                    state = state_data;
+                    ((html_comment_token *)_token)->set_comment(comment);
+
+                    emit_token(_idx);
+                    _state = state_data;
 
                     continue;
                 }
             }
-            else if (c == '/')
+            else if (_c == '/')
             {
-                state = state_end_tag_open;
+                _state = state_end_tag_open;
             }
-            else if (isupper(c))
+            else if (isupper(_c))
             {
-                token = new html_tag_token();
-                token->set_start(idx);
-                ((html_tag_token *)token)->append_to_name(tolower(c));
-                state = state_tag_name;
+                _token = new html_start_tag_token();
+                _token->set_start_position(_idx);
+                ((html_tag_token *)_token)->append_to_name(tolower(_c));
+                _state = state_tag_name;
             }
-            else if (islower(c))
+            else if (islower(_c))
             {
-                token = new html_tag_token();
-                token->set_start(idx);
-                ((html_tag_token *)token)->append_to_name(tolower(c));
-                state = state_tag_name;
+                _token = new html_start_tag_token();
+                _token->set_start_position(_idx);
+                ((html_tag_token *)_token)->append_to_name(_c);
+                _state = state_tag_name;
             }
             else
             {
-                // Error
-                state = state_data;
-                c = '<';
+                // parse error
+                _state = state_data;
                 continue; // reconsume current char
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#end-tag-open-_state
         case state_end_tag_open:
 			// std::cerr << "state_end_tag_open" << std::endl;
-            if (isupper(c))
+            if (isupper(_c))
             {
-                token = new html_tag_token(false);
-                token->set_start(idx);
-                ((html_tag_token *)token)->append_to_name(tolower(c));
-                state = state_tag_name;
+                _token = new html_end_tag_token();
+                _token->set_start_position(_idx);
+                ((html_tag_token *)_token)->append_to_name(tolower(_c));
+                _state = state_tag_name;
             }
-            else if (islower(c))
+            else if (islower(_c))
             {
-                token = new html_tag_token(false);
-                token->set_start(idx);
-                ((html_tag_token *)token)->append_to_name(tolower(c));
-                state = state_tag_name;
+                _token = new html_end_tag_token();
+                _token->set_start_position(_idx);
+                ((html_tag_token *)_token)->append_to_name(_c);
+                _state = state_tag_name;
             }
             else
             {
-                state = state_data;
+                // parse error
+                _state = state_data;
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#tag-name-_state
         case state_tag_name:
 			// std::cerr << "state_tag_name" << std::endl;
-            if (c == '\t' || c == '\r' || c == '\n' || c == ' ')
+            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
             {
-                state = state_before_attribute_name;
+                _state = state_before_attribute_name;
             }
-            else if (c == '/')
+            else if (_c == '/')
             {
-                state = state_self_closing_start_tag;
+                _state = state_self_closing_start_tag;
             }
-            else if (c == '>')
+            else if (_c == '>')
             {
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                emit_token(_idx + 1);
             }
-            else if (isupper(c))
+            else if (isupper(_c))
             {
-                ((html_tag_token *)token)->append_to_name(tolower(c));
+                ((html_tag_token *)_token)->append_to_name(tolower(_c));
             }
             else
             {
-                ((html_tag_token *)token)->append_to_name(c);
+                ((html_tag_token *)_token)->append_to_name(_c);
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#before-attribute-name-_state
         case state_before_attribute_name:
 			// std::cerr << "state_before_attribute_name" << std::endl;
-            if (c == '\t' || c == '\r' || c == '\n' || c == ' ')
+            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
             {
                 // ignore
             }
-            else if (c == '/')
+            else if (_c == '/')
             {
-                state = state_self_closing_start_tag;
+                _state = state_self_closing_start_tag;
             }
-            else if (c == '>')
+            else if (_c == '>')
             {
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                emit_token(_idx + 1);
             }
-            else if (isupper(c))
+            else if (isupper(_c))
             {
-                ((html_tag_token *)token)->append_to_attribute_name(tolower(c));
-                state = state_attribute_name;
+                ((html_tag_token *)_token)->new_attribute();
+                ((html_tag_token *)_token)->append_to_attribute_name(tolower(_c));
+                _state = state_attribute_name;
             }
             else
             {
                 // error
-                if (c == '"' || c == '\'' || c == '<' || c == '=')
+                if (_c == '"' || _c == '\'' || _c == '<' || _c == '=')
                 {
                     // but treat it as anything else
                 }
 
-                ((html_tag_token *)token)->append_to_attribute_name(c);
-                state = state_attribute_name;
+                ((html_tag_token *)_token)->new_attribute();
+                ((html_tag_token *)_token)->append_to_attribute_name(_c);
+                _state = state_attribute_name;
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#attribute-name-_state
         case state_attribute_name:
 			// std::cerr << "state_attribute_name" << std::endl;
-            if (c == '\t' || c == '\r' || c == '\n' || c == ' ')
+            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
             {
-                state = state_after_attribute_name;
+                _state = state_after_attribute_name;
             }
-            else if (c == '/')
+            else if (_c == '/')
             {
-                ((html_tag_token *)token)->insert_attribute();
-                state = state_self_closing_start_tag;
+                _state = state_self_closing_start_tag;
             }
-            else if (c == '=')
+            else if (_c == '=')
             {
-                state = state_before_attribute_value;
+                _state = state_before_attribute_value;
             }
-            else if (c == '>')
+            else if (_c == '>')
             {
-                ((html_tag_token *)token)->insert_attribute();
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                emit_token(_idx + 1);
             }
-            else if (isupper(c))
+            else if (isupper(_c))
             {
-                ((html_tag_token *)token)->append_to_attribute_name(tolower(c));
+                ((html_tag_token *)_token)->append_to_attribute_name(tolower(_c));
             }
             else
             {
                 // error
-                if (c == '"' || c == '\'' || c == '<')
+                if (_c == '"' || _c == '\'' || _c == '<')
                 {
                     // but treat it as anything else
                 }
 
-                ((html_tag_token *)token)->append_to_attribute_name(c);
+                ((html_tag_token *)_token)->append_to_attribute_name(_c);
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#after-attribute-name-_state
         case state_after_attribute_name:
 			// std::cerr << "state_after_attribute_name" << std::endl;
-            if (c == '\t' || c == '\r' || c == '\n' || c == ' ')
+            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
             {
                 // ignore
             }
-            else if (c == '/')
+            else if (_c == '/')
             {
-                ((html_tag_token *)token)->insert_attribute();
-                state = state_self_closing_start_tag;
+                _state = state_self_closing_start_tag;
             }
-            else if (c == '=')
+            else if (_c == '=')
             {
-                state = state_before_attribute_value;
+                _state = state_before_attribute_value;
             }
-            else if (c =='>')
+            else if (_c =='>')
             {
-                // emit current tag token
-                ((html_tag_token *)token)->insert_attribute();
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                emit_token(_idx + 1);
             }
-            else if (isupper(c))
+            else if (isupper(_c))
             {
-                ((html_tag_token *)token)->insert_attribute();
-                ((html_tag_token *)token)->append_to_attribute_name(tolower(c));
+                ((html_tag_token *)_token)->new_attribute();
+                ((html_tag_token *)_token)->append_to_attribute_name(tolower(_c));
+                _state = state_attribute_name;
             }
             else
             {
                 // error
-                if (c == '"' || c == '\'' || c == '<')
+                if (_c == '"' || _c == '\'' || _c == '<')
                 {
                     // but treat it as anything else
                 }
 
-                ((html_tag_token *)token)->insert_attribute();
-                ((html_tag_token *)token)->append_to_attribute_name(c);
-                state = state_attribute_name;
+                ((html_tag_token *)_token)->new_attribute();
+                ((html_tag_token *)_token)->append_to_attribute_name(_c);
+                _state = state_attribute_name;
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#before-attribute-value-_state
         case state_before_attribute_value:
 			// std::cerr << "state_before_attribute_value" << std::endl;
-            if (c == '\t' || c == '\r' || c == '\n' || c == ' ')
+            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
             {
                 // ignore
             }
-            else if (c == '"')
+            else if (_c == '"')
             {
-                state = state_attribute_value_double_quoted;
+                _state = state_attribute_value_double_quoted;
             }
-            else if (c == '\'')
+            else if (_c == '\'')
             {
-                state = state_attribute_value_single_quoted;
+                _state = state_attribute_value_single_quoted;
             }
-            else if (c == '>')
+            else if (_c == '>')
             {
-                // emit current tag token
-                ((html_tag_token *)token)->insert_attribute();
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                emit_token(_idx + 1);
             }
             else
             {
                 // error
-                if (c == '<' || c == '=' || c == '`')
+                if (_c == '<' || _c == '=' || _c == '`')
                 {
                     // but treat it as anything else
                 }
 
-                ((html_tag_token *)token)->append_to_attribute_value(c);
-                state = state_attribute_value_unquoted;
+                ((html_tag_token *)_token)->append_to_attribute_value(_c);
+                _state = state_attribute_value_unquoted;
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#attribute-value-(double-quoted)-_state
         case state_attribute_value_double_quoted:
 			// std::cerr << "state_attribute_value_double_quoted" << std::endl;
-            if (c == '"')
+            if (_c == '"')
             {
-                ((html_tag_token *)token)->insert_attribute();
-                state = state_after_attribute_value_quoted;
+                _state = state_after_attribute_value_quoted;
             }
             else
             {
-                ((html_tag_token *)token)->append_to_attribute_value(c);
+                ((html_tag_token *)_token)->append_to_attribute_value(_c);
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#attribute-value-(single-quoted)-_state
         case state_attribute_value_single_quoted:
 			// std::cerr << "state_attribute_value_single_quoted" << std::endl;
-            if (c == '\'')
+            if (_c == '\'')
             {
-                ((html_tag_token *)token)->insert_attribute();
-                state = state_after_attribute_value_quoted;
+                _state = state_after_attribute_value_quoted;
             }
             else
             {
-                ((html_tag_token *)token)->append_to_attribute_value(c);
+                ((html_tag_token *)_token)->append_to_attribute_value(_c);
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#attribute-value-(unquoted)-_state
         case state_attribute_value_unquoted:
 			// std::cerr << "state_attribute_value_unquoted" << std::endl;
-            if (c == '\t' || c == '\r' || c == '\n' || c == ' ')
+            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
             {
-                ((html_tag_token *)token)->insert_attribute();
-                state = state_before_attribute_name;
+                _state = state_before_attribute_name;
             }
-            else if (c == '>')
+            else if (_c == '>')
             {
-                // emit current tag token
-                ((html_tag_token *)token)->insert_attribute();
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                emit_token(_idx + 1);
             }
             else
             {
                 // error
-                if (c == '"' || c == '\'' || c == '<' || c == '=' || c == '`')
+                if (_c == '"' || _c == '\'' || _c == '<' || _c == '=' || _c == '`')
                 {
                     // but treat it as anything else
                 }
 
-                ((html_tag_token *)token)->append_to_attribute_value(c);
+                ((html_tag_token *)_token)->append_to_attribute_value(_c);
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#after-attribute-value-(quoted)-_state
         case state_after_attribute_value_quoted:
 			// std::cerr << "state_after_attribute_value_quoted" << std::endl;
-            if (c == '\t' || c == '\r' || c == '\n' || c == ' ')
+            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
             {
-                state = state_before_attribute_name;
+                _state = state_before_attribute_name;
             }
-            else if (c == '/')
+            else if (_c == '/')
             {
-                state = state_self_closing_start_tag;
+                _state = state_self_closing_start_tag;
             }
-            else if (c == '>')
+            else if (_c == '>')
             {
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                emit_token(_idx + 1);
+            }
+            else
+            {
+                _state = state_before_attribute_name;
+                continue; // reconsume the character
             }
             break;
+
+        // http://www.w3.org/TR/html5/syntax.html#self-closing-start-tag-_state
         case state_self_closing_start_tag:
 			// std::cerr << "state_self_closing_start_tag" << std::endl;
-            if (c == '>')
+            if (_c == '>')
             {
-                ((html_tag_token *)token)->set_self_closing();
-                // check raw text
-                temp_tag_name = ((html_tag_token *)token)->get_name();
-                if ( ((html_tag_token *)token)->start_tag() &&
-                     (temp_tag_name == "textarea" || temp_tag_name == "style" ||
-                      temp_tag_name == "script" || temp_tag_name == "title" ))
-
-                {
-                    state = state_raw_text;
-                }
-                else
-                {
-                    state = state_data;
-                }
-                // emit current tag token
-                token->set_end(idx + 1);
-                tokens.push_back(token);
-                token = nullptr;
+                _state = state_data;
+                ((html_tag_token *)_token)->set_self_closing();
+                emit_token(_idx + 1);
             }
             else
             {
                 // error
-                state = state_before_attribute_name;
-                continue; // reconsume current char
+                _state = state_before_attribute_name;
+                continue; // reconsume the character
             }
             break;
-        case state_raw_text:
-            {
-                size_t first = idx;
-                while (true)
-                {
-                    first = _html.find("</" + temp_tag_name, first);
-                    std::cerr << temp_tag_name << std::endl;
-                    if (first != std::string::npos)
-                    {
-                        idx = first;
-                    }
-                    else
-                    {
-                        idx = size;
-                    }
 
-                    break;
-                }
-
-                state = state_data;
-
-                continue; // outter loop
-            }
-            break;
         default:
             // std::cerr << "what is this?" << std::endl;
             break;
         }
 
-        //++it; // consume next char
-        ++idx; // consume next char
+        ++_idx; // consume next char
     }
 
     return true;

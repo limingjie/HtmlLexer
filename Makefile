@@ -15,6 +15,14 @@ html_lexer.exe: html_lexer.o PrintToken.o
 test: html_lexer.exe cleanoutput sample/baidu.html sample/facebook.html sample/github.html sample/google.html sample/netease.html sample/quora.html sample/stackoverflow.html sample/wikipedia.html sample/wikiwand.html
 	@echo "==>Unit Test..."
 	html_lexer.exe sample/baidu.html         > sample/baidu.html.output.txt
+	html_lexer.exe sample/facebook.html      > sample/facebook.html.output.txt
+	html_lexer.exe sample/github.html        > sample/github.html.output.txt
+	html_lexer.exe sample/google.html        > sample/google.html.output.txt
+	html_lexer.exe sample/netease.html       > sample/netease.html.output.txt
+	html_lexer.exe sample/quora.html         > sample/quora.html.output.txt
+	html_lexer.exe sample/stackoverflow.html > sample/stackoverflow.html.output.txt
+	html_lexer.exe sample/wikipedia.html     > sample/wikipedia.html.output.txt
+	html_lexer.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
 	@echo "==>Check Output for Errors..."
 	@grep "\[Error" sample/*.output.txt
 	@echo "==>Done."
