@@ -1,47 +1,150 @@
 #include "html_lexer.hpp"
 
+// compare string case insensitive
+static bool iequals(const std::string &str1, const std::string &str2)
+{
+    if (str1.size() != str2.size())
+    {
+        return false;
+    }
+
+    auto c1  = str1.cbegin();
+    auto c2  = str2.cbegin();
+    auto end = str1.cend();
+
+    while (c1 != end)
+    {
+        if (tolower(*c1) != tolower(*c2))
+        {
+            return false;
+        }
+
+        ++c1;
+        ++c2;
+    }
+
+    return true;
+}
+
 void html_lexer::emit_token(std::string::size_type end_position)
 {
     if (_token != nullptr)
     {
         _token->set_end_position(end_position);
         _token->finalize();
-        _tokens.push_back(_token);
 
-        if (_token->get_type() == token_start_tag)
+        token_type type = _token->get_type();
+
+        if (type == token_start_tag)
         {
+            _tokens.push_back(_token);
             std::string tag_name = ((html_tag_token *)_token)->get_name();
-
             if (tag_name == "textarea" || tag_name == "style" ||
                 tag_name == "script"   || tag_name == "title" )
             {
                 process_raw_text(tag_name);
             }
         }
+        else if (type == token_text)
+        {
+            if (((html_text_token *)_token)->get_text_size() == 0)
+            {
+                delete _token;
+            }
+            else
+            {
+                _tokens.push_back(_token);
+            }
+        }
+        else
+        {
+            _tokens.push_back(_token);
+        }
 
+        // do not delete token here, as token is pushed into _tokens[]
         _token = nullptr;
     }
 }
 
 void html_lexer::process_raw_text(std::string tag_name)
 {
-    // TODO: match case insensitive
-    size_t first = _idx;
+    char c;
+    std::string name;
+
+    auto size = tag_name.size();
+    if (size == 0) return;
+
+    // move after '>'
+    auto pos = _idx + 1;
+
     while (true)
     {
-        first = _html.find("</" + tag_name, first);
-        // std::cerr << tag_name << std::endl;
-        if (first != std::string::npos)
+        // find position for possible end tag
+        pos = _html.find("</", pos);
+        if (pos != std::string::npos)
         {
-            _idx = first - 1;
+            // match name
+            name = _html.substr(pos + 2, size);
+            if (iequals(tag_name, name))
+            {
+                // It is the end tag if the name is followed by '>' or space
+                c = _html[pos + 2 + size];
+                if (c == '>' || c == '\t' || c == '\r' || c == '\n' || c == ' ')
+                {
+                    break;
+                }
+            }
+
+            pos += 2;
+            continue;
         }
         else
         {
-            _idx = _size - 1;
+            // Not found, treat all other chars as raw text
+            pos = size;
         }
 
         break;
     }
+
+    if (pos != _idx + 1)
+    {
+        ++_idx;
+
+        // emit raw text token
+        html_raw_text_token *token = new html_raw_text_token();
+        std::string raw_text = _html.substr(_idx, pos - _idx);
+
+        token->set_start_position(_idx);
+        token->set_end_position(pos);
+        token->set_text(raw_text);
+        token->finalize();
+        _tokens.push_back(token);
+
+        // set index position, reconsume '<' or end of string.
+        _idx = pos - 1;
+    }
+}
+
+void html_lexer::process_bogus_comment(std::string::size_type start_position)
+{
+    // emit raw text token
+    html_bogus_comment_token *token = new html_bogus_comment_token();
+    token->set_start_position(start_position);
+
+    auto pos = _html.find(">", _idx + 1);
+    if (pos != std::string::npos)
+    {
+        pos = _size - 1;
+    }
+
+    std::string bogus_comment = _html.substr(_idx, pos - _idx + 1);
+    token->set_end_position(pos);
+    token->set_comment(bogus_comment);
+    token->finalize();
+    _tokens.push_back(token);
+
+    _idx = pos;
 }
 
 bool html_lexer::parse(std::string &html)
@@ -51,6 +154,8 @@ bool html_lexer::parse(std::string &html)
     _idx   = 0;
     _state = state_data;
     _token = nullptr;
+
+    size_t pos_tag_open = 0;
 
     while (_idx < _size)
     {
@@ -63,6 +168,8 @@ bool html_lexer::parse(std::string &html)
 			// std::cerr << "state_data" << std::endl;
             if (_c == '<')
             {
+                // remember tag open position
+                pos_tag_open = _idx;
                 _state = state_tag_open;
                 emit_token(_idx);
             }
@@ -115,14 +222,14 @@ bool html_lexer::parse(std::string &html)
             else if (isupper(_c))
             {
                 _token = new html_start_tag_token();
-                _token->set_start_position(_idx);
+                _token->set_start_position(pos_tag_open);
                 ((html_tag_token *)_token)->append_to_name(tolower(_c));
                 _state = state_tag_name;
             }
             else if (islower(_c))
             {
                 _token = new html_start_tag_token();
-                _token->set_start_position(_idx);
+                _token->set_start_position(pos_tag_open);
                 ((html_tag_token *)_token)->append_to_name(_c);
                 _state = state_tag_name;
             }
@@ -140,14 +247,14 @@ bool html_lexer::parse(std::string &html)
             if (isupper(_c))
             {
                 _token = new html_end_tag_token();
-                _token->set_start_position(_idx);
+                _token->set_start_position(pos_tag_open);
                 ((html_tag_token *)_token)->append_to_name(tolower(_c));
                 _state = state_tag_name;
             }
             else if (islower(_c))
             {
                 _token = new html_end_tag_token();
-                _token->set_start_position(_idx);
+                _token->set_start_position(pos_tag_open);
                 ((html_tag_token *)_token)->append_to_name(_c);
                 _state = state_tag_name;
             }
@@ -418,7 +525,9 @@ bool html_lexer::parse(std::string &html)
                 continue; // reconsume the character
             }
             break;
-
+        case state_bogus_comment:
+            process_bogus_comment(pos_tag_open);
+            break;
         default:
             // std::cerr << "what is this?" << std::endl;
             break;

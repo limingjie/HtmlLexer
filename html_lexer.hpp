@@ -20,7 +20,9 @@ enum token_type
     token_start_tag,
     token_end_tag,
     token_comment,
-    token_text
+    token_bogus_comment,
+    token_text,
+    token_raw_text
 };
 
 class html_token
@@ -38,10 +40,17 @@ public:
     void set_end_position  (std::string::size_type pos) {_end   = pos;}
 
     // getter
+    std::string::size_type get_start_position() {return _start;}
+    std::string::size_type get_end_position()   {return _end;  }
     virtual token_type get_type() = 0;
 
     virtual void finalize() = 0;
     virtual void print()    = 0;
+
+    void print(std::string html)
+    {
+        std::cout << '[' << _start << ", " << _end << ") " << html.substr(_start, _end - _start) << '\n';
+    }
 };
 
 class html_tag_token : public html_token
@@ -142,13 +151,13 @@ public:
 class html_comment_token : public html_token
 {
 private:
-    std::string data;
+    std::string _data;
 
 public:
     html_comment_token() {}
 
     // setter
-    void set_comment(std::string &comment) {data = comment;}
+    void set_comment(std::string &comment) {_data = comment;}
 
     // getter
     token_type get_type() {return token_comment;}
@@ -157,30 +166,86 @@ public:
 
     void print()
     {
-        std::cout << "[Comment        ] <!--" << data << "-->\n";
+        std::cout << "[Comment        ] <!--" << _data << "-->\n";
+    }
+};
+
+class html_bogus_comment_token : public html_token
+{
+private:
+    std::string _data;
+
+public:
+    html_bogus_comment_token() {}
+
+    // setter
+    void set_comment(std::string &comment) {_data = comment;}
+
+    // getter
+    token_type get_type() {return token_bogus_comment;}
+
+    void finalize() {}
+
+    void print()
+    {
+        std::cout << "[Bogus Comment  ] " << _data << '\n';
     }
 };
 
 class html_text_token : public html_token
 {
 private:
-    std::string data;
+    std::string _data;
 
 public:
     html_text_token() {}
 
     // setter
-    void append(char c) {data.push_back(c);}
-    void set_text(std::string &text) {data = text;}
+    void append(char c) {_data.push_back(c);}
+    void set_text(std::string &text) {_data = text;}
 
     // getter
     token_type get_type() {return token_text;}
+    size_t get_text_size() {return _data.size();}
+
+    void finalize()
+    {
+        // remove leading spaces
+        auto pos = _data.find_first_not_of("\t\r\n ");
+        _data.erase(0, pos);
+        set_start_position(get_start_position() + pos);
+
+        // remove trailing spaces
+        pos = _data.find_last_not_of("\t\r\n ");
+        _data.erase(pos + 1, _data.size());
+        set_end_position(get_end_position() - (_data.size() - pos - 1));
+    }
+
+    void print()
+    {
+        std::cout << "[Text           ] " << _data << '\n';
+    }
+};
+
+class html_raw_text_token : public html_token
+{
+private:
+    std::string _data;
+
+public:
+    html_raw_text_token() {}
+
+    // setter
+    void set_text(std::string &text) {_data = text;}
+
+    // getter
+    token_type get_type() {return token_raw_text;}
 
     void finalize() {}
 
     void print()
     {
-        // std::cout << "[Text           ] " << data << '\n';
+        std::cout << "[Raw Text       ] " << _data << '\n';
     }
 };
 
@@ -202,8 +267,8 @@ private:
         state_attribute_value_unquoted,
         state_attribute_value_single_quoted,
         state_attribute_value_double_quoted,
-        state_after_attribute_value_quoted
-        // TODO: 8.2.4.44 Bogus comment state
+        state_after_attribute_value_quoted,
+        state_bogus_comment
     };
 
     // errors
@@ -220,6 +285,10 @@ private:
     html_token                *_token;
     std::vector<html_token *>  _tokens;
 
+    void emit_token(std::string::size_type end_position);
+    void process_raw_text(std::string tag_name);
+    void process_bogus_comment(std::string::size_type start_position);
+
 public:
     html_lexer() {};
     html_lexer(std::string &html) {parse(html);}
@@ -232,15 +301,14 @@ public:
     }
 
     bool parse(std::string &html);
-    void emit_token(std::string::size_type end_position);
-    void process_raw_text(std::string tag_name);
 
     void print()
     {
         for (auto token : _tokens)
         {
             token->print();
-            std::cout.flush();
+            token->print(_html);
         }
+        std::cout.flush();
     }
 };
