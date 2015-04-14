@@ -109,21 +109,20 @@ public:
 
     void print()
     {
-        std::cout << "[Start Tag      ] <" << get_name() << '\n';
+        std::cout << "[Start Tag      ] <" << get_name();
         for (auto attribute : _attributes)
         {
-            std::cout << "[Attribute Name ] " << attribute.first << '\n';
+            std::cout << ' ' << attribute.first;
             if (attribute.second.size() != 0)
             {
-                std::cout << "[Equal Sign     ] =\n";
-                std::cout << "[Attribute Value] " << attribute.second << '\n';
+                std::cout << "='" << attribute.second << "'";
             }
         }
         if (_is_self_closing)
         {
-            std::cout << "[Self-closing   ] /\n";
+            std::cout << "/";
         }
-        std::cout << "[Tag End        ] >\n";
+        std::cout << ">\n";
     }
 };
 
@@ -143,8 +142,7 @@ public:
 
     void print()
     {
-        std::cout << "[End Tag        ] </" << get_name() << '\n';
-        std::cout << "[Tag End        ] >\n";
+        std::cout << "[End Tag        ] </" << get_name() << ">\n";
     }
 };
 
@@ -212,13 +210,13 @@ public:
     {
         // remove leading spaces
         auto pos = _data.find_first_not_of("\t\r\n ");
-        _data.erase(0, pos);
         set_start_position(get_start_position() + pos);
+        _data.erase(0, pos);
 
         // remove trailing spaces
         pos = _data.find_last_not_of("\t\r\n ");
-        _data.erase(pos + 1, _data.size());
         set_end_position(get_end_position() - (_data.size() - pos - 1));
+        _data.erase(pos + 1, _data.size());
     }
 
     void print()
@@ -287,6 +285,7 @@ private:
 
     void emit_token(std::string::size_type end_position);
     void process_raw_text(std::string tag_name);
+    void process_comment(std::string::size_type start_position);
     void process_bogus_comment(std::string::size_type start_position);
 
 public:
@@ -307,7 +306,7 @@ public:
         for (auto token : _tokens)
         {
             token->print();
-            token->print(_html);
+            // token->print(_html);
         }
         std::cout.flush();
     }

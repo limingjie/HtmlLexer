@@ -121,8 +121,55 @@ void html_lexer::process_raw_text(std::string tag_name)
         token->finalize();
         _tokens.push_back(token);
 
-        // set index position, reconsume '<' or end of string.
         _idx = pos - 1;
+    }
+}
+
+void html_lexer::process_comment(std::string::size_type start_position)
+{
+    if (_html[_idx + 1] == '-' && _html[_idx + 2] == '-')
+    {
+        _token = new html_comment_token();
+        _token->set_start_position(_idx - 1);
+
+        auto pos = _html.find("-->", _idx + 3);
+        std::string comment;
+        if (pos == std::string::npos)
+        {
+            comment = _html.substr(_idx + 3);
+            _idx = _size - 1;
+        }
+        else
+        {
+            comment = _html.substr(_idx + 3, pos - _idx - 3);
+            _idx = pos + 2;
+        }
+        ((html_comment_token *)_token)->set_comment(comment);
+
+        _state = state_data;
+        emit_token(_idx + 1);
+    }
+    else if (_html.substr(_idx + 1, 7) == "[CDATA[")
+    {
+        _token = new html_raw_text_token();
+        _token->set_start_position(start_position);
+
+        auto pos = _html.find("]]>", _idx + 8);
+        std::string cdata;
+        if (pos == std::string::npos)
+        {
+            cdata = _html.substr(start_position);
+            _idx = _size - 1;
+        }
+        else
+        {
+            cdata = _html.substr(start_position, pos + 3 - start_position);
+            _idx = pos + 2;
+        }
+        ((html_raw_text_token *)_token)->set_text(cdata);
+
+        _state = state_data;
+        emit_token(_idx + 1);
     }
 }
 
@@ -132,14 +179,14 @@ void html_lexer::process_bogus_comment(std::string::size_type start_position)
     html_bogus_comment_token *token = new html_bogus_comment_token();
     token->set_start_position(start_position);
 
-    auto pos = _html.find(">", _idx + 1);
-    if (pos != std::string::npos)
+    auto pos = _html.find(">", _idx);
+    if (pos == std::string::npos)
     {
         pos = _size - 1;
     }
 
-    std::string bogus_comment = _html.substr(_idx, pos - _idx + 1);
-    token->set_end_position(pos);
+    std::string bogus_comment = _html.substr(start_position, pos - start_position + 1);
+    token->set_end_position(pos + 1);
     token->set_comment(bogus_comment);
     token->finalize();
     _tokens.push_back(token);
@@ -190,30 +237,7 @@ bool html_lexer::parse(std::string &html)
 			// std::cerr << "state_tag_open" << std::endl;
             if (_c == '!')
             {
-                if (html[_idx + 1] == '-' && html[_idx + 2] == '-')
-                {
-                    _token = new html_comment_token();
-                    _token->set_start_position(_idx - 1);
-
-                    auto pos = _html.find("-->", _idx + 3);
-                    std::string comment;
-                    if (pos == std::string::npos)
-                    {
-                        comment = _html.substr(_idx + 3);
-                        _idx = _size;
-                    }
-                    else
-                    {
-                        comment = _html.substr(_idx + 3, pos - _idx - 3);
-                        _idx = pos + 3;
-                    }
-                    ((html_comment_token *)_token)->set_comment(comment);
-
-                    emit_token(_idx);
-                    _state = state_data;
-
-                    continue;
-                }
+                process_comment(pos_tag_open);
             }
             else if (_c == '/')
             {
@@ -232,6 +256,10 @@ bool html_lexer::parse(std::string &html)
                 _token->set_start_position(pos_tag_open);
                 ((html_tag_token *)_token)->append_to_name(_c);
                 _state = state_tag_name;
+            }
+            else if (_c == '?')
+            {
+                _state = state_bogus_comment;
             }
             else
             {
@@ -258,10 +286,14 @@ bool html_lexer::parse(std::string &html)
                 ((html_tag_token *)_token)->append_to_name(_c);
                 _state = state_tag_name;
             }
+            else if (_c == '>')
+            {
+                _state = state_data;
+            }
             else
             {
                 // parse error
-                _state = state_data;
+                _state = state_bogus_comment;
             }
             break;
 
@@ -527,6 +559,7 @@ bool html_lexer::parse(std::string &html)
             break;
         case state_bogus_comment:
             process_bogus_comment(pos_tag_open);
+            _state = state_data;
             break;
         default:
             // std::cerr << "what is this?" << std::endl;
