@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Comment        ] <!-- saved from url=(0025)http://stackoverflow.com/ -->
 [Start Tag      ] <html>
 [Start Tag      ] <head>

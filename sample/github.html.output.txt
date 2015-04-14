@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Comment        ] <!-- saved from url=(0019)https://github.com/ -->
 [Start Tag      ] <html lang='en' class>
 [Start Tag      ] <head prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#'>

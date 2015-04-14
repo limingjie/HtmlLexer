@@ -34,7 +34,6 @@ void html_lexer::emit_token(size_t end_position)
         _token->finalize();
 
         html_token::token_type type = _token->get_type();
-
         if (type == html_token::token_start_tag)
         {
             _tokens.push_back(_token);
@@ -121,55 +120,67 @@ void html_lexer::process_raw_text(std::string tag_name)
         token->finalize();
         _tokens.push_back(token);
 
-        _idx = pos - 1;
+        _idx = pos - 1; // point to the char before '<' or the last char of html
     }
 }
 
-void html_lexer::process_comment(size_t start_position)
+void html_lexer::process_markup_declaration(size_t start_position)
 {
-    if (_html[_idx + 1] == '-' && _html[_idx + 2] == '-')
+    if (_html[_idx] == '-' && _html[_idx + 1] == '-')
     {
         _token = new html_comment_token();
-        _token->set_start_position(_idx - 1);
+        _token->set_start_position(_idx - 2);
 
-        auto pos = _html.find("-->", _idx + 3);
+        auto pos = _html.find("-->", _idx + 2);
         std::string comment;
         if (pos == std::string::npos)
         {
-            comment = _html.substr(_idx + 3);
-            _idx = _size - 1;
+            comment = _html.substr(_idx + 2);
+            _idx = _size - 1; // point to the last char of html
         }
         else
         {
-            comment = _html.substr(_idx + 3, pos - _idx - 3);
-            _idx = pos + 2;
+            comment = _html.substr(_idx + 2, pos - _idx - 2);
+            _idx = pos + 2; // point to '>'
         }
         ((html_comment_token *)_token)->set_content(comment);
 
         _state = state_data;
         emit_token(_idx + 1);
     }
-    else if (_html.substr(_idx + 1, 7) == "[CDATA[")
+    else if (_html.substr(_idx, 7) == "[CDATA[")
     {
         _token = new html_raw_text_token();
         _token->set_start_position(start_position);
 
-        auto pos = _html.find("]]>", _idx + 8);
+        auto pos = _html.find("]]>", _idx + 7);
         std::string cdata;
         if (pos == std::string::npos)
         {
             cdata = _html.substr(start_position);
-            _idx = _size - 1;
+            _idx = _size - 1; // point to the last char of html
         }
         else
         {
             cdata = _html.substr(start_position, pos + 3 - start_position);
-            _idx = pos + 2;
+            _idx = pos + 2; // point to '>'
         }
         ((html_raw_text_token *)_token)->set_content(cdata);
 
         _state = state_data;
         emit_token(_idx + 1);
+    }
+    else if (iequals(_html.substr(_idx, 7), "DOCTYPE"))
+    {
+        _token = new html_start_tag_token();
+        _token->set_start_position(start_position);
+        ((html_start_tag_token *)_token)->set_name("!doctype");
+        _idx += 6; // point to 'E'
+        _state = state_tag_name;
+    }
+    else
+    {
+        process_bogus_comment(start_position);
     }
 }
 
@@ -191,7 +202,8 @@ void html_lexer::process_bogus_comment(size_t start_position)
     token->finalize();
     _tokens.push_back(token);
 
-    _idx = pos;
+    _idx = pos; // point to '>' or the last char of html
+    _state = state_data;
 }
 
 bool html_lexer::parse(std::string &html)
@@ -239,7 +251,7 @@ bool html_lexer::parse(std::string &html)
 			// std::cerr << "state_tag_open" << std::endl;
             if (_c == '!')
             {
-                process_comment(pos_tag_open);
+                _state = state_markup_declaration_open;
             }
             else if (_c == '/')
             {
@@ -561,7 +573,9 @@ bool html_lexer::parse(std::string &html)
             break;
         case state_bogus_comment:
             process_bogus_comment(pos_tag_open);
-            _state = state_data;
+            break;
+        case state_markup_declaration_open:
+            process_markup_declaration(pos_tag_open);
             break;
         default:
             // std::cerr << "what is this?" << std::endl;

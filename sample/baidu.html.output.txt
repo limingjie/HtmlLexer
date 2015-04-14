@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Comment        ] <!--STATUS OK-->
 [Start Tag      ] <html>
 [Start Tag      ] <head>

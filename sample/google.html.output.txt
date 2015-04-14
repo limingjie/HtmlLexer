@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Start Tag      ] <html itemscope itemtype='http://schema.org/WebPage' lang='en-JP'>
 [Start Tag      ] <head>
 [Start Tag      ] <meta content='/images/google_favicon_128.png' itemprop='image'>

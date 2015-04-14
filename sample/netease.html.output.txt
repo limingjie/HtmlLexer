@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Start Tag      ] <html id='spLianghui'>
 [Start Tag      ] <head>
 [Start Tag      ] <meta http-equiv='Content-Type' content='text/html; charset=gb2312'/>

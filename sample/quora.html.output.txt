@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Start Tag      ] <html>
 [Start Tag      ] <head>
 [Start Tag      ] <script type='text/javascript' src='/instartlogic/nv/ii/week-148-3/loader/instart.js'>

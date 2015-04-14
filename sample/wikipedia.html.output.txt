@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Comment        ] <!-- saved from url=(0048)http://en.wikipedia.org/wiki/HTML?oldformat=true -->
 [Start Tag      ] <html lang='en' dir='ltr' class='client-js ve-not-available'>
 [Start Tag      ] <head>

@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Comment        ] <!-- saved from url=(0031)http://www.wikiwand.com/en/HTML -->
 [Start Tag      ] <html lang='en' ng-app='wikiwand' class='no-js ng-scope'>
 [Comment        ] <!--<![endif]-->

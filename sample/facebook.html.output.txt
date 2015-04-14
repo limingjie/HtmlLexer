@@ -1,4 +1,4 @@
-[Start Tag      ] <doctype html>
+[Start Tag      ] <!doctype html>
 [Start Tag      ] <html lang='en' id='facebook' class='no_js'>
 [Start Tag      ] <head>
 [Start Tag      ] <meta charset='utf-8'/>

@@ -68,6 +68,7 @@ private:
 
 public:
     // setter
+    void set_name(std::string name) {_tag_name = name;}
     void append_to_name(char c) {_tag_name.push_back(c);}
     virtual void new_attribute() = 0;
     virtual void append_to_attribute_name(char c) = 0;
@@ -256,7 +257,8 @@ private:
         state_attribute_value_single_quoted,
         state_attribute_value_double_quoted,
         state_after_attribute_value_quoted,
-        state_bogus_comment
+        state_bogus_comment,
+        state_markup_declaration_open
     };
 
     std::string                _html;
@@ -278,7 +280,7 @@ private:
 
     void emit_token(size_t end_position);
     void process_raw_text(std::string tag_name);
-    void process_comment(size_t start_position);
+    void process_markup_declaration(size_t start_position);
     void process_bogus_comment(size_t start_position);
 
 public:
