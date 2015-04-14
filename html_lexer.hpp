@@ -15,37 +15,44 @@
 #include <iostream>
 #include <cctype> // tolower(), isupper(), islower()
 
-enum token_type
-{
-    token_start_tag,
-    token_end_tag,
-    token_comment,
-    token_bogus_comment,
-    token_text,
-    token_raw_text
-};
-
+// abstract base class for html tokens
 class html_token
 {
+public:
+    enum token_type
+    {
+        token_null,
+        token_start_tag,
+        token_end_tag,
+        token_comment,
+        token_bogus_comment,
+        token_text,
+        token_raw_text
+    };
+
 private:
-    std::string::size_type  _start; // [start, end)
-    std::string::size_type  _end;   // [start, end)
+    size_t     _start; // [start, end)
+    size_t     _end;   // [start, end)
+    token_type _type;
 
 public:
-    html_token() : _start(0), _end(0) {}
-    virtual ~html_token() {};
+    html_token() : _start(0), _end(0), _type(token_null) {}
+    virtual ~html_token() {}
 
     // setter
-    void set_start_position(std::string::size_type pos) {_start = pos;}
-    void set_end_position  (std::string::size_type pos) {_end   = pos;}
+    void set_type(token_type type) {_type = type;}
+    void set_start_position(size_t pos) {_start = pos;}
+    void set_end_position(size_t pos) {_end = pos;}
 
     // getter
-    std::string::size_type get_start_position() {return _start;}
-    std::string::size_type get_end_position()   {return _end;  }
-    virtual token_type get_type() = 0;
+    token_type get_type() {return _type;}
+    size_t get_start_position() {return _start;}
+    size_t get_end_position() {return _end;}
 
+    // process token before emitting
     virtual void finalize() = 0;
-    virtual void print()    = 0;
+
+    virtual void print() = 0;
 
     void print(std::string html)
     {
@@ -53,18 +60,17 @@ public:
     }
 };
 
+// abstract class for start and end tag tokens
 class html_tag_token : public html_token
 {
 private:
     std::string _tag_name;
 
 public:
-    html_tag_token() {}
-
     // setter
     void append_to_name(char c) {_tag_name.push_back(c);}
     virtual void new_attribute() = 0;
-    virtual void append_to_attribute_name (char c) = 0;
+    virtual void append_to_attribute_name(char c) = 0;
     virtual void append_to_attribute_value(char c) = 0;
     virtual void set_self_closing() = 0;
 
@@ -81,7 +87,10 @@ private:
     bool                                             _is_self_closing;
 
 public:
-    html_start_tag_token() : _is_self_closing(false) {}
+    html_start_tag_token() : _is_self_closing(false)
+    {
+        set_type(token_start_tag);
+    }
 
     // setter
     void new_attribute()
@@ -94,16 +103,13 @@ public:
         _attribute_name.clear();
         _attribute_value.clear();
     }
-    void append_to_attribute_name (char c) {_attribute_name.push_back(c);}
+    void append_to_attribute_name(char c) {_attribute_name.push_back(c);}
     void append_to_attribute_value(char c) {_attribute_value.push_back(c);}
     void set_self_closing() {_is_self_closing = true;}
 
-    // getter
-    token_type  get_type() {return token_start_tag;}
-
-    void finalize ()
+    void finalize()
     {
-        // push attribute
+        // push the last attribute
         new_attribute();
     }
 
@@ -129,16 +135,18 @@ public:
 class html_end_tag_token : public html_tag_token
 {
 public:
+    html_end_tag_token()
+    {
+        set_type(token_end_tag);
+    }
+
     // setter
     void new_attribute() {} // parse error
-    void append_to_attribute_name (char c) {} // parse error
+    void append_to_attribute_name(char c) {} // parse error
     void append_to_attribute_value(char c) {} // parse error
     void set_self_closing() {} // parse error
 
-    // getter
-    token_type  get_type() {return token_end_tag;}
-
-    void finalize () {}
+    void finalize() {}
 
     void print()
     {
@@ -146,104 +154,86 @@ public:
     }
 };
 
-class html_comment_token : public html_token
+// abstract class for text and comment tokens
+class html_data_token : public html_token
 {
 private:
     std::string _data;
 
 public:
-    html_comment_token() {}
-
     // setter
-    void set_comment(std::string &comment) {_data = comment;}
+    void set_content(std::string &content) {_data = content;}
 
     // getter
-    token_type get_type() {return token_comment;}
+    const std::string &get_readonly_content() {return _data;}
+    std::string &get_writable_content() {return _data;}
+    size_t get_content_size() {return _data.size();}
+};
+
+class html_comment_token : public html_data_token
+{
+public:
+    html_comment_token() {set_type(token_comment);}
 
     void finalize() {}
 
     void print()
     {
-        std::cout << "[Comment        ] <!--" << _data << "-->\n";
+        std::cout << "[Comment        ] <!--" << get_readonly_content() << "-->\n";
     }
 };
 
-class html_bogus_comment_token : public html_token
+class html_bogus_comment_token : public html_data_token
 {
-private:
-    std::string _data;
-
 public:
-    html_bogus_comment_token() {}
-
-    // setter
-    void set_comment(std::string &comment) {_data = comment;}
-
-    // getter
-    token_type get_type() {return token_bogus_comment;}
+    html_bogus_comment_token() {set_type(token_bogus_comment);}
 
     void finalize() {}
 
     void print()
     {
-        std::cout << "[Bogus Comment  ] " << _data << '\n';
+        std::cout << "[Bogus Comment  ] " << get_readonly_content() << '\n';
     }
 };
 
-class html_text_token : public html_token
+class html_text_token : public html_data_token
 {
-private:
-    std::string _data;
-
 public:
-    html_text_token() {}
+    html_text_token() {set_type(token_text);}
 
-    // setter
-    void append(char c) {_data.push_back(c);}
-    void set_text(std::string &text) {_data = text;}
-
-    // getter
-    token_type get_type() {return token_text;}
-    size_t get_text_size() {return _data.size();}
+    void append_to_content(char c) {get_writable_content().push_back(c);}
 
     void finalize()
     {
+        std::string &content = get_writable_content();
+
         // remove leading spaces
-        auto pos = _data.find_first_not_of("\t\r\n ");
+        auto pos = content.find_first_not_of("\t\r\n ");
         set_start_position(get_start_position() + pos);
-        _data.erase(0, pos);
+        content.erase(0, pos);
 
         // remove trailing spaces
-        pos = _data.find_last_not_of("\t\r\n ");
-        set_end_position(get_end_position() - (_data.size() - pos - 1));
-        _data.erase(pos + 1, _data.size());
+        pos = content.find_last_not_of("\t\r\n ");
+        set_end_position(get_end_position() - (content.size() - pos - 1));
+        content.erase(pos + 1, content.size());
     }
 
     void print()
     {
-        std::cout << "[Text           ] " << _data << '\n';
+        std::cout << "[Text           ] " << get_readonly_content() << '\n';
     }
 };
 
-class html_raw_text_token : public html_token
+class html_raw_text_token : public html_data_token
 {
-private:
-    std::string _data;
-
 public:
-    html_raw_text_token() {}
-
-    // setter
-    void set_text(std::string &text) {_data = text;}
-
-    // getter
-    token_type get_type() {return token_raw_text;}
+    html_raw_text_token() {set_type(token_raw_text);}
 
     void finalize() {}
 
     void print()
     {
-        std::cout << "[Raw Text       ] " << _data << '\n';
+        std::cout << "[Raw Text       ] " << get_readonly_content() << '\n';
     }
 };
 
@@ -269,12 +259,6 @@ private:
         state_bogus_comment
     };
 
-    // errors
-    enum error_type
-    {
-        error_invalid
-    };
-
     std::string                _html;
     size_t                     _size;
     size_t                     _idx;
@@ -283,20 +267,26 @@ private:
     html_token                *_token;
     std::vector<html_token *>  _tokens;
 
-    void emit_token(std::string::size_type end_position);
+    void clear_tokens()
+    {
+        for (auto token : _tokens)
+        {
+            delete token;
+        }
+        _tokens.clear();
+    }
+
+    void emit_token(size_t end_position);
     void process_raw_text(std::string tag_name);
-    void process_comment(std::string::size_type start_position);
-    void process_bogus_comment(std::string::size_type start_position);
+    void process_comment(size_t start_position);
+    void process_bogus_comment(size_t start_position);
 
 public:
     html_lexer() {};
     html_lexer(std::string &html) {parse(html);}
     ~html_lexer()
     {
-        for (auto token : _tokens)
-        {
-            delete token;
-        }
+        clear_tokens();
     }
 
     bool parse(std::string &html);

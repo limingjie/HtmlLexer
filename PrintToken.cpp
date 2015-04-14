@@ -15,7 +15,7 @@ int main(int argc, char **argv)
             std::string content((std::istreambuf_iterator<char>(file)),
                                 (std::istreambuf_iterator<char>()    ));
             file.close();
-            Stopwatch<double> time("Stopwatch", true);
+            Stopwatch<double> time("Parsing HTML", true);
             html_lexer lexer(content);
             time.stop();
             lexer.print();

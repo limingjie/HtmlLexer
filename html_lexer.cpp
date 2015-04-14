@@ -26,16 +26,16 @@ static bool iequals(const std::string &str1, const std::string &str2)
     return true;
 }
 
-void html_lexer::emit_token(std::string::size_type end_position)
+void html_lexer::emit_token(size_t end_position)
 {
     if (_token != nullptr)
     {
         _token->set_end_position(end_position);
         _token->finalize();
 
-        token_type type = _token->get_type();
+        html_token::token_type type = _token->get_type();
 
-        if (type == token_start_tag)
+        if (type == html_token::token_start_tag)
         {
             _tokens.push_back(_token);
             std::string tag_name = ((html_tag_token *)_token)->get_name();
@@ -45,9 +45,9 @@ void html_lexer::emit_token(std::string::size_type end_position)
                 process_raw_text(tag_name);
             }
         }
-        else if (type == token_text)
+        else if (type == html_token::token_text)
         {
-            if (((html_text_token *)_token)->get_text_size() == 0)
+            if (((html_text_token *)_token)->get_content_size() == 0)
             {
                 delete _token;
             }
@@ -117,7 +117,7 @@ void html_lexer::process_raw_text(std::string tag_name)
 
         token->set_start_position(_idx);
         token->set_end_position(pos);
-        token->set_text(raw_text);
+        token->set_content(raw_text);
         token->finalize();
         _tokens.push_back(token);
 
@@ -125,7 +125,7 @@ void html_lexer::process_raw_text(std::string tag_name)
     }
 }
 
-void html_lexer::process_comment(std::string::size_type start_position)
+void html_lexer::process_comment(size_t start_position)
 {
     if (_html[_idx + 1] == '-' && _html[_idx + 2] == '-')
     {
@@ -144,7 +144,7 @@ void html_lexer::process_comment(std::string::size_type start_position)
             comment = _html.substr(_idx + 3, pos - _idx - 3);
             _idx = pos + 2;
         }
-        ((html_comment_token *)_token)->set_comment(comment);
+        ((html_comment_token *)_token)->set_content(comment);
 
         _state = state_data;
         emit_token(_idx + 1);
@@ -166,14 +166,14 @@ void html_lexer::process_comment(std::string::size_type start_position)
             cdata = _html.substr(start_position, pos + 3 - start_position);
             _idx = pos + 2;
         }
-        ((html_raw_text_token *)_token)->set_text(cdata);
+        ((html_raw_text_token *)_token)->set_content(cdata);
 
         _state = state_data;
         emit_token(_idx + 1);
     }
 }
 
-void html_lexer::process_bogus_comment(std::string::size_type start_position)
+void html_lexer::process_bogus_comment(size_t start_position)
 {
     // emit raw text token
     html_bogus_comment_token *token = new html_bogus_comment_token();
@@ -187,7 +187,7 @@ void html_lexer::process_bogus_comment(std::string::size_type start_position)
 
     std::string bogus_comment = _html.substr(start_position, pos - start_position + 1);
     token->set_end_position(pos + 1);
-    token->set_comment(bogus_comment);
+    token->set_content(bogus_comment);
     token->finalize();
     _tokens.push_back(token);
 
@@ -201,6 +201,8 @@ bool html_lexer::parse(std::string &html)
     _idx   = 0;
     _state = state_data;
     _token = nullptr;
+
+    clear_tokens();
 
     size_t pos_tag_open = 0;
 
@@ -228,7 +230,7 @@ bool html_lexer::parse(std::string &html)
                     _token->set_start_position(_idx);
                 }
 
-                ((html_text_token *)_token)->append(_c);
+                ((html_text_token *)_token)->append_to_content(_c);
             }
             break;
 
