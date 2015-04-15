@@ -12,5 +12,12 @@ The Lexer follows [HTML5 Specification](http://www.w3.org/TR/html5/).
 - Input: [google.html](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html)
 - Output: [google.html.output.txt](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html.output.txt)
 
+## Build
+Use makefile in Unix/Linux/MinGW.
+`$ make`
+
+## Unit Test
+`$ make test`
+
 ## License
 Public Domain
