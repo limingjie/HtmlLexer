@@ -12,12 +12,17 @@ int main(int argc, char **argv)
         std::ifstream file(argv[1]);
         if (file.is_open())
         {
+            // read file content
             std::string content((std::istreambuf_iterator<char>(file)),
                                 (std::istreambuf_iterator<char>()    ));
             file.close();
+
+            // tokenize
             Stopwatch<double> time("Parsing HTML", true);
             html_lexer lexer(content);
             time.stop();
+
+            // print tokens
             lexer.print();
         }
         else

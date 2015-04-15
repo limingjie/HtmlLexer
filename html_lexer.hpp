@@ -1,6 +1,6 @@
 //
 // HTML Lexer
-// A HTML Lexer/Tokenizer which follows HTML5 specification
+// A HTML Lexer which follows HTML5 specification
 //
 // Author - Mingjie Li
 // Email  - limingjie@outlook.com
@@ -269,6 +269,7 @@ private:
     html_token                *_token;
     std::vector<html_token *>  _tokens;
 
+    void emit_token(size_t token_end_position);
     void clear_tokens()
     {
         for (auto token : _tokens)
@@ -278,20 +279,19 @@ private:
         _tokens.clear();
     }
 
-    void emit_token(size_t end_position);
     void process_raw_text(std::string tag_name);
-    void process_markup_declaration(size_t start_position);
-    void process_bogus_comment(size_t start_position);
+    void process_markup_declaration(size_t tag_start_position);
+    void process_bogus_comment(size_t tag_start_position);
 
 public:
     html_lexer() {};
-    html_lexer(std::string &html) {parse(html);}
+    html_lexer(std::string &html) {tokenize(html);}
     ~html_lexer()
     {
         clear_tokens();
     }
 
-    bool parse(std::string &html);
+    bool tokenize(std::string &html);
 
     void print()
     {

@@ -26,11 +26,11 @@ static bool iequals(const std::string &str1, const std::string &str2)
     return true;
 }
 
-void html_lexer::emit_token(size_t end_position)
+void html_lexer::emit_token(size_t token_end_position)
 {
     if (_token != nullptr)
     {
-        _token->set_end_position(end_position);
+        _token->set_end_position(token_end_position);
         _token->finalize();
 
         html_token::token_type type = _token->get_type();
@@ -124,7 +124,7 @@ void html_lexer::process_raw_text(std::string tag_name)
     }
 }
 
-void html_lexer::process_markup_declaration(size_t start_position)
+void html_lexer::process_markup_declaration(size_t tag_start_position)
 {
     if (_html[_idx] == '-' && _html[_idx + 1] == '-')
     {
@@ -151,18 +151,18 @@ void html_lexer::process_markup_declaration(size_t start_position)
     else if (_html.substr(_idx, 7) == "[CDATA[")
     {
         _token = new html_raw_text_token();
-        _token->set_start_position(start_position);
+        _token->set_start_position(tag_start_position);
 
         auto pos = _html.find("]]>", _idx + 7);
         std::string cdata;
         if (pos == std::string::npos)
         {
-            cdata = _html.substr(start_position);
+            cdata = _html.substr(tag_start_position);
             _idx = _size - 1; // point to the last char of html
         }
         else
         {
-            cdata = _html.substr(start_position, pos + 3 - start_position);
+            cdata = _html.substr(tag_start_position, pos + 3 - tag_start_position);
             _idx = pos + 2; // point to '>'
         }
         ((html_raw_text_token *)_token)->set_content(cdata);
@@ -173,22 +173,22 @@ void html_lexer::process_markup_declaration(size_t start_position)
     else if (iequals(_html.substr(_idx, 7), "DOCTYPE"))
     {
         _token = new html_start_tag_token();
-        _token->set_start_position(start_position);
+        _token->set_start_position(tag_start_position);
         ((html_start_tag_token *)_token)->set_name("!doctype");
         _idx += 6; // point to 'E'
         _state = state_tag_name;
     }
     else
     {
-        process_bogus_comment(start_position);
+        process_bogus_comment(tag_start_position);
     }
 }
 
-void html_lexer::process_bogus_comment(size_t start_position)
+void html_lexer::process_bogus_comment(size_t tag_start_position)
 {
     // emit raw text token
     html_bogus_comment_token *token = new html_bogus_comment_token();
-    token->set_start_position(start_position);
+    token->set_start_position(tag_start_position);
 
     auto pos = _html.find(">", _idx);
     if (pos == std::string::npos)
@@ -196,7 +196,7 @@ void html_lexer::process_bogus_comment(size_t start_position)
         pos = _size - 1;
     }
 
-    std::string bogus_comment = _html.substr(start_position, pos - start_position + 1);
+    std::string bogus_comment = _html.substr(tag_start_position, pos - tag_start_position + 1);
     token->set_end_position(pos + 1);
     token->set_content(bogus_comment);
     token->finalize();
@@ -206,17 +206,17 @@ void html_lexer::process_bogus_comment(size_t start_position)
     _state = state_data;
 }
 
-bool html_lexer::parse(std::string &html)
+bool html_lexer::tokenize(std::string &html)
 {
-    _html  = html; // Copy
+    // reset state machine
+    _html  = html; // copy
     _size  = _html.size();
     _idx   = 0;
     _state = state_data;
     _token = nullptr;
-
     clear_tokens();
 
-    size_t pos_tag_open = 0;
+    size_t tag_start_position = 0;
 
     while (_idx < _size)
     {
@@ -230,7 +230,7 @@ bool html_lexer::parse(std::string &html)
             if (_c == '<')
             {
                 // remember tag open position
-                pos_tag_open = _idx;
+                tag_start_position = _idx;
                 _state = state_tag_open;
                 emit_token(_idx);
             }
@@ -260,14 +260,14 @@ bool html_lexer::parse(std::string &html)
             else if (isupper(_c))
             {
                 _token = new html_start_tag_token();
-                _token->set_start_position(pos_tag_open);
+                _token->set_start_position(tag_start_position);
                 ((html_tag_token *)_token)->append_to_name(tolower(_c));
                 _state = state_tag_name;
             }
             else if (islower(_c))
             {
                 _token = new html_start_tag_token();
-                _token->set_start_position(pos_tag_open);
+                _token->set_start_position(tag_start_position);
                 ((html_tag_token *)_token)->append_to_name(_c);
                 _state = state_tag_name;
             }
@@ -289,14 +289,14 @@ bool html_lexer::parse(std::string &html)
             if (isupper(_c))
             {
                 _token = new html_end_tag_token();
-                _token->set_start_position(pos_tag_open);
+                _token->set_start_position(tag_start_position);
                 ((html_tag_token *)_token)->append_to_name(tolower(_c));
                 _state = state_tag_name;
             }
             else if (islower(_c))
             {
                 _token = new html_end_tag_token();
-                _token->set_start_position(pos_tag_open);
+                _token->set_start_position(tag_start_position);
                 ((html_tag_token *)_token)->append_to_name(_c);
                 _state = state_tag_name;
             }
@@ -572,10 +572,10 @@ bool html_lexer::parse(std::string &html)
             }
             break;
         case state_bogus_comment:
-            process_bogus_comment(pos_tag_open);
+            process_bogus_comment(tag_start_position);
             break;
         case state_markup_declaration_open:
-            process_markup_declaration(pos_tag_open);
+            process_markup_declaration(tag_start_position);
             break;
         default:
             // std::cerr << "what is this?" << std::endl;
