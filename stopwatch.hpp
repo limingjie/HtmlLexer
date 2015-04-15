@@ -59,16 +59,16 @@ private:
         state_stop
     };
 
-    std::string    m_name;
-    bool           m_ticking;
-    hr_duration    m_duration;   // sum(pause - resume)
-    hr_time_point  m_time_point; // Last time that starts ticking
+    std::string    _name;
+    bool           _ticking;
+    hr_duration    _duration;   // sum(pause - resume)
+    hr_time_point  _time_point; // Last time that starts ticking
 
 public:
     stopwatch(std::string name = "stopwatch")
     {
-        m_name    = name;
-        m_ticking = false;
+        _name    = name;
+        _ticking = false;
         reset();
     }
 
@@ -79,12 +79,12 @@ public:
 
     void reset()
     {
-        if (m_ticking)
+        if (_ticking)
         {
             stop();
         }
 
-        m_duration = hr_duration::zero();
+        _duration = hr_duration::zero();
     }
 
     void start()
@@ -92,36 +92,36 @@ public:
         reset();
 
         print(state_start);
-        m_ticking = true;
-        m_time_point = hr_clock::now();
+        _ticking = true;
+        _time_point = hr_clock::now();
     }
 
     void pause()
     {
-        if (m_ticking)
+        if (_ticking)
         {
-            m_duration += hr_clock::now() - m_time_point;
-            m_ticking = false;
+            _duration += hr_clock::now() - _time_point;
+            _ticking = false;
             print(state_pause);
         }
     }
 
     void resume()
     {
-        if (!m_ticking)
+        if (!_ticking)
         {
             print(state_resume);
-            m_ticking = true;
-            m_time_point = hr_clock::now();
+            _ticking = true;
+            _time_point = hr_clock::now();
         }
     }
 
     void stop()
     {
-        if (m_ticking)
+        if (_ticking)
         {
-            m_duration += hr_clock::now() - m_time_point;
-            m_ticking = false;
+            _duration += hr_clock::now() - _time_point;
+            _ticking = false;
             print(state_stop);
         }
     }
@@ -136,7 +136,7 @@ private:
 
         // Print stopwatch name, e.g.
         // stopwatch [name            ]
-        cerr << "[" << left << setw(16) << m_name << right << "]";
+        cerr << "[" << left << setw(16) << _name << right << "]";
 
         if (state == state_start)
         {
@@ -151,7 +151,7 @@ private:
             unsigned long long min, sec, msec, usec;
 
             // Default duration
-            usec = duration_cast<std::chrono::microseconds>(m_duration).count();
+            usec = duration_cast<std::chrono::microseconds>(_duration).count();
 
             // Roundup usec to msec
             usec += 500ULL;
@@ -162,7 +162,7 @@ private:
             msec = (usec /     1000ULL) % 1000ULL;
 
             // Duration specified by template.
-            T ticks = duration_cast<duration<T, R>>(m_duration).count();
+            T ticks = duration_cast<duration<T, R>>(_duration).count();
 
             // Print execution time, e.g.
             // elapsed   0m11.621s /    11620.665 ticks of 1/1000s

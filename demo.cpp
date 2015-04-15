@@ -19,9 +19,11 @@ int main(int argc, char **argv)
 
             stopwatch<double> timer("Parsing HTML");
 
-            // tokenize
             timer.start();
+
+            // tokenize
             html_lexer lexer(content);
+
             timer.stop();
 
             // print tokens
