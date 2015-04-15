@@ -65,7 +65,7 @@ void html_lexer::emit_token(size_t token_end_position)
     }
 }
 
-void html_lexer::process_raw_text(std::string tag_name)
+void html_lexer::process_raw_text(std::string &tag_name)
 {
     char c;
     std::string name;
@@ -172,9 +172,10 @@ void html_lexer::process_markup_declaration(size_t tag_start_position)
     }
     else if (iequals(_html.substr(_idx, 7), "DOCTYPE"))
     {
+        std::string tag_name("!doctype");
         _token = new html_start_tag_token();
         _token->set_start_position(tag_start_position);
-        ((html_start_tag_token *)_token)->set_name("!doctype");
+        ((html_start_tag_token *)_token)->set_name(tag_name);
         _idx += 6; // point to 'E'
         _state = state_tag_name;
     }

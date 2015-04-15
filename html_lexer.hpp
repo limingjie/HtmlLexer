@@ -55,7 +55,7 @@ public:
 
     virtual void print() = 0;
 
-    void print(std::string html)
+    void print(std::string &html)
     {
         std::cerr << '[' << _start << ", " << _end << ") " << html.substr(_start, _end - _start) << '\n';
     }
@@ -69,7 +69,7 @@ private:
 
 public:
     // setter
-    void set_name(std::string name) {_tag_name = name;}
+    void set_name(std::string &name) {_tag_name = name;}
     void append_to_name(char c) {_tag_name.push_back(c);}
     virtual void new_attribute() = 0;
     virtual void append_to_attribute_name(char c) = 0;
@@ -335,7 +335,7 @@ private:
         _tokens.clear();
     }
 
-    void process_raw_text(std::string tag_name);
+    void process_raw_text(std::string &tag_name);
     void process_markup_declaration(size_t tag_start_position);
     void process_bogus_comment(size_t tag_start_position);
 
