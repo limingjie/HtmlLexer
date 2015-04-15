@@ -587,3 +587,52 @@ bool html_lexer::tokenize(std::string &html)
 
     return true;
 }
+
+size_t html_lexer::find_tag(bool start_tag, std::string tag_name, size_t pos)
+{
+    html_token *token;
+    html_token::token_type type;
+    size_t size = _tokens.size();
+    for (size_t idx = pos; idx < size; ++idx)
+    {
+        token = _tokens[idx];
+        type = token->get_type();
+        if ( ( start_tag && type == html_token::token_start_tag) ||
+             (!start_tag && type == html_token::token_end_tag  ) )
+        {
+            if (iequals(((html_tag_token *)token)->get_name(), tag_name))
+            {
+                std::cerr << "find " << tag_name << " at idx " << idx << std::endl;
+                token->print(_html);
+                return idx;
+            }
+        }
+    }
+
+    return npos;
+}
+
+size_t html_lexer::find_tag_by_class_names(std::string tag_name, std::string classes, size_t pos)
+{
+    html_token *token;
+    html_token::token_type type;
+    std::set<std::string> classes_set;
+    html_start_tag_token::split_classes_to_set(classes, classes_set);
+
+    size_t size = _tokens.size();
+    for (size_t idx = pos; idx < size; ++idx)
+    {
+        token = _tokens[idx];
+        type = token->get_type();
+        if (type == html_token::token_start_tag)
+        {
+            if ( iequals(((html_start_tag_token *)token)->get_name(), tag_name) &&
+                 ((html_start_tag_token *)token)->match_classes(classes_set))
+            {
+                return idx;
+            }
+        }
+    }
+
+    return npos;
+}

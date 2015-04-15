@@ -17,7 +17,7 @@ int main(int argc, char **argv)
                                 (std::istreambuf_iterator<char>()    ));
             file.close();
 
-            stopwatch<double> timer("Parsing HTML");
+            stopwatch<double> timer("Tokenize HTML");
 
             timer.start();
 
@@ -25,6 +25,20 @@ int main(int argc, char **argv)
             html_lexer lexer(content);
 
             timer.stop();
+
+            size_t pos = 0;
+            while(true)
+            {
+                pos = lexer.find_tag_by_class_names("div","gb_n gb_o", pos);
+                if (pos != html_lexer::npos)
+                {
+                    lexer.print(pos);
+                    ++pos;
+                    continue;
+                }
+
+                break;
+            }
 
             // print tokens
             lexer.print();

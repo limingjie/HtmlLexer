@@ -11,9 +11,10 @@
 
 #include <string>
 #include <vector>
-#include <map>
+#include <set>
 #include <iostream>
 #include <cctype> // tolower(), isupper(), islower()
+#include <algorithm> // find()
 
 // abstract base class for html tokens
 class html_token
@@ -56,7 +57,7 @@ public:
 
     void print(std::string html)
     {
-        std::cout << '[' << _start << ", " << _end << ") " << html.substr(_start, _end - _start) << '\n';
+        std::cerr << '[' << _start << ", " << _end << ") " << html.substr(_start, _end - _start) << '\n';
     }
 };
 
@@ -82,10 +83,16 @@ public:
 class html_start_tag_token : public html_tag_token
 {
 private:
+    std::set<std::string>                            _classes;
     std::vector<std::pair<std::string, std::string>> _attributes;
     std::string                                      _attribute_name;
     std::string                                      _attribute_value;
     bool                                             _is_self_closing;
+
+    void set_classes(std::string &classes)
+    {
+        split_classes_to_set(classes, _classes);
+    }
 
 public:
     html_start_tag_token() : _is_self_closing(false)
@@ -99,6 +106,11 @@ public:
         if (_attribute_name.size() != 0)
         {
             _attributes.push_back(std::make_pair(_attribute_name, _attribute_value));
+
+            if (_attribute_name == "class")
+            {
+                set_classes(_attribute_value);
+            }
         }
 
         _attribute_name.clear();
@@ -107,6 +119,50 @@ public:
     void append_to_attribute_name(char c) {_attribute_name.push_back(c);}
     void append_to_attribute_value(char c) {_attribute_value.push_back(c);}
     void set_self_closing() {_is_self_closing = true;}
+
+    static void split_classes_to_set(std::string &classes, std::set<std::string> &classes_set)
+    {
+        size_t first;
+        size_t last = 0;
+
+        while (last != std::string::npos)
+        {
+            first = classes.find_first_not_of("\t\r\n ", last);
+            if (first == std::string::npos) break;
+
+            last = classes.find_first_of("\t\r\n ", first + 1);
+            if (last == std::string::npos)
+            {
+                classes_set.insert(classes.substr(first));
+            }
+            else
+            {
+                classes_set.insert(classes.substr(first, last - first));
+            }
+        }
+    }
+
+    bool match_classes(std::string &classes)
+    {
+        std::set<std::string> classes_set;
+        split_classes_to_set(classes, classes_set);
+
+        return match_classes(classes_set);
+    }
+
+    bool match_classes(std::set<std::string> &classes_set)
+    {
+        for (auto it = classes_set.cbegin(); it != classes_set.cend(); ++it)
+        {
+            // TODO: case sensitive?
+            if (_classes.find(*it) == _classes.end())
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     void finalize()
     {
@@ -293,6 +349,12 @@ public:
 
     bool tokenize(std::string &html);
 
+    static const size_t npos = -1;
+    size_t size() {return _tokens.size();}
+
+    size_t find_tag(bool start_tag, std::string tag_name, size_t pos);
+    size_t find_tag_by_class_names(std::string tag_name, std::string classes, size_t pos);
+
     void print()
     {
         for (auto token : _tokens)
@@ -301,5 +363,13 @@ public:
             // token->print(_html);
         }
         std::cout.flush();
+    }
+
+    void print(size_t pos)
+    {
+        if (pos < _tokens.size())
+        {
+            _tokens[pos]->print(_html);
+        }
     }
 };
