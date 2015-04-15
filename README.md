@@ -20,38 +20,38 @@ $ make test
 ==>Clean Output Files...
 rm -rf sample/*.output.txt
 ==>Unit Test...
-html_lexer.exe sample/baidu.html         > sample/baidu.html.output.txt
+demo.exe sample/baidu.html         > sample/baidu.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.016s /       15.600 ticks of 1/1000s
-html_lexer.exe sample/facebook.html      > sample/facebook.html.output.txt
+[Parsing HTML    ] done.     0m00.006s /        6.001 x 1/1000s
+demo.exe sample/facebook.html      > sample/facebook.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.016s /       15.600 ticks of 1/1000s
-html_lexer.exe sample/github.html        > sample/github.html.output.txt
+[Parsing HTML    ] done.     0m00.002s /        2.001 x 1/1000s
+demo.exe sample/github.html        > sample/github.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.016s /       15.600 ticks of 1/1000s
-html_lexer.exe sample/google.html        > sample/google.html.output.txt
+[Parsing HTML    ] done.     0m00.004s /        4.000 x 1/1000s
+demo.exe sample/google.html        > sample/google.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.016s /       15.600 ticks of 1/1000s
-html_lexer.exe sample/netease.html       > sample/netease.html.output.txt
+[Parsing HTML    ] done.     0m00.002s /        2.000 x 1/1000s
+demo.exe sample/netease.html       > sample/netease.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.031s /       31.200 ticks of 1/1000s
-html_lexer.exe sample/quora.html         > sample/quora.html.output.txt
+[Parsing HTML    ] done.     0m00.019s /       19.001 x 1/1000s
+demo.exe sample/quora.html         > sample/quora.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.016s /       15.600 ticks of 1/1000s
-html_lexer.exe sample/stackoverflow.html > sample/stackoverflow.html.output.txt
+[Parsing HTML    ] done.     0m00.007s /        7.000 x 1/1000s
+demo.exe sample/stackoverflow.html > sample/stackoverflow.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.016s /       15.600 ticks of 1/1000s
-html_lexer.exe sample/wikipedia.html     > sample/wikipedia.html.output.txt
+[Parsing HTML    ] done.     0m00.015s /       15.001 x 1/1000s
+demo.exe sample/wikipedia.html     > sample/wikipedia.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.031s /       31.200 ticks of 1/1000s
-html_lexer.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
+[Parsing HTML    ] done.     0m00.016s /       16.001 x 1/1000s
+demo.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
 [Parsing HTML    ] starts...
-[Parsing HTML    ] paused.   0m00.031s /       31.200 ticks of 1/1000s
+[Parsing HTML    ] done.     0m00.019s /       19.001 x 1/1000s
 ==>Done.
 ```
 
 ## Sample
-- Code: [PrintToken.cpp](https://github.com/limingjie/HtmlLexer/blob/master/PrintToken.cpp)
+- Code: [demo.cpp](https://github.com/limingjie/HtmlLexer/blob/master/demo.cpp)
 - Input: [google.html](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html)
 - Output: [google.html.output.txt](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html.output.txt)
 

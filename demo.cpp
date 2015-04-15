@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "html_lexer.hpp"
-#include "Stopwatch.hpp"
+#include "stopwatch.hpp"
 
 int main(int argc, char **argv)
 {
@@ -17,10 +17,12 @@ int main(int argc, char **argv)
                                 (std::istreambuf_iterator<char>()    ));
             file.close();
 
+            stopwatch<double> timer("Parsing HTML");
+
             // tokenize
-            Stopwatch<double> time("Parsing HTML", true);
+            timer.start();
             html_lexer lexer(content);
-            time.stop();
+            timer.stop();
 
             // print tokens
             lexer.print();
