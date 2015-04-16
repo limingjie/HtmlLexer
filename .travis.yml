@@ -7,11 +7,10 @@ script: make && make test
 
 branches:
   only:
-  - travis-ci
+  - master
 
 notifications:
   email: false
 
 os:
   - linux
-  - osx
