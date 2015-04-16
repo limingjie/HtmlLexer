@@ -36,7 +36,8 @@ list_start = lexer.find_matching_tag(list_end);
 start_pos = lexer.get_token(list_start)->get_start_position();
 end_pos = lexer.get_token(list_end)->get_end_position();
 
-std::cerr << html.substr(start_pos, end_pos - start_pos) << std::endl;
+// out the original html content <li>...</li>
+std::cout << html.substr(start_pos, end_pos - start_pos) << std::endl;
 ```
 
 ## Build
