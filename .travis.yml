@@ -7,7 +7,7 @@ script: make && make test
 
 branches:
   only:
-  - master
+    - master
 
 notifications:
   email: false
