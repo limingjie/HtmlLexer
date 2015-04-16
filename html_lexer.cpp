@@ -637,3 +637,82 @@ size_t html_lexer::find_tag_by_class_names(std::string tag_name, std::string cla
 
     return npos;
 }
+
+size_t html_lexer::find_matching_tag(size_t pos)
+{
+    html_token *token = _tokens[pos];
+    html_token::token_type type = token->get_type();
+    std::string tag_name;
+    html_token *token2;
+    html_token::token_type type2;
+    size_t depth = 0;
+
+    if (type == html_token::token_start_tag)
+    {
+        if (((html_start_tag_token *)token)->get_self_closing())
+        {
+            return pos;
+        }
+
+        tag_name = ((html_tag_token *)token)->get_name();
+        size_t size = _tokens.size();
+
+        for (size_t i = pos + 1; i < size; ++i)
+        {
+            token2 = _tokens[i];
+            type2 = token2->get_type();
+            if (type2 == html_token::token_start_tag)
+            {
+                if (((html_tag_token *)token2)->get_name() == tag_name)
+                {
+                    ++depth;
+                }
+            }
+            else if (type2 == html_token::token_end_tag)
+            {
+                if (((html_tag_token *)token2)->get_name() == tag_name)
+                {
+                    if (depth == 0)
+                    {
+                        return i;
+                    }
+
+                    --depth;
+                }
+            }
+        }
+    }
+    else if (type == html_token::token_end_tag)
+    {
+        tag_name = ((html_tag_token *)token)->get_name();
+
+        if (pos == 0) return 0;
+
+        for (size_t i = pos - 1; i >= 0; --i)
+        {
+            token2 = _tokens[i];
+            type2 = token2->get_type();
+            if (type2 == html_token::token_start_tag)
+            {
+                if (((html_tag_token *)token2)->get_name() == tag_name)
+                {
+                    if (depth == 0)
+                    {
+                        return i;
+                    }
+
+                    --depth;
+                }
+            }
+            else if (type2 == html_token::token_end_tag)
+            {
+                if (((html_tag_token *)token2)->get_name() == tag_name)
+                {
+                    ++depth;
+                }
+            }
+        }
+    }
+
+    return pos;
+}

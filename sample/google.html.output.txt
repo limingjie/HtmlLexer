@@ -1,8 +1,8 @@
 [Start Tag      ] <!doctype html>
-[Start Tag      ] <html itemscope itemtype='http://schema.org/WebPage' lang='en-JP'>
+[Start Tag      ] <html itemscope itemtype="http://schema.org/WebPage" lang="en-JP">
 [Start Tag      ] <head>
-[Start Tag      ] <meta content='/images/google_favicon_128.png' itemprop='image'>
-[Start Tag      ] <meta content='origin' id='mref' name='referrer'>
+[Start Tag      ] <meta content="/images/google_favicon_128.png" itemprop="image">
+[Start Tag      ] <meta content="origin" id="mref" name="referrer">
 [Start Tag      ] <title>
 [Raw Text       ] Google
 [End Tag        ] </title>
@@ -20,7 +20,7 @@ y;a.p.push(e)}}},S=function(a,c,b,d,e,f){return{eventType:a,event:c,targetElemen
 [Start Tag      ] <style>
 [Raw Text       ] [dir='ltr'],[dir='rtl']{unicode-bidi:-webkit-isolate;unicode-bidi:isolate}bdo[dir='ltr'],bdo[dir='rtl']{unicode-bidi:bidi-override;unicode-bidi:-webkit-isolate-override;unicode-bidi:isolate-override}#logo{display:block;height:37px;margin:0;overflow:hidden;position:relative;width:95px}#logo img{border:0;left:0;position:absolute;top:-41px}#logo span{background:url(/images/nav_logo195.png) no-repeat;cursor:pointer;overflow:hidden}#logocont{z-index:1;padding-left:13px;padding-right:10px;}.big #logocont{padding-left:13px;padding-right:12px}.sbibod{background-color:#fff;border:1px solid #d9d9d9;border-top-color:#c0c0c0;height:28px;vertical-align:top;}.srp.vasq .sbibod{border-right:0}.lst{border:0;margin-top:5px;margin-bottom:0}.lst:focus{outline:none}.gsfi,.lst{font:16px arial,sans-serif;line-height:1.2em !important;height:1.2em !important;}.gsfs{font:16px arial,sans-serif}.lsb{background:transparent;border:0;font-size:0;height:30px;outline:0;width:100%}.sbico{background:url(/images/nav_logo195.png) no-repeat -113px -61px;color:transparent;display:inline-block;height:18px;margin:0 auto 2px;width:18px}#sblsbb{border-bottom-left-radius:0;border-top-left-radius:0;text-align:center;height:28px;margin:0;padding:0;width:58px}#sbds{border:0;margin-left:0}.hp .nojsb,.srp .jsb{display:none}.kpbb,.kprb,.kpgb,.kpgrb{-webkit-border-radius:2px;border-radius:2px;color:#fff}.kpbb:hover,.kprb:hover,.kpgb:hover,.kpgrb:hover{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.1);box-shadow:0 1px 1px rgba(0,0,0,0.1);color:#fff}.kpbb:active,.kprb:active,.kpgb:active,.kpgrb:active{-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);box-shadow:inset 0 1px 2px rgba(0,0,0,0.3)}.kpbb{background-image:-webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#4787ed));background-color:#4d90fe;background-image:-webkit-linear-gradient(top,#4d90fe,#4787ed);background-image:linear-gradient(top,#4d90fe,#4787ed);border:1px solid #3079ed}.kpbb:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#357ae8));background-color:#357ae8;background-image:-webkit-linear-gradient(top,#4d90fe,#357ae8);background-image:linear-gradient(top,#4d90fe,#357ae8);border:1px solid #2f5bb7}a.kpbb:link,a.kpbb:visited{color:#fff}.kprb{background-image:-webkit-gradient(linear,left top,left bottom,from(#dd4b39),to(#d14836));background-color:#dd4b39;background-image:-webkit-linear-gradient(top,#dd4b39,#d14836);background-image:linear-gradient(top,#dd4b39,#d14836);border:1px solid #dd4b39}.kprb:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(#dd4b39),to(#c53727));background-color:#c53727;background-image:-webkit-linear-gradient(top,#dd4b39,#c53727);background-image:linear-gradient(top,#dd4b39,#c53727);border:1px solid #b0281a;border-bottom-color:#af301f}.kprb:active{background-image:-webkit-gradient(linear,left top,left bottom,from(#dd4b39),to(#b0281a));background-color:#b0281a;background-image:-webkit-linear-gradient(top,#dd4b39,#b0281a);background-image:linear-gradient(top,#dd4b39,#b0281a)}.kpgb{background-image:-webkit-gradient(linear,left top,left bottom,from(#3d9400),to(#398a00));background-color:#3d9400;background-image:-webkit-linear-gradient(top,#3d9400,#398a00);background-image:linear-gradient(top,#3d9400,#398a00);border:1px solid #29691d}.kpgb:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(#3d9400),to(#368200));background-color:#368200;background-image:-webkit-linear-gradient(top,#3d9400,#368200);background-image:linear-gradient(top,#3d9400,#368200);border:1px solid #2d6200}.kpgrb{background-image:-webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1));background-color:#f5f5f5;background-image:-webkit-linear-gradient(top,#f5f5f5,#f1f1f1);background-image:linear-gradient(top,#f5f5f5,#f1f1f1);border:1px solid #dcdcdc;color:#555}.kpgrb:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#f1f1f1));background-color:#f8f8f8;background-image:-webkit-linear-gradient(top,#f8f8f8,#f1f1f1);background-image:linear-gradient(top,#f8f8f8,#f1f1f1);border:1px solid #dcdcdc;color:#333}a.kpgrb:link,a.kpgrb:visited{color:#555}#sfopt{display:inline-block;float:right;line-height:normal}.lsd{font-size:11px;position:absolute;top:3px;left:16px}.sbsb_g{margin:3px 0 4px}.jhp input[type="submit"],.sbdd_a input,.gbqfba{background-image:-webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1));background-image:-webkit-linear-gradient(top,#f5f5f5,#f1f1f1);-webkit-border-radius:2px;-webkit-user-select:none;background-color:#f5f5f5;background-image:linear-gradient(top,#f5f5f5,#f1f1f1);background-image:-o-linear-gradient(top,#f5f5f5,#f1f1f1);border:1px solid #dcdcdc;border:1px solid rgba(0,0,0,0.1);border-radius:2px;color:#444;cursor:default;font-family:arial,sans-serif;font-size:11px;font-weight:bold;margin:11px 8px;min-width:54px;padding:0 8px;text-align:center}.jhp input[type="submit"],.gbqfba{height:29px;line-height:27px}.sbdd_a input{height:100%}.jhp input[type="submit"]:hover,.sbdd_a input:hover,.gbqfba:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#f1f1f1));background-image:-webkit-linear-gradient(top,#f8f8f8,#f1f1f1);-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.1);background-color:#f8f8f8;background-image:linear-gradient(top,#f8f8f8,#f1f1f1);background-image:-o-linear-gradient(top,#f8f8f8,#f1f1f1);border:1px solid #c6c6c6;box-shadow:0 1px 1px rgba(0,0,0,0.1);color:#222}.jhp input[type="submit"]:focus,.sbdd_a input:focus{border:1px solid #4d90fe;outline:none}.sbdd_a input{margin:6px;}span.lsbb,.lsb input{-webkit-transition:all 0.18s}@media only screen and (max-height:650px){span.lsbb{height:17px}}.tsf{background:none}.tsf-p{position:relative;}.logocont{left:0;position:absolute;}.sfibbbc{padding-bottom:2px;padding-top:3px}.sbtc{position:relative}.sbibtd{line-height:0;max-width:650px;overflow:visible;white-space:nowrap}.sbibps{padding:0px 9px 0;width:466px;}.big .sbibps{width:550px}.sfopt{height:28px;position:relative}#sform{height:34px}.hp .sfsbc{display:none}#searchform{width:100%}.hp #searchform{position:absolute;top:310px}.srp #searchform{position:absolute;top:15px}#sfdiv{max-width:484px}.hp .big #sfdiv{max-width:568px}.srp #sfdiv{max-width:600px;overflow:hidden}.srp #tsf{position:relative;top:-2px}.sfsbc{display:inline-block;float:right;margin-right:1px;vertical-align:top}.sfbg{background:#f1f1f1;height:69px;left:0;position:absolute;width:100%}.sfbgg{background-color:#f1f1f1;border-bottom:1px solid #666;border-color:#e5e5e5;height:69px}#pocs{background:#fff1a8;color:#000;font-size:10pt;margin:0;padding:5px 7px}#pocs.sft{background:transparent;color:#777}#pocs a{color:#11c}#pocs.sft a{color:#36c}#pocs>div{margin:0;padding:0}#cnt{padding-top:15px;}#subform_ctrl{min-height:11px}.gb_k .gbqfi::before{left:-56px;top:-35px}.gb_M .gbqfb:focus .gbqfi{outline:1px dotted #fff}@-webkit-keyframes gb__a{0%{opacity:0}50%{opacity:1}}@keyframes gb__a{0%{opacity:0}50%{opacity:1}}#gb#gb a.gb_l,#gb#gb a.gb_m{color:#404040;text-decoration:none}#gb#gb a.gb_m:hover,#gb#gb a.gb_m:focus{color:#000;text-decoration:underline}.gb_n.gb_o{display:none;padding-left:15px;vertical-align:middle}.gb_n.gb_o:first-child{padding-left:0}.gb_p.gb_o{display:inline-block}.gb_q .gb_p.gb_o{-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex:0 1 main-size;flex:0 1 main-size;display:-webkit-flex;display:flex}.gb_r .gb_p.gb_o{display:none}.gb_n .gb_m{display:inline-block;line-height:24px;outline:none;vertical-align:middle}.gb_p .gb_m{min-width:60px;overflow:hidden;-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex:0 1 main-size;flex:0 1 main-size;text-overflow:ellipsis}.gb_s .gb_p .gb_m{min-width:0}.gb_t .gb_p .gb_m{width:0!important}.gb_u .gb_m{font-weight:bold;text-shadow:0 1px 1px rgba(255,255,255,.9)}.gb_v .gb_m{font-weight:bold;text-shadow:0 1px 1px rgba(0,0,0,.6)}#gb#gb.gb_v a.gb_m{color:#fff}.gb_K .gb_L{background-position:-326px -52px;opacity:.55}.gb_u .gb_K .gb_L{background-position:-97px -57px;opacity:.7}.gb_v .gb_K .gb_L{background-position:-214px 0;opacity:1}.gb_Wc{color:#000;left:0;min-width:1152px;position:absolute;top:0;-webkit-user-select:none;width:100%}.gb_4b{font:13px/27px Arial,sans-serif;position:relative;height:60px;width:100%}.gb_ia .gb_4b{height:28px}#gba{height:60px}#gba.gb_ia{height:28px}#gba.gb_Xc{height:90px}#gba.gb_Xc.gb_ia{height:58px}.gb_4b>.gb_o{height:60px;line-height:58px;vertical-align:middle}.gb_ia .gb_4b>.gb_o{height:28px;line-height:26px}.gb_4b::before{background:#e5e5e5;bottom:0;content:'';display:none;height:1px;left:0;position:absolute;right:0}.gb_4b{background:#f1f1f1}.gb_Zc .gb_4b{background:#fff}.gb_Zc .gb_4b::before,.gb_ia .gb_4b::before{display:none}.gb_u .gb_4b,.gb_v .gb_4b,.gb_ia .gb_4b{background:transparent}.gb_u .gb_4b::before{background:#e1e1e1;background:rgba(0,0,0,.12)}.gb_v .gb_4b::before{background:#333;background:rgba(255,255,255,.2)}.gb_o{display:inline-block;-webkit-flex:0 0 auto;flex:0 0 auto;-webkit-flex:0 0 main-size;flex:0 0 main-size}.gb_o.gb_0c{float:right;-webkit-order:1;order:1}.gb_1c{white-space:nowrap}.gb_q .gb_1c{display:-webkit-flex;display:flex}.gb_1c,.gb_o{margin-left:0!important;margin-right:0!important}.gb_1a{background-image:url('//ssl.gstatic.com/gb/images/i1_71651352.png');-webkit-background-size:356px 144px;background-size:356px 144px}@media (min-resolution:1.25dppx),(-webkit-min-device-pixel-ratio:1.25),(min-device-pixel-ratio:1.25){.gb_1a{background-image:url('//ssl.gstatic.com/gb/images/i2_9ef0f6fa.png')}}.gb_rb{display:inline-block;padding:0 0 0 15px;vertical-align:middle}.gb_rb:first-child,#gbsfw:first-child+.gb_rb{padding-left:0}.gb_6a{position:relative}.gb_L{display:inline-block;outline:none;vertical-align:middle;-webkit-border-radius:2px;border-radius:2px;-webkit-box-sizing:border-box;box-sizing:border-box;height:30px;width:30px}#gb#gb a.gb_L{color:#404040;cursor:default;text-decoration:none}#gb#gb a.gb_L:hover,#gb#gb a.gb_L:focus{color:#000}.gb_qa{border-color:transparent;border-bottom-color:#fff;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;display:none;position:absolute;left:6.5px;top:37px;z-index:1;height:0;width:0;-webkit-animation:gb__a .2s;animation:gb__a .2s}.gb_ra{border-color:transparent;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;display:none;position:absolute;left:6.5px;z-index:1;height:0;width:0;-webkit-animation:gb__a .2s;animation:gb__a .2s;border-bottom-color:#ccc;border-bottom-color:rgba(0,0,0,.2);top:36px}x:-o-prefocus,div.gb_ra{border-bottom-color:#ccc}.gb_O{background:#fff;border:1px solid #ccc;border-color:rgba(0,0,0,.2);-webkit-box-shadow:0 2px 10px rgba(0,0,0,.2);box-shadow:0 2px 10px rgba(0,0,0,.2);display:none;outline:none;overflow:hidden;position:absolute;right:0;top:44px;-webkit-animation:gb__a .2s;animation:gb__a .2s;-webkit-border-radius:2px;border-radius:2px;-webkit-user-select:text}.gb_rb.gb_Sa .gb_qa,.gb_rb.gb_Sa .gb_ra,.gb_rb.gb_Sa .gb_O{display:block}.gb_oc{position:absolute;right:0;top:44px;z-index:-1}.gb_ia .gb_qa,.gb_ia .gb_ra,.gb_ia .gb_O{margin-top:-10px}.gb_ea{-webkit-background-size:32px 32px;background-size:32px 32px;-webkit-border-radius:50%;border-radius:50%;display:block;margin:-1px;height:32px;width:32px}.gb_ea:hover,.gb_ea:focus{-webkit-box-shadow:0 1px 0 rgba(0,0,0,.15);box-shadow:0 1px 0 rgba(0,0,0,.15)}.gb_ea:active{-webkit-box-shadow:inset 0 2px 0 rgba(0,0,0,.15);box-shadow:inset 0 2px 0 rgba(0,0,0,.15)}.gb_ea:active::after{background:rgba(0,0,0,.1);-webkit-border-radius:50%;border-radius:50%;content:'';display:block;height:100%}.gb_fa:not(.gb_k) .gb_ea::before,.gb_fa:not(.gb_k) .gb_ga::before{content:none}.gb_ha{cursor:pointer;line-height:30px;min-width:30px;overflow:hidden;vertical-align:middle;width:auto;text-overflow:ellipsis}.gb_ia .gb_ha,.gb_ia .gb_ja{line-height:26px}#gb#gb.gb_ia a.gb_ha,.gb_ia .gb_ja{color:#666;font-size:11px;height:auto}#gb#gb.gb_ia a.gb_ha:hover,#gb#gb.gb_ia a.gb_ha:focus{color:#000}.gb_ka{border-top:4px solid #404040;border-left:4px dashed transparent;border-right:4px dashed transparent;display:inline-block;margin-left:6px;vertical-align:middle}.gb_ia .gb_ka{border-top-color:#999}.gb_la:hover .gb_ka{border-top-color:#000}.gb_u .gb_ha{font-weight:bold;text-shadow:0 1px 1px rgba(255,255,255,.9)}.gb_v .gb_ha{font-weight:bold;text-shadow:0 1px 1px rgba(0,0,0,.6)}#gb#gb.gb_v.gb_v a.gb_ha{color:#fff}.gb_v.gb_v .gb_ka{border-top-color:#fff}.gb_u .gb_ea,.gb_v .gb_ea{-webkit-box-shadow:0 1px 2px rgba(0,0,0,.2);box-shadow:0 1px 2px rgba(0,0,0,.2)}.gb_u .gb_ea:hover,.gb_v .gb_ea:hover,.gb_u .gb_ea:focus,.gb_v .gb_ea:focus{-webkit-box-shadow:0 1px 0 rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.2);box-shadow:0 1px 0 rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.2)}.gb_ma .gb_na,.gb_oa .gb_na{position:absolute;right:1px}.gb_na.gb_o,.gb_pa.gb_o,.gb_la.gb_o{-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex:0 1 main-size;flex:0 1 main-size}.gb_fa.gb_t .gb_ha{width:30px!important}.gb_5b{display:none!important}.gb_6{background:#f8f8f8;border:1px solid #c6c6c6;display:inline-block;line-height:28px;padding:0 12px;-webkit-border-radius:2px;border-radius:2px}#gb a.gb_6.gb_6{color:#666;cursor:default;text-decoration:none}.gb_7{border:1px solid #4285f4;font-weight:bold;outline:none;background:#4285f4;background:-webkit-linear-gradient(top,#4387fd,#4683ea);background:linear-gradient(top,#4387fd,#4683ea);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4387fd,endColorstr=#4683ea,GradientType=0)}#gb a.gb_7.gb_7{color:#fff}.gb_7:hover{-webkit-box-shadow:0 1px 0 rgba(0,0,0,.15);box-shadow:0 1px 0 rgba(0,0,0,.15)}.gb_7:active{-webkit-box-shadow:inset 0 2px 0 rgba(0,0,0,.15);box-shadow:inset 0 2px 0 rgba(0,0,0,.15);background:#3c78dc;background:-webkit-linear-gradient(top,#3c7ae4,#3f76d3);background:linear-gradient(top,#3c7ae4,#3f76d3);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3c7ae4,endColorstr=#3f76d3,GradientType=0)}.gb_8{display:inline-block;line-height:normal;position:relative;z-index:987}#gbsfw{min-width:400px;overflow:visible}.gb_Ra,#gbsfw.gb_Sa{display:block;outline:none}#gbsfw.gb_W iframe{display:none}.gb_Ta{padding:118px 0;text-align:center}.gb_Ua{background:no-repeat center 0;color:#aaa;font-size:13px;line-height:20px;padding-top:76px;background-image:-webkit-image-set(url('//ssl.gstatic.com/gb/images/a/f5cdd88b65.png') 1x,url('//ssl.gstatic.com/gb/images/a/133fc21e88.png') 2x)}.gb_Ua a{color:#4285f4;text-decoration:none}.gb_Va{min-width:127px;overflow:hidden;position:relative;z-index:987}.gb_Wa{position:absolute;padding:0 20px 0 15px}.gb_Xa .gb_Wa{right:100%;margin-right:-127px}.gb_Za{display:inline-block;outline:none;vertical-align:middle}.gb_0a .gb_Za{position:relative;top:2px}.gb_Za .gb_1a,.gb_2a{display:block}.gb_3a{border:none;display:block;visibility:hidden}.gb_Za .gb_1a{background-position:0 -105px;height:33px;width:92px}.gb_2a{background-repeat:no-repeat}.gb_v .gb_Za .gb_1a{background-position:-97px -92px;margin:-3px 0 0 -10px;height:52px;width:112px}.gb_u .gb_Za .gb_1a{margin:-3px 0 0 -10px;height:52px;width:112px;background-position:-97px 0}@-webkit-keyframes gb__nb{0%{-webkit-transform:scale(0,0);transform:scale(0,0)}20%{-webkit-transform:scale(1.4,1.4);transform:scale(1.4,1.4)}50%{-webkit-transform:scale(.8,.8);transform:scale(.8,.8)}85%{-webkit-transform:scale(1.1,1.1);transform:scale(1.1,1.1)}to{-webkit-transform:scale(1.0,1.0);transform:scale(1.0,1.0)}}@keyframes gb__nb{0%{-webkit-transform:scale(0,0);transform:scale(0,0)}20%{-webkit-transform:scale(1.4,1.4);transform:scale(1.4,1.4)}50%{-webkit-transform:scale(.8,.8);transform:scale(.8,.8)}85%{-webkit-transform:scale(1.1,1.1);transform:scale(1.1,1.1)}to{-webkit-transform:scale(1.0,1.0);transform:scale(1.0,1.0)}}.gb_5a .gb_6a{font-size:14px;font-weight:bold;top:0;right:0}.gb_5a .gb_L{display:inline-block;vertical-align:middle;-webkit-box-sizing:border-box;box-sizing:border-box;height:30px;width:30px}.gb_7a{background-position:-56px 0;opacity:.55;height:100%;width:100%}.gb_L:hover .gb_7a,.gb_L:focus .gb_7a{opacity:.85}.gb_8a .gb_7a{background-position:-291px -103px}.gb_9a{background-color:#cb4437;-webkit-border-radius:8px;border-radius:8px;font:bold 11px Arial;color:#fff;line-height:16px;min-width:14px;padding:0 1px;position:absolute;right:0;text-align:center;text-shadow:0 1px 0 rgba(0,0,0,0.1);top:0;visibility:hidden;z-index:990}.gb_ab .gb_9a,.gb_ab .gb_bb,.gb_ab .gb_bb.gb_cb{visibility:visible}.gb_bb{padding:0 2px;visibility:hidden}.gb_5a:not(.gb_db) .gb_ra,.gb_5a:not(.gb_db) .gb_qa{left:3px}.gb_5a .gb_qa{border-bottom-color:#e5e5e5}.gb_9a.gb_eb{-webkit-animation:gb__nb .6s 1s both ease-in-out;animation:gb__nb .6s 1s both ease-in-out;-webkit-perspective-origin:top right;perspective-origin:top right;-webkit-transform:scale(1,1);transform:scale(1,1);-webkit-transform-origin:top right;transform-origin:top right}.gb_eb .gb_bb{visibility:visible}.gb_fb{background-color:rgba(0,0,0,.55);color:#fff;font-size:12px;font-weight:bold;line-height:20px;margin:5px;padding:0 2px;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-border-radius:50%;border-radius:50%;height:20px;width:20px}.gb_fb.gb_gb{background-position:-214px -117px}.gb_fb.gb_hb{background-position:-256px -73px}.gb_L:hover .gb_fb,.gb_L:focus .gb_fb{background-color:rgba(0,0,0,.85)}#gbsfw.gb_ib{background:#e5e5e5;border-color:#ccc}.gb_u .gb_L .gb_7a{background-position:-167px -57px;opacity:.7}.gb_u .gb_8a .gb_7a{background-position:-132px -57px}.gb_u .gb_L:hover .gb_7a,.gb_u .gb_L:focus .gb_7a{opacity:.85}.gb_v .gb_L .gb_7a{background-position:-326px -87px;opacity:1}.gb_v .gb_8a .gb_7a{background-position:0 -70px}.gb_u .gb_9a,.gb_v .gb_9a{border:none;-webkit-box-shadow:-1px 1px 1px rgba(0,0,0,.2);box-shadow:-1px 1px 1px rgba(0,0,0,.2)}.gb_u .gb_fb{background-color:rgba(0,0,0,.7);-webkit-box-shadow:0 1px 2px rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(255,255,255,.9)}.gb_v .gb_fb.gb_fb{background-color:#fff;color:#404040;-webkit-box-shadow:0 1px 2px rgba(0,0,0,.2);box-shadow:0 1px 2px rgba(0,0,0,.2)}.gb_v .gb_fb.gb_gb{background-position:-326px -122px}.gb_v .gb_fb.gb_hb{background-position:-214px -92px}.gb_ab .gb_fb.gb_fb{background-color:#db4437;color:#fff}.gb_ab .gb_L:hover .gb_fb,.gb_ab .gb_L:focus .gb_fb{background-color:#a52714}.gb_ab .gb_fb.gb_hb{background-position:-256px -73px}.gb_0b .gb_L{background-position:-326px -17px;opacity:.55;height:30px;width:30px}.gb_0b .gb_L:hover,.gb_0b .gb_L:focus{opacity:.85}.gb_0b .gb_qa{border-bottom-color:#f5f5f5}#gbsfw.gb_1b{background:#f5f5f5;border-color:#ccc}.gb_v .gb_0b .gb_L{background-position:0 -35px;opacity:1}.gb_u .gb_0b .gb_L{background-position:-256px -103px;opacity:.7}.gb_u .gb_0b .gb_L:hover,.gb_u .gb_0b .gb_L:focus{opacity:.85}.gb_fa{min-width:315px;padding-left:30px;padding-right:30px;position:relative;text-align:right;z-index:986;-webkit-align-items:center;align-items:center;-webkit-justify-content:flex-end;justify-content:flex-end}.gb_ia .gb_fa{min-width:0}.gb_fa.gb_o{-webkit-flex:1 1 auto;flex:1 1 auto;-webkit-flex:1 1 main-size;flex:1 1 main-size}.gb_Lc{line-height:normal;position:relative;text-align:left}.gb_Lc.gb_o,.gb_Mc.gb_o,.gb_ja.gb_o{-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex:0 1 main-size;flex:0 1 main-size}.gb_Nc,.gb_Oc{display:inline-block;padding:0 0 0 15px;position:relative;vertical-align:middle}.gb_Mc{line-height:normal;padding-right:15px}.gb_fa .gb_Mc.gb_r{padding-right:0}.gb_ja{color:#404040;line-height:30px;min-width:30px;overflow:hidden;vertical-align:middle;text-overflow:ellipsis}#gb.gb_ia.gb_ia .gb_hc,#gb.gb_ia.gb_ia .gb_Lc>.gb_Oc .gb_ic{background:none;border:none;color:#36c;cursor:pointer;filter:none;font-size:11px;line-height:26px;padding:0;-webkit-box-shadow:none;box-shadow:none}.gb_ia .gb_hc{text-transform:uppercase}.gb_fa.gb_s{padding-left:0;padding-right:29px}.gb_fa.gb_Pc{max-width:400px}.gb_Qc{background-clip:content-box;background-origin:content-box;opacity:.27;padding:22px;height:16px;width:16px}.gb_Qc.gb_o{display:none}.gb_Qc:hover,.gb_Qc:focus{opacity:.55}.gb_Rc{background-position:-35px 0}.gb_Sc{background-position:-291px -17px;padding-left:30px;padding-right:14px;position:absolute;right:0;top:0;z-index:990}.gb_ma:not(.gb_oa) .gb_Sc,.gb_s .gb_Rc{display:inline-block}.gb_ma .gb_Rc{padding-left:30px;padding-right:0;width:0}.gb_ma:not(.gb_oa) .gb_Tc{display:none}.gb_fa.gb_o.gb_s,.gb_s:not(.gb_oa) .gb_Lc{-webkit-flex:0 0 auto;flex:0 0 auto;-webkit-flex:0 0 main-size;flex:0 0 main-size}.gb_Qc,.gb_s .gb_Mc,.gb_oa .gb_Lc{overflow:hidden}.gb_ma .gb_Mc{padding-right:0}.gb_s .gb_Lc{padding:1px 1px 1px 0}.gb_ma .gb_Lc{width:75px}.gb_fa.gb_Uc,.gb_fa.gb_Uc .gb_Rc,.gb_fa.gb_Uc .gb_Rc::before,.gb_fa.gb_Uc .gb_Mc,.gb_fa.gb_Uc .gb_Lc{-webkit-transition:width .5s ease-in-out,min-width .5s ease-in-out,max-width .5s ease-in-out,padding .5s ease-in-out,left .5s ease-in-out;transition:width .5s ease-in-out,min-width .5s ease-in-out,max-width .5s ease-in-out,padding .5s ease-in-out,left .5s ease-in-out}.gb_q .gb_fa{min-width:0}.gb_fa.gb_t,.gb_fa.gb_t .gb_Lc,.gb_fa.gb_Vc,.gb_fa.gb_Vc .gb_Lc{min-width:0!important}.gb_fa.gb_t,.gb_fa.gb_t .gb_o{-webkit-flex:0 0 auto!important;-webkit-flex:0 0 auto!important;flex:0 0 auto!important}.gb_fa.gb_t .gb_ja{width:30px!important}.gb_u .gb_ja{font-weight:bold;text-shadow:0 1px 1px rgba(255,255,255,.9)}.gb_v .gb_ja{color:#fff;font-weight:bold;text-shadow:0 1px 1px rgba(0,0,0,.6)}.gb_4b ::-webkit-scrollbar{height:15px;width:15px}.gb_4b ::-webkit-scrollbar-button{height:0;width:0}.gb_4b ::-webkit-scrollbar-thumb{background-clip:padding-box;background-color:rgba(0,0,0,.3);border:5px solid transparent;-webkit-border-radius:10px;border-radius:10px;min-height:20px;min-width:20px;height:5px;width:5px}.gb_4b ::-webkit-scrollbar-thumb:hover,.gb_4b ::-webkit-scrollbar-thumb:active{background-color:rgba(0,0,0,.4)}#gb.gb_4c{min-width:980px}#gb.gb_4c .gb_Nb{min-width:0;position:static;width:0}.gb_4c .gb_4b{background:transparent;border-bottom-color:transparent}.gb_4c .gb_4b::before{display:none}.gb_4c.gb_4c .gb_n{display:inline-block}.gb_4c.gb_fa .gb_Mc.gb_r{padding-right:15px}.gb_q.gb_4c .gb_p.gb_o{display:-webkit-flex;display:flex}.gb_4c.gb_q #gbqf{display:block}.gb_4c #gbq{height:0;position:absolute}.gb_4c.gb_fa{z-index:987}.gb_Wa.gb_5c{padding-left:30px}.gb_Xa .gb_5c{margin-right:-142px}sentinel{}.gbii{background-image:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s32-c/photo.jpg)}.gbip{background-image:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s96-c/photo.jpg)}.gbii::before{content:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s32-c/photo.jpg);position:absolute}.gbip::before{content:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s96-c/photo.jpg);position:absolute}@media (min-resolution:1.25dppx),(-o-min-device-pixel-ratio:5/4),(-webkit-min-device-pixel-ratio:1.25),(min-device-pixel-ratio:1.25){.gbii{background-image:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s64-c/photo.jpg)}.gbii::before{content:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s64-c/photo.jpg)}.gbip{background-image:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s192-c/photo.jpg)}.gbip::before{content:url(//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s192-c/photo.jpg)}.gbii::before,.gbip::before{-webkit-transform:scale(.5);-moz-transform:scale(.5);-ms-transform:scale(.5);-o-transform:scale(.5);transform:scale(.5);-webkit-transform-origin:0 0;-moz-transform-origin:0 0;-ms-transform-origin:0 0;-o-transform-origin:0 0;transform-origin:0 0}}#gbq .gbgt-hvr,#gbq .gbgt:focus{background-color:transparent;background-image:none}.gbqfh#gbq1{display:none}.gbxx{display:none !important}#gbq{line-height:normal;position:relative;top:0px;white-space:nowrap}#gbq{left:0;width:100%}#gbq2{top:0px;z-index:986}#gbq4{display:inline-block;max-height:29px;overflow:hidden;position:relative}.gbqfh#gbq2{z-index:985}.gbqfh#gbq2{margin:0;margin-left:0 !important;padding-top:0;position:relative;top:310px}.gbqfh #gbqf{margin:auto;min-width:534px;padding:0 !important}.gbqfh #gbqfbw{display:none}.gbqfh #gbqfbwa{display:block}.gbqfh #gbqf{max-width:572px;min-width:572px}.gbqfh .gbqfqw{border-right-width:1px}
 [End Tag        ] </style>
-[Start Tag      ] <style data-jiis='cc' id='gstyle'>
+[Start Tag      ] <style data-jiis="cc" id="gstyle">
 [Raw Text       ] html,body{height:100%;margin:0}#viewport{min-height:100%;position:relative;width:100%}.content{padding-bottom:35px}#footer{bottom:0;font-size:10pt;height:35px;position:absolute;width:100%}#gog{padding:3px 8px 0}.gac_m td{line-height:17px}body,td,a,p,.h{font-family:arial,sans-serif}.h{color:#12c;font-size:20px}.q{color:#00c}.ts td{padding:0}.ts{border-collapse:collapse}em{font-weight:bold;font-style:normal}.ds{display:inline-block;}span.ds{margin:3px 0 4px;margin-left:4px}.ctr-p{margin:0 auto;min-width:980px}a.gb1,a.gb2,a.gb3,a.gb4{color:#11c !important}body{background:#fff;color:#222}a{color:#12c;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#12c}a:visited{color:#609}a.gb1,a.gb4{text-decoration:underline}a.gb3:hover{text-decoration:none}#ghead a.gb2:hover{color:#fff !important}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{height:30px;display:block}.ftl,#footer a{color:#666;margin:2px 10px 0}#footer a:active{color:#dd4b39}.lsb{border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;vertical-align:top}.lst:focus{outline:none}body,html{font-size:small}h1,ol,ul,li{margin:0;padding:0}.nojsv{visibility:hidden}.hp #logocont.nojsv{display:none}#body,#footer{display:block}.igehp{display:none}#flci{float:left;margin-left:0;text-align:left;width:0}#fll{float:right;text-align:right;width:100%}#ftby{padding-left:0}#ftby>div,#fll>div,#footer a{display:inline-block}@media only screen and (min-width:1222px){#ftby{margin:0 44px}}
 [End Tag        ] </style>
 [Start Tag      ] <style>
@@ -55,26 +55,26 @@ _.v("gbar.elr",function(){return{es:{f:152,h:60,m:30},mo:"md",vh:window.innerHei
 // Google Inc.
 
 [End Tag        ] </script>
-[Start Tag      ] <link href='/?ei=7PElVcvfDouM8Qf-3YHYAg' rel='canonical'>
+[Start Tag      ] <link href="/?ei=7PElVcvfDouM8Qf-3YHYAg" rel="canonical">
 [End Tag        ] </head>
-[Start Tag      ] <body class='hp vasq' onload='try{if(!google.j.b){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}}catch(e){}if(document.images)new Image().src='/images/nav_logo195.png'' alink='#dd4b39' bgcolor='#fff' id='gsr' link='#12c' text='#222' vlink='#61c'>
-[Start Tag      ] <div class='ctr-p' id='viewport'>
-[Start Tag      ] <div data-jiis='cc' id='doc-info'>
+[Start Tag      ] <body class="hp vasq" onload="try{if(!google.j.b){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}}catch(e){}if(document.images)new Image().src='/images/nav_logo195.png'" alink="#dd4b39" bgcolor="#fff" id="gsr" link="#12c" text="#222" vlink="#61c">
+[Start Tag      ] <div class="ctr-p" id="viewport">
+[Start Tag      ] <div data-jiis="cc" id="doc-info">
 [End Tag        ] </div>
-[Start Tag      ] <div data-jiis='cc' id='cst'>
+[Start Tag      ] <div data-jiis="cc" id="cst">
 [Start Tag      ] <style>
 [Raw Text       ] .fade #center_col,.fade #rhs,.fade #leftnav,.fade #brs,.fade #footcnt{filter:alpha(opacity=33.3);opacity:0.333}.fade-hidden #center_col,.fade-hidden #rhs,.fade-hidden #leftnav{visibility:hidden}.flyr-o,.flyr-w{position:absolute;background-color:#fff;z-index:3;display:block;}.flyr-o{filter:alpha(opacity=66.6);opacity:0.666}.flyr-w{filter:alpha(opacity=20.0);opacity:0.2}.flyr-h{filter:alpha(opacity=0);opacity:0}.flyr-c{display:none}.flt,.flt u,a.fl{text-decoration:none}.flt:hover,.flt:hover u,a.fl:hover{text-decoration:underline}#knavm{color:#4273db;display:inline;font:11px arial,sans-serif !important;left:-13px;position:absolute;top:2px;z-index:2}#pnprev #knavm{bottom:1px;top:auto}#pnnext #knavm{bottom:1px;left:40px;top:auto}a.noline{outline:0}.y.yp{display:none}.y.yf,.y.ys{display:block}.yi{}.s2er{}.s2fp{}.s2fp-h{}.s2ml{}.s2ra{}.s2tb{}.s2tb-h{}.spch{}.spchc{}.spch{background:#fff;height:100%;left:0;opacity:0;overflow:hidden;position:fixed;text-align:left;top:0;visibility:hidden;width:100%;z-index:10000;transition:visibility 0s linear 0.218s,opacity 0.218s,background-color 0.218s}.s2fp.spch{opacity:1;visibility:visible;transition-delay:0s}.s2tb-h.spch{background:rgba(255,255,255,0);opacity:0;visibility:hidden}.s2tb.spch{background:rgba(255,255,255,0);opacity:1;visibility:visible;transition-delay:0s}.close-button{color:#777;cursor:pointer;font-size:26px;right:0;height:11px;line-height:15px;margin:15px;opacity:.6;padding:0;position:absolute;top:0;width:15px}.close-button:hover{opacity:.8}.close-button:active{opacity:1}.google-logo{background:url(data:image/gif;base64,R0lGODlhxABEAMIGALGzsMPFwtHT0N/h3u3v7P3//P///////yH5BAEKAAcALAAAAADEAEQAAAP+WLrc/jDKSau9OJcBuveCJo5kaZ7oJHwsMKSwQsx0bN84M+zDygY5DaEXaH0CggEhyGwKWyGnhCAoGq+ewEvK7cpaW++C+lMuZUOrUXAWu20E8Lvg62grAzUrOu+X4ixhXYAebRYcV4J+ixaEHopOdQB8GpIgjJiNcl16lCKIj5miE44dkEF6pxqgqqOupS5ckp4kgK2uo7C3MKAAQClFhrjDX4FOpcK1ycTDuk56v8zScJtBvQDL09ojzkx6ALlEVgFIuxdU5EXkSdmD1RRDVepI7aW0c3lYWe2k30Z33Ijoq9ZtQj599yyZc9KL3YyDR/g5IKBGCw2IHxbq8Df+cFKDghAoguBhqYOwFotEdrhXQGVGC3UCLHN5CU8WMxgf8XgA0kGdhC3awPLjSKI/lgzU7CoZLYKaZNd81XvX4GmEkmcsNRVTtIK/W2qQMmAqwSrPFlsZ9FygdMK3X2/nONIICxuEiheO3g0VIWraYi8dgPr7UU7cN3owRAXn84NEtUagfqDw9ayxwoUqoC2w2U3DDHohT8ZAtsEReJ0xB046msLm1F4uX1hc9YNYy7LpnKYcdCJVR4TVdjpjxDOLxw6MhCmlkfUP5ytt5gbMd8EsCRABLigu5puI0rpXz+be8rnmPb6nd+I5a1lkMShXkf/WnIFy6r4sfKPVE73+8JtlQeHFUE/0xtl0+gm4QXwUKJSeeKVEAxEbDcLGkIGgybFWBSVFAQtyDqpWXXkRxdQcbV1gJUJlsNwGgV/4eUTBNbiN+OEMItRVH0889OijEuGJd0FJL8AS3BSpkSeBJH+B9GEJHNVS0hoKdPiJhkqeo2CQNQWY2YM2UpXBYju2xBSVCsAo33EksjDCO+9JYFtIVFmowRVC4NiAijEyNiaD993JpnV2jtUlmKbUNugIU7oIE4YHIjijeQX4c2QEDLJV6ILRRdCTlbVcgVyFi1a6KXayoYiBPQ8wJQgZiSI5XV2jQjClXSaUJOKXQ7ppn5gGlarDFeQIW2Osv1L+OgJHl3KYqQKh5SUkeI9mYRBHQtKJ4JRlinZqta2NEWcFwD0QaIK8wtOmB5pImsgfxNbamK97fltvuuJCiuqIhzzrKbCLxUJCwAJX4i+0W8qK7Ly7uXZor8YeW/C9CU8h8T4G0+tAZQpP3Kq9pna6ZkSoSYrwu55SyBO2UpF2sKb+1YicX9m45Ki2+iKan1P6WHSRFRIR7IvKIeXUQbBgGJJdrTStZAisLUN5hVjMJgEkxR3ZMeqtPwjgtdeWsgPuDz/Iu4DR/3RrLrEvdnRK01iUiXZH5QxcRdonoPMP0TnuIE/PPNEguOCk3I33H+L8gIRDN+iZQw2Is4yFTI+RE77N5VO8xXiVbGPuOVfQ3FKXjJ+XzgRz5EZp+uqNR3wVsKzHXiC+zjYs++0aQLOs7bj3XjK/Wlrr+/AquH6eHcQnv5djJISl/PPQLZyhSdBXf5gI4VaffFRmA6a29pdniW6z4Mc+pbw+kF9+7Bw5qpL667NP7NVqTRh/+ULbYWn397PO9Rr865/s4hE2+rkiAQA7) no-repeat center;background-size:98px 34px;float:right;height:34px;left:255px;opacity:0;pointer-events:none;position:relative;top:6px;width:98px;transition:opacity .5s ease-in,left .5s ease-in}.s2tb .google-logo{opacity:1;left:270px;transition:opacity .5s ease-out,left .5s ease-out}.spchc{display:block;height:27px;position:absolute;pointer-events:none}.s2fp .spchc,.s2fp-h .spchc{margin:auto;margin-top:312px;max-width:572px;min-width:534px;padding:0 223px;position:relative;top:0}.s2tb .spchc,.s2tb-h .spchc{background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.2);margin:0;min-width:100%;overflow:hidden;padding:51px 0 65px 126px;position:absolute}._o3{height:100%;opacity:.1;pointer-events:none;width:100%;transition:opacity .318s ease-in}.s2tb-h ._o3,.s2tb ._o3{height:100%;width:572px;transition:opacity .318s ease-in}.s2ml ._o3,.s2ra ._o3,.s2er ._o3{opacity:1;transition:opacity 0s}.button{background-color:#fff;border:1px solid #eee;border-radius:100%;bottom:0;box-shadow:0 2px 5px rgba(0,0,0,.1);cursor:pointer;display:inline-block;left:0;opacity:0;pointer-events:none;position:absolute;right:0;top:0;transition:background-color 0.218s,border 0.218s,box-shadow 0.218s}.s2tb-h .button{left:-83px;opacity:0;pointer-events:none;position:absolute;top:-83px;transition-delay:0}.s2fp-h .button{opacity:0;pointer-events:none;position:absolute;transition-delay:0}.s2fp .button,.s2tb .button{opacity:1;pointer-events:auto;position:absolute;-webkit-transform:scale(1);transition-delay:0}.s2ra .button{background-color:#ff4444;border:0;box-shadow:none}._CMb{background-color:#dbdbdb;border-radius:100%;display:inline-block;height:301px;left:-69px;opacity:1;pointer-events:none;position:absolute;top:-69px;width:301px;-webkit-transform:scale(.01);transition:opacity 0.218s}.s2tb-h ._CMb,.s2tb ._CMb{height:151px;left:-28px;top:-28px;width:151px}._AM{float:right;pointer-events:none;position:relative;transition:-webkit-transform 0.218s,opacity 0.218s ease-in}.s2fp-h ._AM,.s2fp ._AM{height:165px;right:-70px;top:-70px;width:165px}.s2fp-h ._AM,.s2tb-h ._AM{-webkit-transform:scale(.1)}.s2fp ._AM,.s2tb ._AM{-webkit-transform:scale(1)}.s2tb-h ._AM,.s2tb ._AM{height:95px;right:-31px;top:-27px;width:95px}.s2ra .button:active{background-color:#cd0000}.button:active{background-color:#eee}._wPb{height:87px;left:43px;pointer-events:none;position:absolute;top:47px;width:42px;-webkit-transform:scale(1)}.s2tb-h ._wPb,.s2tb ._wPb{left:17px;top:7px;-webkit-transform:scale(.53)}._AUb{background-color:#999;border-radius:30px;height:46px;left:25px;pointer-events:none;position:absolute;width:24px}._Fjd{bottom:0;height:53px;left:11px;overflow:hidden;pointer-events:none;position:absolute;width:52px}._oXb{background-color:#999;bottom:14px;height:14px;left:22px;pointer-events:none;position:absolute;width:9px;z-index:1}._dWb{border:7px solid #999;border-radius:28px;bottom:27px;height:57px;pointer-events:none;position:absolute;width:38px;z-index:0}.s2ml ._AUb,.s2ml ._oXb{background-color:#f44}.s2ml ._dWb{border-color:#f44}.s2ra ._AUb,.s2ra ._oXb{background-color:#fff}.s2ra ._dWb{border-color:#fff}.spcht{}.spchta{}.spch-2l{}.spch-3l{}.spch-4l{}.spch-5l{}._gjb{pointer-events:none}.s2fp-h ._gjb,.s2fp ._gjb{position:absolute}.s2tb-h ._gjb,.s2tb ._gjb{position:relative}.spcht{font-weight:normal;line-height:1.2;opacity:0;pointer-events:none;position:absolute;text-align:left;-webkit-font-smoothing:antialiased;transition:opacity .1s ease-in,margin-left .5s ease-in,top 0s linear 0.218s}.s2fp-h .spcht{margin-left:44px}.s2tb-h .spcht{margin-left:32px}.s2fp-h .spcht,.s2fp .spcht{font-size:32px;left:-44px;top:-.2em;width:460px}.s2tb-h .spcht,.s2tb .spcht{font-size:27px;left:7px;top:.2em;width:490px}.s2fp .spcht,.s2tb .spcht{margin-left:0;opacity:1;transition:opacity .5s ease-out,margin-left .5s ease-out}.spchta{color:#1155cc;cursor:pointer;font-size:18px;font-weight:500;pointer-events:auto;text-decoration:underline}.spch-2l.spcht,.spch-3l.spcht,.spch-4l.spcht{transition:top 0.218s ease-out}.spch-2l.spcht{top:-.6em}.spch-3l.spcht{top:-1.3em}.spch-4l.spcht{top:-1.7em}.s2fp .spch-5l.spcht{top:-2.5em}.s2tb .spch-5l.spcht{font-size:24px;top:-1.7em;transition:font-size 0.218s ease-out}.s2wfp{}._ypc{margin-top:-100px;opacity:0;pointer-events:none;position:absolute;width:500px;transition:opacity 0.218s ease-in,margin-top .4s ease-in}.s2wfp ._ypc{margin-top:-300px;opacity:1;transition:opacity .5s ease-out 0.218s,margin-top 0.218s ease-out 0.218s}._zpc{box-shadow:0 1px 0px #4285F4;height:80px;left:0;margin:0;opacity:0;pointer-events:none;position:fixed;right:0;top:-80px;transition:opacity 0.218s,box-shadow 0.218s}.s2wfp ._zpc{box-shadow:0 1px 80px #4285F4;opacity:1;pointer-events:none;-webkit-animation:allow-alert .75s 0 infinite;-webkit-animation-direction:alternate;-webkit-animation-timing-function:ease-out;transition:opacity 0.218s,box-shadow 0.218s}@-webkit-keyframes allow-alert {from{opacity:1}to{opacity:.35}}
 [End Tag        ] </style>
 [End Tag        ] </div>
-[Start Tag      ] <a href='/setprefs?suggon=2&amp;prev=https://www.google.co.jp/?gfe_rd%3Dcr%26ei%3D7PElVcvfDouM8Qf-3YHYAg%26gws_rd%3Dssl&amp;sig=0_6dbYoV53JCxGM6KeAe6VM-Q7IR0%3D' style='left:-1000em;position:absolute'>
+[Start Tag      ] <a href="/setprefs?suggon=2&amp;prev=https://www.google.co.jp/?gfe_rd%3Dcr%26ei%3D7PElVcvfDouM8Qf-3YHYAg%26gws_rd%3Dssl&amp;sig=0_6dbYoV53JCxGM6KeAe6VM-Q7IR0%3D" style="left:-1000em;position:absolute">
 [Text           ] Screen-reader users, click here to turn off Google Instant.
 [End Tag        ] </a>
-[Start Tag      ] <textarea name='csi' id='csi' style='display:none'>
+[Start Tag      ] <textarea name="csi" id="csi" style="display:none">
 [End Tag        ] </textarea>
 [Start Tag      ] <script>
 [Raw Text       ] if(google.j.b)document.body.style.visibility='hidden';
 [End Tag        ] </script>
-[Start Tag      ] <div class='jhp' id='searchform'>
+[Start Tag      ] <div class="jhp" id="searchform">
 [Start Tag      ] <script>
 [Raw Text       ] (function(){var _j=1250;try{var s=document.getElementById('searchform');var w=document['body']&&document.body['offsetWidth'];if(s&&w&&w>=_j){s.className+=' big';}
 }catch(e){}
@@ -83,131 +83,131 @@ _.v("gbar.elr",function(){return{es:{f:152,h:60,m:30},mo:"md",vh:window.innerHei
 [Start Tag      ] <style>
 [Raw Text       ] div#searchform{min-width:980px;z-index:103}div.sfbg,div.sfbgg{height:59px}.big form#tsf,form#tsf{width:auto;max-width:784px;overflow:hidden}#searchform.big>#tsf{max-width:784px}.big div.tsf-p,form>div.tsf-p{margin:-1px 0 0;padding-right:0}#gb{font-size:13px}div#viewport{position:absolute;top:0;width:100%}div#searchform.jhp{margin-top:0}#searchform.big.jhp>#tsf{max-width:none}.jhp>#gb{position:absolute;top:-295px;right:0;width:100%}.jhp>#tsf{max-width:none}
 [End Tag        ] </style>
-[Start Tag      ] <div id='gb'>
-[Start Tag      ] <div id='gbw'>
-[Start Tag      ] <div style='top:0;width:100%'>
-[Start Tag      ] <div class='gb_fa gb_1c gb_o gb_0c gb_4c'>
-[Start Tag      ] <div class='gb_Mc gb_o gb_1c gb_Tc'>
-[Start Tag      ] <div class='gb_n gb_o gb_p gb_1c'>
-[Start Tag      ] <a class='gb_m gb_o' href='https://plus.google.com/u/0/?tab=wX' data-pid='119' data-ved='0CA8Qwi4oAA'>
+[Start Tag      ] <div id="gb">
+[Start Tag      ] <div id="gbw">
+[Start Tag      ] <div style="top:0;width:100%">
+[Start Tag      ] <div class="gb_fa gb_1c gb_o gb_0c gb_4c">
+[Start Tag      ] <div class="gb_Mc gb_o gb_1c gb_Tc">
+[Start Tag      ] <div class="gb_n gb_o gb_p gb_1c">
+[Start Tag      ] <a class="gb_m gb_o" href="https://plus.google.com/u/0/?tab=wX" data-pid="119" data-ved="0CA8Qwi4oAA">
 [Text           ] +Mingjie
 [End Tag        ] </a>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_n gb_o'>
-[Start Tag      ] <a class='gb_m' href='https://mail.google.com/mail/?tab=wm' data-pid='23' data-ved='0CBAQwi4oAQ'>
+[Start Tag      ] <div class="gb_n gb_o">
+[Start Tag      ] <a class="gb_m" href="https://mail.google.com/mail/?tab=wm" data-pid="23" data-ved="0CBAQwi4oAQ">
 [Text           ] Gmail
 [End Tag        ] </a>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_n gb_o'>
-[Start Tag      ] <a class='gb_m' href='https://www.google.co.jp/imghp?hl=en&amp;tab=wi&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CBEQqi4oAg' data-pid='2'>
+[Start Tag      ] <div class="gb_n gb_o">
+[Start Tag      ] <a class="gb_m" href="https://www.google.co.jp/imghp?hl=en&amp;tab=wi&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CBEQqi4oAg" data-pid="2">
 [Text           ] Images
 [End Tag        ] </a>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_Lc gb_1c gb_o'>
-[Start Tag      ] <div class='gb_O' id='gbsfw'>
+[Start Tag      ] <div class="gb_Lc gb_1c gb_o">
+[Start Tag      ] <div class="gb_O" id="gbsfw">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_K gb_rb gb_o' id='gbwa'>
-[Start Tag      ] <div class='gb_6a'>
-[Start Tag      ] <a class='gb_L gb_1a' href='http://www.google.co.jp/intl/en/options/' title='Apps' aria-haspopup='true' aria-expanded='false' data-ved='0CBIQvSc'>
+[Start Tag      ] <div class="gb_K gb_rb gb_o" id="gbwa">
+[Start Tag      ] <div class="gb_6a">
+[Start Tag      ] <a class="gb_L gb_1a" href="http://www.google.co.jp/intl/en/options/" title="Apps" aria-haspopup="true" aria-expanded="false" data-ved="0CBIQvSc">
 [End Tag        ] </a>
-[Start Tag      ] <div class='gb_ra'>
+[Start Tag      ] <div class="gb_ra">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_qa'>
+[Start Tag      ] <div class="gb_qa">
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_5a gb_rb gb_o gb_db'>
-[Start Tag      ] <div class='gb_6a'>
-[Start Tag      ] <a class='gb_L' aria-haspopup='true' tabindex='0'>
-[Start Tag      ] <div class='gb_fb gb_1a gb_gb'>
+[Start Tag      ] <div class="gb_5a gb_rb gb_o gb_db">
+[Start Tag      ] <div class="gb_6a">
+[Start Tag      ] <a class="gb_L" aria-haspopup="true" tabindex="0">
+[Start Tag      ] <div class="gb_fb gb_1a gb_gb">
 [End Tag        ] </div>
 [End Tag        ] </a>
-[Start Tag      ] <div class='gb_ra'>
+[Start Tag      ] <div class="gb_ra">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_qa'>
-[End Tag        ] </div>
-[End Tag        ] </div>
-[Start Tag      ] <div class='gb_O' aria-hidden='true' aria-live='assertive'>
+[Start Tag      ] <div class="gb_qa">
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_0b gb_rb gb_o gb_Tc'>
-[Start Tag      ] <div class='gb_6a'>
-[Start Tag      ] <a class='gb_L gb_1a' href='https://plus.google.com/u/0/stream/all?hl=en' title='Google+ Share' aria-haspopup='true'>
+[Start Tag      ] <div class="gb_O" aria-hidden="true" aria-live="assertive">
+[End Tag        ] </div>
+[End Tag        ] </div>
+[Start Tag      ] <div class="gb_0b gb_rb gb_o gb_Tc">
+[Start Tag      ] <div class="gb_6a">
+[Start Tag      ] <a class="gb_L gb_1a" href="https://plus.google.com/u/0/stream/all?hl=en" title="Google+ Share" aria-haspopup="true">
 [End Tag        ] </a>
-[Start Tag      ] <div class='gb_ra'>
+[Start Tag      ] <div class="gb_ra">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_qa'>
-[End Tag        ] </div>
-[End Tag        ] </div>
-[Start Tag      ] <div class='gb_O' aria-hidden='true'>
+[Start Tag      ] <div class="gb_qa">
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_na gb_rb gb_1c gb_o'>
-[Start Tag      ] <div class='gb_6a gb_pa gb_1c gb_o'>
-[Start Tag      ] <a class='gb_L gb_la gb_o' href='https://plus.google.com/u/0/me?tab=wX' title='Account Mingjie Li  &#10;(limingjie0719@gmail.com)' aria-haspopup='true'>
-[Start Tag      ] <span class='gb_ea gbii'>
+[Start Tag      ] <div class="gb_O" aria-hidden="true">
+[End Tag        ] </div>
+[End Tag        ] </div>
+[Start Tag      ] <div class="gb_na gb_rb gb_1c gb_o">
+[Start Tag      ] <div class="gb_6a gb_pa gb_1c gb_o">
+[Start Tag      ] <a class="gb_L gb_la gb_o" href="https://plus.google.com/u/0/me?tab=wX" title="Account Mingjie Li  &#10;(limingjie0719@gmail.com)" aria-haspopup="true">
+[Start Tag      ] <span class="gb_ea gbii">
 [End Tag        ] </span>
 [End Tag        ] </a>
-[Start Tag      ] <div class='gb_ra'>
+[Start Tag      ] <div class="gb_ra">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_qa'>
-[End Tag        ] </div>
-[End Tag        ] </div>
+[Start Tag      ] <div class="gb_qa">
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='sfbg nojsv' style='margin-top:-15px'>
-[Start Tag      ] <div class='sfbgg'>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <form class='tsf' action='/search' style='overflow:visible' id='tsf' method='GET' name='f' onsubmit='return q.value!=''' role='search'>
-[Start Tag      ] <input value='psy-ab' name='sclient' type='hidden'>
-[Start Tag      ] <div data-jibp data-jiis='uc' id='tophf'>
-[Start Tag      ] <input type='hidden' name='newwindow' value='1'>
-[Start Tag      ] <input type='hidden' name='site' value>
-[Start Tag      ] <input name='source' type='hidden' value='hp'>
+[Start Tag      ] <div class="sfbg nojsv" style="margin-top:-15px">
+[Start Tag      ] <div class="sfbgg">
 [End Tag        ] </div>
-[Start Tag      ] <div class='tsf-p'>
-[Start Tag      ] <div class='nojsv logocont' id='logocont'>
+[End Tag        ] </div>
+[Start Tag      ] <form class="tsf" action="/search" style="overflow:visible" id="tsf" method="GET" name="f" onsubmit="return q.value!=''" role="search">
+[Start Tag      ] <input value="psy-ab" name="sclient" type="hidden">
+[Start Tag      ] <div data-jibp data-jiis="uc" id="tophf">
+[Start Tag      ] <input type="hidden" name="newwindow" value="1">
+[Start Tag      ] <input type="hidden" name="site" value>
+[Start Tag      ] <input name="source" type="hidden" value="hp">
+[End Tag        ] </div>
+[Start Tag      ] <div class="tsf-p">
+[Start Tag      ] <div class="nojsv logocont" id="logocont">
 [Start Tag      ] <h1>
-[Start Tag      ] <a id='logo' href='https://www.google.co.jp/webhp?hl=en' title='Go to Google Home'>
-[Start Tag      ] <img width='167' height='373' src='/images/nav_logo195.png' alt='Google'>
+[Start Tag      ] <a id="logo" href="https://www.google.co.jp/webhp?hl=en" title="Go to Google Home">
+[Start Tag      ] <img width="167" height="373" src="/images/nav_logo195.png" alt="Google">
 [End Tag        ] </a>
 [End Tag        ] </h1>
 [End Tag        ] </div>
-[Start Tag      ] <div class='sfibbbc'>
-[Start Tag      ] <div class='sbtc' id='sbtc'>
-[Start Tag      ] <div class='sbibtd'>
-[Start Tag      ] <div class='nojsv sfopt' id='sfopt'>
-[Start Tag      ] <div class='lsd'>
-[Start Tag      ] <div id='ss-bar' style='white-space:nowrap;z-index:98' data-jiis='uc'>
+[Start Tag      ] <div class="sfibbbc">
+[Start Tag      ] <div class="sbtc" id="sbtc">
+[Start Tag      ] <div class="sbibtd">
+[Start Tag      ] <div class="nojsv sfopt" id="sfopt">
+[Start Tag      ] <div class="lsd">
+[Start Tag      ] <div id="ss-bar" style="white-space:nowrap;z-index:98" data-jiis="uc">
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='sfsbc'>
-[Start Tag      ] <div class='nojsb'>
-[Start Tag      ] <div class='ds' id='sbds'>
-[Start Tag      ] <div class='lsbb kpbb' id='sblsbb'>
-[Start Tag      ] <button class='lsb' value='Search' aria-label='Google Search' name='btnG' type='submit'>
-[Start Tag      ] <span class='sbico'>
+[Start Tag      ] <div class="sfsbc">
+[Start Tag      ] <div class="nojsb">
+[Start Tag      ] <div class="ds" id="sbds">
+[Start Tag      ] <div class="lsbb kpbb" id="sblsbb">
+[Start Tag      ] <button class="lsb" value="Search" aria-label="Google Search" name="btnG" type="submit">
+[Start Tag      ] <span class="sbico">
 [End Tag        ] </span>
 [End Tag        ] </button>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='sbibod' id='sfdiv'>
-[Start Tag      ] <input class='lst lst-tbb sbibps' id='lst-ib' maxlength='2048' name='q' autocomplete='off' title='Search' type='text' value aria-label='Search'>
+[Start Tag      ] <div class="sbibod" id="sfdiv">
+[Start Tag      ] <input class="lst lst-tbb sbibps" id="lst-ib" maxlength="2048" name="q" autocomplete="off" title="Search" type="text" value aria-label="Search">
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [Start Tag      ] <div>
-[Start Tag      ] <div id='pocs' style='display:none;left:0px;white-space:nowrap;position:absolute'>
-[Start Tag      ] <div id='pocs0'>
+[Start Tag      ] <div id="pocs" style="display:none;left:0px;white-space:nowrap;position:absolute">
+[Start Tag      ] <div id="pocs0">
 [Start Tag      ] <span>
 [Start Tag      ] <span>
 [Text           ] Google
@@ -215,114 +215,114 @@ _.v("gbar.elr",function(){return{es:{f:152,h:60,m:30},mo:"md",vh:window.innerHei
 [Text           ] Instant is unavailable. Press Enter to search.
 [End Tag        ] </span>
 [Text           ] &nbsp;
-[Start Tag      ] <a href='/support/websearch/bin/answer.py?answer=186645&amp;form=bb&amp;hl=en-JP'>
+[Start Tag      ] <a href="/support/websearch/bin/answer.py?answer=186645&amp;form=bb&amp;hl=en-JP">
 [Text           ] Learn more
 [End Tag        ] </a>
 [End Tag        ] </div>
-[Start Tag      ] <div id='pocs1'>
+[Start Tag      ] <div id="pocs1">
 [Start Tag      ] <span>
 [Text           ] Google
 [End Tag        ] </span>
 [Text           ] Instant is off due to connection speed. Press Enter to search.
 [End Tag        ] </div>
-[Start Tag      ] <div id='pocs2'>
+[Start Tag      ] <div id="pocs2">
 [Text           ] Press Enter to search.
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='jsb' style='padding-top:2px'>
+[Start Tag      ] <div class="jsb" style="padding-top:2px">
 [Start Tag      ] <center>
-[Start Tag      ] <input value='Google Search' aria-label='Google Search' name='btnK' type='submit' jsaction='sf.chk'>
-[Start Tag      ] <input value='I'm Feeling Lucky' aria-label='I'm Feeling Lucky' name='btnI' type='submit' jsaction='sf.lck'>
+[Start Tag      ] <input value="Google Search" aria-label="Google Search" name="btnK" type="submit" jsaction="sf.chk">
+[Start Tag      ] <input value="I'm Feeling Lucky" aria-label="I'm Feeling Lucky" name="btnI" type="submit" jsaction="sf.lck">
 [End Tag        ] </center>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </form>
 [End Tag        ] </div>
-[Start Tag      ] <div id='gac_scont'>
+[Start Tag      ] <div id="gac_scont">
 [End Tag        ] </div>
-[Start Tag      ] <div class='spch s2fp-h' style='display:none' id='spch'>
-[Start Tag      ] <div class='spchc' id='spchc'>
-[Start Tag      ] <div class='_o3'>
-[Start Tag      ] <div class='_AM'>
-[Start Tag      ] <span class='_CMb' id='spchl'>
+[Start Tag      ] <div class="spch s2fp-h" style="display:none" id="spch">
+[Start Tag      ] <div class="spchc" id="spchc">
+[Start Tag      ] <div class="_o3">
+[Start Tag      ] <div class="_AM">
+[Start Tag      ] <span class="_CMb" id="spchl">
 [End Tag        ] </span>
-[Start Tag      ] <span class='button' id='spchb'>
-[Start Tag      ] <div class='_wPb'>
-[Start Tag      ] <span class='_AUb'>
+[Start Tag      ] <span class="button" id="spchb">
+[Start Tag      ] <div class="_wPb">
+[Start Tag      ] <span class="_AUb">
 [End Tag        ] </span>
-[Start Tag      ] <div class='_Fjd'>
-[Start Tag      ] <span class='_oXb'>
+[Start Tag      ] <div class="_Fjd">
+[Start Tag      ] <span class="_oXb">
 [End Tag        ] </span>
-[Start Tag      ] <span class='_dWb'>
-[End Tag        ] </span>
-[End Tag        ] </div>
-[End Tag        ] </div>
+[Start Tag      ] <span class="_dWb">
 [End Tag        ] </span>
 [End Tag        ] </div>
-[Start Tag      ] <div class='_gjb'>
-[Start Tag      ] <span class='spcht' id='spchi' style='color:#777'>
-[End Tag        ] </span>
-[Start Tag      ] <span class='spcht' id='spchf' style='color:#000'>
+[End Tag        ] </div>
 [End Tag        ] </span>
 [End Tag        ] </div>
-[Start Tag      ] <div class='google-logo'>
+[Start Tag      ] <div class="_gjb">
+[Start Tag      ] <span class="spcht" id="spchi" style="color:#777">
+[End Tag        ] </span>
+[Start Tag      ] <span class="spcht" id="spchf" style="color:#000">
+[End Tag        ] </span>
+[End Tag        ] </div>
+[Start Tag      ] <div class="google-logo">
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='_ypc'>
-[Start Tag      ] <div class='_zpc'>
+[Start Tag      ] <div class="_ypc">
+[Start Tag      ] <div class="_zpc">
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='close-button' id='spchx'>
+[Start Tag      ] <div class="close-button" id="spchx">
 [Text           ] &times;
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='content' data-jiis='cc' id='main'>
-[Start Tag      ] <span class='ctr-p' data-jiis='bp' id='body'>
+[Start Tag      ] <div class="content" data-jiis="cc" id="main">
+[Start Tag      ] <span class="ctr-p" data-jiis="bp" id="body">
 [Start Tag      ] <center>
-[Start Tag      ] <div style='height:231px;margin-top:80px' id='lga'>
-[Start Tag      ] <div style='padding-top:112px'>
-[Start Tag      ] <div style='background:url(/images/srpr/logo11w.png) no-repeat;background-size:269px 95px;height:95px;width:269px' title='Google' align='left' id='hplogo' onload='window.lol&&lol()'>
-[Start Tag      ] <div nowrap style='color:#777;font-size:16px;font-weight:bold;position:relative;left:218px;top:70px'>
+[Start Tag      ] <div style="height:231px;margin-top:80px" id="lga">
+[Start Tag      ] <div style="padding-top:112px">
+[Start Tag      ] <div style="background:url(/images/srpr/logo11w.png) no-repeat;background-size:269px 95px;height:95px;width:269px" title="Google" align="left" id="hplogo" onload="window.lol&&lol()">
+[Start Tag      ] <div nowrap style="color:#777;font-size:16px;font-weight:bold;position:relative;left:218px;top:70px">
 [Text           ] Japan
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div style='height:102px'>
-[Start Tag      ] <div id='chw-o' data-ved='0CAQQuzY'>
-[Start Tag      ] <div class='_mSc'>
+[Start Tag      ] <div style="height:102px">
+[Start Tag      ] <div id="chw-o" data-ved="0CAQQuzY">
+[Start Tag      ] <div class="_mSc">
 [Text           ] Say "Ok Google" to start a voice search.
 [End Tag        ] </div>
-[Start Tag      ] <p class='_kSc'>
+[Start Tag      ] <p class="_kSc">
 [Text           ] Search without lifting a finger. When you say "Ok Google", Chrome will search for what you say next.
 [End Tag        ] </p>
 [Start Tag      ] <div>
-[Start Tag      ] <a href='https://support.google.com/chrome/?p=ui_hotword_search' target='_blank' onmousedown='return rwt(this,'','','','','AFQjCNHyNmNOmnFoJjpgISA7IEqNETP_hw','4GmSRMmRezJZS_PP7cry3w','0CAUQgDY','','',event)'>
+[Start Tag      ] <a href="https://support.google.com/chrome/?p=ui_hotword_search" target="_blank" onmousedown="return rwt(this,'','','','','AFQjCNHyNmNOmnFoJjpgISA7IEqNETP_hw','4GmSRMmRezJZS_PP7cry3w','0CAUQgDY','','',event)">
 [Text           ] Learn more
 [End Tag        ] </a>
-[Start Tag      ] <button class='_dKb _k3' href='#' id='hotword__chw-on' jsaction='chw.optInNoThanksButtonClicked' data-ved='0CAYQ_jU'>
+[Start Tag      ] <button class="_dKb _k3" href="#" id="hotword__chw-on" jsaction="chw.optInNoThanksButtonClicked" data-ved="0CAYQ_jU">
 [Text           ] No thanks
 [End Tag        ] </button>
-[Start Tag      ] <button class='_dKb _WW' href='#' id='hotword__chw-oe' jsaction='chw.optInEnableButtonClicked' data-ved='0CAcQ_zU'>
+[Start Tag      ] <button class="_dKb _WW" href="#" id="hotword__chw-oe" jsaction="chw.optInEnableButtonClicked" data-ved="0CAcQ_zU">
 [Text           ] Enable "Ok Google"
 [End Tag        ] </button>
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div id='prm-pt' style='margin-top:12px'>
+[Start Tag      ] <div id="prm-pt" style="margin-top:12px">
 [Start Tag      ] <script>
 [Raw Text       ] window.gbar&&gbar.up&&gbar.up.tp&&gbar.up.tp();
 [End Tag        ] </script>
-[Start Tag      ] <div id='als'>
+[Start Tag      ] <div id="als">
 [Start Tag      ] <style>
 [Raw Text       ] #als{font-size:small;margin-bottom:24px}#_eEe{display:inline-block;line-height:28px;}#_eEe a{padding:0 3px;}._lEe{display:inline-block;margin:0 2px;white-space:nowrap}._PEe{display:inline-block;margin:0 2px}
 [End Tag        ] </style>
-[Start Tag      ] <div id='_eEe'>
+[Start Tag      ] <div id="_eEe">
 [Text           ] Google.co.jp offered in:
-[Start Tag      ] <a href='https://www.google.co.jp/setprefs?sig=0_6dbYoV53JCxGM6KeAe6VM-Q7IR0%3D&amp;hl=ja&amp;source=homepage'>
+[Start Tag      ] <a href="https://www.google.co.jp/setprefs?sig=0_6dbYoV53JCxGM6KeAe6VM-Q7IR0%3D&amp;hl=ja&amp;source=homepage">
 [Text           ] 日本語
 [End Tag        ] </a>
 [End Tag        ] </div>
@@ -330,59 +330,59 @@ _.v("gbar.elr",function(){return{es:{f:152,h:60,m:30},mo:"md",vh:window.innerHei
 [End Tag        ] </div>
 [End Tag        ] </center>
 [End Tag        ] </span>
-[Start Tag      ] <div class='ctr-p' data-jiis='bp' id='footer'>
-[Start Tag      ] <div id='footcnt'>
+[Start Tag      ] <div class="ctr-p" data-jiis="bp" id="footer">
+[Start Tag      ] <div id="footcnt">
 [Start Tag      ] <style>
 [Raw Text       ] .fmulti{}._dQc{bottom:0;left:0;position:absolute;right:0}._GR{background:#f2f2f2;left:0;right:0;-webkit-text-size-adjust:none}.fbar p{display:inline}.fbar a,#fsettl{text-decoration:none;white-space:nowrap}.fbar{margin-left:-27px}._Gs{padding-left:27px;margin:0 !important}._eA{padding:0 !important;margin:0 !important}#fbarcnt{display:block}._E2 a:hover{text-decoration:underline}._HR img{margin-right:4px}._HR a,._GR #swml a{text-decoration:none}.fmulti{text-align:center}.fmulti #fsr{display:block;float:none}.fmulti #fuser{display:block;float:none}#fuserm{line-height:25px}#fsr{float:right;white-space:nowrap}#fsl{white-space:nowrap}#fsett{background:#fff;border:1px solid #999;bottom:30px;padding:10px 0;position:absolute;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);text-align:left;z-index:100}#fsett a{display:block;line-height:44px;padding:0 20px;text-decoration:none;white-space:nowrap}._E2 #fsettl:hover{text-decoration:underline}._E2 #fsett a:hover{text-decoration:underline}._mk{color:#777}._Nh{color:#222;font-size:14px;font-weight:normal;-webkit-tap-highlight-color:rgba(0,0,0,0)}._Nh:hover,._Nh:active{color:#444}._Mo{display:inline-block;position:relative}._Nh ._Mo ._cuf{opacity:0.55}a._Nh:hover ._Mo ._cuf,a._Nh:active ._Mo ._cuf{opacity:1.0}._ri,._Wk{height:13px;width:8px}._cuf{border:8px solid rgba(255,255,255,0);border-radius:8px;position:absolute}._ri ._cuf{border-left:8px solid #777;left:1px}._Wk ._cuf{border-right:8px solid #777;left:-9px}._ri ._duf,._Wk ._duf{border:12px solid rgba(255,255,255,0);position:absolute;top:-4px}._ri ._duf{border-left:10px solid #f6f6f6;left:-4px}._Wk ._duf{border-right:10px solid #f6f6f6;left:-10px}._Nh{padding:8px 16px;margin-right:10px}._mk{margin:40px 0}._dD{margin-right:10px}._nW{margin-left:135px}#fbar{background:#f2f2f2;border-top:1px solid #e4e4e4;line-height:40px;min-width:980px}._xac{margin-left:135px}.fbar p,.fbar a,#fsettl,#fsett a{color:#777}.fbar a:hover,#fsett a:hover{color:#333}.fbar{font-size:small}#fuser{float:right}._HR{margin-left:135px;line-height:15px;}
 [End Tag        ] </style>
 [Start Tag      ] <style>
 [Raw Text       ] #fsl{margin-left:30px}#fsr{margin-right:30px}.fmulti #fsl{margin-left:0}.fmulti #fsr{margin-right:0}
 [End Tag        ] </style>
-[Start Tag      ] <div class='_dQc _E2' id='fbar'>
-[Start Tag      ] <div class='fbar'>
-[Start Tag      ] <span id='fsr'>
-[Start Tag      ] <a class='_Gs' href='//www.google.co.jp/intl/en/policies/privacy/?fg=1'>
+[Start Tag      ] <div class="_dQc _E2" id="fbar">
+[Start Tag      ] <div class="fbar">
+[Start Tag      ] <span id="fsr">
+[Start Tag      ] <a class="_Gs" href="//www.google.co.jp/intl/en/policies/privacy/?fg=1">
 [Text           ] Privacy
 [End Tag        ] </a>
-[Start Tag      ] <a class='_Gs' href='//www.google.co.jp/intl/en/policies/terms/?fg=1'>
+[Start Tag      ] <a class="_Gs" href="//www.google.co.jp/intl/en/policies/terms/?fg=1">
 [Text           ] Terms
 [End Tag        ] </a>
-[Start Tag      ] <span style='display:inline-block;position:relative'>
-[Start Tag      ] <a class='_Gs' href='https://www.google.co.jp/preferences?hl=en' id='fsettl' aria-controls='fsett' aria-expanded='false' role='button' jsaction='foot.cst'>
+[Start Tag      ] <span style="display:inline-block;position:relative">
+[Start Tag      ] <a class="_Gs" href="https://www.google.co.jp/preferences?hl=en" id="fsettl" aria-controls="fsett" aria-expanded="false" role="button" jsaction="foot.cst">
 [Text           ] Settings
 [End Tag        ] </a>
-[Start Tag      ] <span id='fsett' style='display:none'>
-[Start Tag      ] <a href='https://www.google.co.jp/preferences?hl=en-JP&amp;fg=1'>
+[Start Tag      ] <span id="fsett" style="display:none">
+[Start Tag      ] <a href="https://www.google.co.jp/preferences?hl=en-JP&amp;fg=1">
 [Text           ] Search settings
 [End Tag        ] </a>
-[Start Tag      ] <span data-jibp='h' data-jiis='uc' id='advsl'>
-[Start Tag      ] <a href='/advanced_search?hl=en-JP&amp;fg=1'>
+[Start Tag      ] <span data-jibp="h" data-jiis="uc" id="advsl">
+[Start Tag      ] <a href="/advanced_search?hl=en-JP&amp;fg=1">
 [Text           ] Advanced search
 [End Tag        ] </a>
 [End Tag        ] </span>
-[Start Tag      ] <a href='/history?hl=en-JP&amp;fg=1'>
+[Start Tag      ] <a href="/history?hl=en-JP&amp;fg=1">
 [Text           ] History
 [End Tag        ] </a>
-[Start Tag      ] <a href='//support.google.com/websearch/?p=ws_results_help&amp;hl=en-JP&amp;fg=1'>
+[Start Tag      ] <a href="//support.google.com/websearch/?p=ws_results_help&amp;hl=en-JP&amp;fg=1">
 [Text           ] Search Help
 [End Tag        ] </a>
-[Start Tag      ] <a href='javascript:void(0)' data-bucket='websearch' id='_Yvd' target='_blank' jsaction='gf.sf' data-ved='0CAoQLg'>
+[Start Tag      ] <a href="javascript:void(0)" data-bucket="websearch" id="_Yvd" target="_blank" jsaction="gf.sf" data-ved="0CAoQLg">
 [Text           ] Send feedback
 [End Tag        ] </a>
 [End Tag        ] </span>
 [End Tag        ] </span>
-[Start Tag      ] <a class='_Gs' href='https://www.google.com/?gfe_rd=cr&amp;ei=7PElVcvfDouM8Qf-3YHYAg&amp;gws_rd=ssl,cr&amp;fg=1'>
+[Start Tag      ] <a class="_Gs" href="https://www.google.com/?gfe_rd=cr&amp;ei=7PElVcvfDouM8Qf-3YHYAg&amp;gws_rd=ssl,cr&amp;fg=1">
 [Text           ] Use Google.com
 [End Tag        ] </a>
 [End Tag        ] </span>
-[Start Tag      ] <span id='fsl'>
-[Start Tag      ] <a class='_Gs' href='//www.google.co.jp/intl/en/ads/?fg=1'>
+[Start Tag      ] <span id="fsl">
+[Start Tag      ] <a class="_Gs" href="//www.google.co.jp/intl/en/ads/?fg=1">
 [Text           ] Advertising
 [End Tag        ] </a>
-[Start Tag      ] <a class='_Gs' href='//www.google.co.jp/services/?fg=1'>
+[Start Tag      ] <a class="_Gs" href="//www.google.co.jp/services/?fg=1">
 [Text           ] Business
 [End Tag        ] </a>
-[Start Tag      ] <a class='_Gs' href='//www.google.co.jp/intl/en/about.html?fg=1'>
+[Start Tag      ] <a class="_Gs" href="//www.google.co.jp/intl/en/about.html?fg=1">
 [Text           ] About
 [End Tag        ] </a>
 [End Tag        ] </span>
@@ -398,7 +398,7 @@ commands[index++]=
 {'n':'pc','i':'cst','h':document.getElementById('cst').innerHTML,'is':'','r':true,'sc':true};commands[index]=
 {'n':'pc','i':'main','h':_mstr,'is':'','r':true,'sc':true};google.j[1]={cmds:commands};})();
 [End Tag        ] </script>
-[Start Tag      ] <script data-url='/extern_chrome/c222635362de5c80.js?bav=or.' id='ecs'>
+[Start Tag      ] <script data-url="/extern_chrome/c222635362de5c80.js?bav=or." id="ecs">
 [End Tag        ] </script>
 [Start Tag      ] <script>
 [Raw Text       ] this.gbar_=this.gbar_||{};(function(_){var window=this;
@@ -467,273 +467,273 @@ Fl("gb_0b");Fl("gb_mc");
 // Google Inc.
 
 [End Tag        ] </script>
-[Start Tag      ] <div class='gb_5b'>
-[Start Tag      ] <div class='gb_6b gb_O gb_X gb_4' aria-label='Apps' role='region' aria-hidden='true' tabindex='0'>
-[Start Tag      ] <ul class='gb_Q gb_I' aria-dropeffect='move'>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb119' href='https://plus.google.com/u/0/?tab=wX' data-pid='119' data-ved='0CAAQwS4oAA'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <div class="gb_5b">
+[Start Tag      ] <div class="gb_6b gb_O gb_X gb_4" aria-label="Apps" role="region" aria-hidden="true" tabindex="0">
+[Start Tag      ] <ul class="gb_Q gb_I" aria-dropeffect="move">
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb119" href="https://plus.google.com/u/0/?tab=wX" data-pid="119" data-ved="0CAAQwS4oAA">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -207px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -207px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] +Mingjie
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb1' href='https://www.google.co.jp/webhp?tab=ww&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CAEQqS4oAQ' data-pid='1'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb1" href="https://www.google.co.jp/webhp?tab=ww&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CAEQqS4oAQ" data-pid="1">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -414px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -414px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Search
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb36' href='https://www.youtube.com/?gl=JP' data-pid='36' data-ved='0CAIQwS4oAg'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb36" href="https://www.youtube.com/?gl=JP" data-pid="36" data-ved="0CAIQwS4oAg">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -1449px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -1449px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] YouTube
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb8' href='https://maps.google.co.jp/maps?hl=en&amp;tab=wl' data-pid='8' data-ved='0CAMQwS4oAw'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb8" href="https://maps.google.co.jp/maps?hl=en&amp;tab=wl" data-pid="8" data-ved="0CAMQwS4oAw">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -828px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -828px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Maps
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb78' href='https://play.google.com/?hl=en&amp;tab=w8' data-pid='78' data-ved='0CAQQwS4oBA'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb78" href="https://play.google.com/?hl=en&amp;tab=w8" data-pid="78" data-ved="0CAQQwS4oBA">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -1725px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -1725px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Play
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb23' href='https://mail.google.com/mail/?tab=wm' data-pid='23' data-ved='0CAUQwS4oBQ'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb23" href="https://mail.google.com/mail/?tab=wm" data-pid="23" data-ved="0CAUQwS4oBQ">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -690px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -690px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Gmail
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb49' href='https://drive.google.com/?tab=wo&amp;authuser=0' data-pid='49' data-ved='0CAYQwS4oBg'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb49" href="https://drive.google.com/?tab=wo&amp;authuser=0" data-pid="49" data-ved="0CAYQwS4oBg">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -1242px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -1242px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Drive
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb24' href='https://www.google.com/calendar?tab=wc' data-pid='24' data-ved='0CAcQwS4oBw'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb24" href="https://www.google.com/calendar?tab=wc" data-pid="24" data-ved="0CAcQwS4oBw">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -1518px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -1518px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Calendar
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
 [End Tag        ] </ul>
-[Start Tag      ] <div class='gb_0 gb_5b'>
-[Start Tag      ] <div class='gb_C gb_A' style='background-position:0 -414px'>
+[Start Tag      ] <div class="gb_0 gb_5b">
+[Start Tag      ] <div class="gb_C gb_A" style="background-position:0 -414px">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_1'>
-[Start Tag      ] <div class='gb_2'>
+[Start Tag      ] <div class="gb_1">
+[Start Tag      ] <div class="gb_2">
 [Text           ] Search
 [End Tag        ] </div>
-[Start Tag      ] <a class='gb_3 gb_dc' href='#'>
+[Start Tag      ] <a class="gb_3 gb_dc" href="#">
 [Text           ] Add a shortcut
 [End Tag        ] </a>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <a class='gb_N gb_dc' href='http://www.google.co.jp/intl/en/options/'>
+[Start Tag      ] <a class="gb_N gb_dc" href="http://www.google.co.jp/intl/en/options/">
 [Text           ] More
 [End Tag        ] </a>
-[Start Tag      ] <span class='gb_R'>
+[Start Tag      ] <span class="gb_R">
 [End Tag        ] </span>
-[Start Tag      ] <ul class='gb_Q gb_J' aria-dropeffect='move'>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb51' href='https://translate.google.co.jp/?hl=en&amp;tab=wT' data-pid='51' data-ved='0CAgQwS4oCA'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <ul class="gb_Q gb_J" aria-dropeffect="move">
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb51" href="https://translate.google.co.jp/?hl=en&amp;tab=wT" data-pid="51" data-ved="0CAgQwS4oCA">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -1587px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -1587px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Translate
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb10' href='https://books.google.co.jp/bkshp?hl=en&amp;tab=wp&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CAkQqS4oCQ' data-pid='10'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb10" href="https://books.google.co.jp/bkshp?hl=en&amp;tab=wp&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CAkQqS4oCQ" data-pid="10">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -138px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -138px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Books
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb6' href='http://www.google.co.jp/shopping?hl=en&amp;tab=wf&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CAoQqS4oCg' data-pid='6'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb6" href="http://www.google.co.jp/shopping?hl=en&amp;tab=wf&amp;ei=7fElVdm5JMyxuQTBhIGoDQ&amp;ved=0CAoQqS4oCg" data-pid="6">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -1380px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -1380px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Shopping
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb30' href='https://www.blogger.com/?tab=wj' data-pid='30' data-ved='0CAsQwS4oCw'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb30" href="https://www.blogger.com/?tab=wj" data-pid="30" data-ved="0CAsQwS4oCw">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -1311px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -1311px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Blogger
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb31' href='https://plus.google.com/u/0/photos?tab=wq' data-pid='31' data-ved='0CAwQwS4oDA'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb31" href="https://plus.google.com/u/0/photos?tab=wq" data-pid="31" data-ved="0CAwQwS4oDA">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -966px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -966px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Photos
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
-[Start Tag      ] <li class='gb_w' aria-grabbed='false'>
-[Start Tag      ] <a class='gb_l' id='gb25' href='https://docs.google.com/document/?usp=docs_alc&amp;authuser=0' data-pid='25' data-ved='0CA0QwS4oDQ'>
-[Start Tag      ] <div class='gb_F'>
+[Start Tag      ] <li class="gb_w" aria-grabbed="false">
+[Start Tag      ] <a class="gb_l" id="gb25" href="https://docs.google.com/document/?usp=docs_alc&amp;authuser=0" data-pid="25" data-ved="0CA0QwS4oDQ">
+[Start Tag      ] <div class="gb_F">
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_H'>
+[Start Tag      ] <div class="gb_H">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_A' style='background-position:0 -483px'>
+[Start Tag      ] <span class="gb_A" style="background-position:0 -483px">
 [End Tag        ] </span>
-[Start Tag      ] <span class='gb_B'>
+[Start Tag      ] <span class="gb_B">
 [Text           ] Docs
 [End Tag        ] </span>
 [End Tag        ] </a>
 [End Tag        ] </li>
 [End Tag        ] </ul>
-[Start Tag      ] <a class='gb_R gb_7b' href='http://www.google.co.jp/intl/en/options/'>
+[Start Tag      ] <a class="gb_R gb_7b" href="http://www.google.co.jp/intl/en/options/">
 [Text           ] Even more from Google
 [End Tag        ] </a>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_sa gb_O' aria-label='Account Information' aria-hidden='true' tabindex='0'>
-[Start Tag      ] <div class='gb_va'>
-[Start Tag      ] <a class='gb_wa gb_dc' href='https://plus.google.com/u/0/me?tab=wX'>
-[Start Tag      ] <div class='gb_ga gbip' title='Google+ Profile Icon'>
+[Start Tag      ] <div class="gb_sa gb_O" aria-label="Account Information" aria-hidden="true" tabindex="0">
+[Start Tag      ] <div class="gb_va">
+[Start Tag      ] <a class="gb_wa gb_dc" href="https://plus.google.com/u/0/me?tab=wX">
+[Start Tag      ] <div class="gb_ga gbip" title="Google+ Profile Icon">
 [End Tag        ] </div>
-[Start Tag      ] <span class='gb_ya'>
+[Start Tag      ] <span class="gb_ya">
 [Text           ] Change photo
 [End Tag        ] </span>
 [End Tag        ] </a>
-[Start Tag      ] <div class='gb_xa'>
-[Start Tag      ] <div class='gb_za'>
+[Start Tag      ] <div class="gb_xa">
+[Start Tag      ] <div class="gb_za">
 [Text           ] Mingjie Li
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_Aa'>
+[Start Tag      ] <div class="gb_Aa">
 [Text           ] limingjie0719@gmail.com
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_ua'>
-[Start Tag      ] <a href='https://www.google.com/settings?ref=home'>
+[Start Tag      ] <div class="gb_ua">
+[Start Tag      ] <a href="https://www.google.com/settings?ref=home">
 [Text           ] Account
 [End Tag        ] </a>
 [Text           ] &ndash;
-[Start Tag      ] <a href='http://www.google.co.jp/intl/en/policies/privacy/'>
+[Start Tag      ] <a href="http://www.google.co.jp/intl/en/policies/privacy/">
 [Text           ] Privacy
 [End Tag        ] </a>
 [End Tag        ] </div>
-[Start Tag      ] <a class='gb_ac gbp1 gb_6' href='https://plus.google.com/u/0/me?tab=wX'>
+[Start Tag      ] <a class="gb_ac gbp1 gb_6" href="https://plus.google.com/u/0/me?tab=wX">
 [Text           ] View profile
 [End Tag        ] </a>
 [End Tag        ] </div>
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_Fa gb_5b' aria-hidden='true'>
-[Start Tag      ] <a class='gb_Ha gb_Ja' href='https://www.google.co.jp/webhp?authuser=0'>
-[Start Tag      ] <img class='gb_La' src='data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src='//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s48-c/photo.jpg' alt='Google+ Profile Icon'>
-[Start Tag      ] <div class='gb_Ia'>
-[Start Tag      ] <div class='gb_Ma'>
+[Start Tag      ] <div class="gb_Fa gb_5b" aria-hidden="true">
+[Start Tag      ] <a class="gb_Ha gb_Ja" href="https://www.google.co.jp/webhp?authuser=0">
+[Start Tag      ] <img class="gb_La" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="//lh3.googleusercontent.com/-wwz0O8LGxvU/AAAAAAAAAAI/AAAAAAAAAAA/1_UyRt5dsHg/s48-c/photo.jpg" alt="Google+ Profile Icon">
+[Start Tag      ] <div class="gb_Ia">
+[Start Tag      ] <div class="gb_Ma">
 [Text           ] Mingjie Li
 [End Tag        ] </div>
-[Start Tag      ] <div class='gb_Na'>
+[Start Tag      ] <div class="gb_Na">
 [Text           ] limingjie0719@gmail.com (default)
 [End Tag        ] </div>
 [End Tag        ] </div>
 [End Tag        ] </a>
 [End Tag        ] </div>
-[Start Tag      ] <a class='gb_Oa gb_5b' href='https://plus.google.com/u/0/dashboard' aria-hidden='true'>
-[Start Tag      ] <span class='gb_Pa gb_1a'>
+[Start Tag      ] <a class="gb_Oa gb_5b" href="https://plus.google.com/u/0/dashboard" aria-hidden="true">
+[Start Tag      ] <span class="gb_Pa gb_1a">
 [End Tag        ] </span>
-[Start Tag      ] <div class='gb_Qa'>
+[Start Tag      ] <div class="gb_Qa">
 [Text           ] All your Google+ pages &rsaquo;
 [End Tag        ] </div>
 [End Tag        ] </a>
-[Start Tag      ] <div class='gb_Ba'>
+[Start Tag      ] <div class="gb_Ba">
 [Start Tag      ] <div>
-[Start Tag      ] <a class='gb_8b gb_6' href='https://accounts.google.com/AddSession?hl=en&amp;continue=https://www.google.co.jp/%3Fgfe_rd%3Dcr%26ei%3D7PElVcvfDouM8Qf-3YHYAg%26gws_rd%3Dssl'>
+[Start Tag      ] <a class="gb_8b gb_6" href="https://accounts.google.com/AddSession?hl=en&amp;continue=https://www.google.co.jp/%3Fgfe_rd%3Dcr%26ei%3D7PElVcvfDouM8Qf-3YHYAg%26gws_rd%3Dssl">
 [Text           ] Add account
 [End Tag        ] </a>
 [End Tag        ] </div>
 [Start Tag      ] <div>
-[Start Tag      ] <a class='gb_bc gb_ic gb_6' id='gb_71' href='https://accounts.google.com/Logout?hl=en&amp;continue=https://www.google.co.jp/%3Fgfe_rd%3Dcr%26ei%3D7PElVcvfDouM8Qf-3YHYAg%26gws_rd%3Dssl&amp;timeStmp=1428550125&amp;secTok=.AG5fkS_e5AZ-Snn3nBir8-koCjSdPrY5XQ' target='_top'>
+[Start Tag      ] <a class="gb_bc gb_ic gb_6" id="gb_71" href="https://accounts.google.com/Logout?hl=en&amp;continue=https://www.google.co.jp/%3Fgfe_rd%3Dcr%26ei%3D7PElVcvfDouM8Qf-3YHYAg%26gws_rd%3Dssl&amp;timeStmp=1428550125&amp;secTok=.AG5fkS_e5AZ-Snn3nBir8-koCjSdPrY5XQ" target="_top">
 [Text           ] Sign out
 [End Tag        ] </a>
 [End Tag        ] </div>
@@ -743,9 +743,9 @@ Fl("gb_0b");Fl("gb_mc");
 [Start Tag      ] <style>
 [Raw Text       ] .gb_k .gbqfi::before{left:-56px;top:-35px}.gb_M .gbqfb:focus .gbqfi{outline:1px dotted #fff}@-webkit-keyframes gb__a{0%{opacity:0}50%{opacity:1}}@keyframes gb__a{0%{opacity:0}50%{opacity:1}}#gb#gb a.gb_l,#gb#gb a.gb_m{color:#404040;text-decoration:none}#gb#gb a.gb_m:hover,#gb#gb a.gb_m:focus{color:#000;text-decoration:underline}.gb_n.gb_o{display:none;padding-left:15px;vertical-align:middle}.gb_n.gb_o:first-child{padding-left:0}.gb_p.gb_o{display:inline-block}.gb_q .gb_p.gb_o{-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex:0 1 main-size;flex:0 1 main-size;display:-webkit-flex;display:flex}.gb_r .gb_p.gb_o{display:none}.gb_n .gb_m{display:inline-block;line-height:24px;outline:none;vertical-align:middle}.gb_p .gb_m{min-width:60px;overflow:hidden;-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex:0 1 main-size;flex:0 1 main-size;text-overflow:ellipsis}.gb_s .gb_p .gb_m{min-width:0}.gb_t .gb_p .gb_m{width:0!important}.gb_u .gb_m{font-weight:bold;text-shadow:0 1px 1px rgba(255,255,255,.9)}.gb_v .gb_m{font-weight:bold;text-shadow:0 1px 1px rgba(0,0,0,.6)}#gb#gb.gb_v a.gb_m{color:#fff}.gb_K .gb_L{background-position:-326px -52px;opacity:.55}.gb_u .gb_K .gb_L{background-position:-97px -57px;opacity:.7}.gb_v .gb_K .gb_L{background-position:-214px 0;opacity:1}.gb_Wc{color:#000;left:0;min-width:1152px;position:absolute;top:0;-webkit-user-select:none;width:100%}.gb_4b{font:13px/27px Arial,sans-serif;position:relative;height:60px;width:100%}.gb_ia .gb_4b{height:28px}#gba{height:60px}#gba.gb_ia{height:28px}#gba.gb_Xc{height:90px}#gba.gb_Xc.gb_ia{height:58px}.gb_4b>.gb_o{height:60px;line-height:58px;vertical-align:middle}.gb_ia .gb_4b>.gb_o{height:28px;line-height:26px}.gb_4b::before{background:#e5e5e5;bottom:0;content:'';display:none;height:1px;left:0;position:absolute;right:0}.gb_4b{background:#f1f1f1}.gb_Zc .gb_4b{background:#fff}.gb_Zc .gb_4b::before,.gb_ia .gb_4b::before{display:none}.gb_u .gb_4b,.gb_v .gb_4b,.gb_ia .gb_4b{background:transparent}.gb_u .gb_4b::before{background:#e1e1e1;background:rgba(0,0,0,.12)}.gb_v .gb_4b::before{background:#333;background:rgba(255,255,255,.2)}.gb_o{display:inline-block;-webkit-flex:0 0 auto;flex:0 0 auto;-webkit-flex:0 0 main-size;flex:0 0 main-size}.gb_o.gb_0c{float:right;-webkit-order:1;order:1}.gb_1c{white-space:nowrap}.gb_q .gb_1c{display:-webkit-flex;display:flex}.gb_1c,.gb_o{margin-left:0!important;margin-right:0!important}.gb_1a{background-image:url('//ssl.gstatic.com/gb/images/i1_71651352.png');-webkit-background-size:356px 144px;background-size:356px 144px}@media (min-resolution:1.25dppx),(-webkit-min-device-pixel-ratio:1.25),(min-device-pixel-ratio:1.25){.gb_1a{background-image:url('//ssl.gstatic.com/gb/images/i2_9ef0f6fa.png')}}.gb_rb{display:inline-block;padding:0 0 0 15px;vertical-align:middle}.gb_rb:first-child,#gbsfw:first-child+.gb_rb{padding-left:0}.gb_6a{position:relative}.gb_L{display:inline-block;outline:none;vertical-align:middle;-webkit-border-radius:2px;border-radius:2px;-webkit-box-sizing:border-box;box-sizing:border-box;height:30px;width:30px}#gb#gb a.gb_L{color:#404040;cursor:default;text-decoration:none}#gb#gb a.gb_L:hover,#gb#gb a.gb_L:focus{color:#000}.gb_qa{border-color:transparent;border-bottom-color:#fff;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;display:none;position:absolute;left:6.5px;top:37px;z-index:1;height:0;width:0;-webkit-animation:gb__a .2s;animation:gb__a .2s}.gb_ra{border-color:transparent;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;display:none;position:absolute;left:6.5px;z-index:1;height:0;width:0;-webkit-animation:gb__a .2s;animation:gb__a .2s;border-bottom-color:#ccc;border-bottom-color:rgba(0,0,0,.2);top:36px}x:-o-prefocus,div.gb_ra{border-bottom-color:#ccc}.gb_O{background:#fff;border:1px solid #ccc;border-color:rgba(0,0,0,.2);-webkit-box-shadow:0 2px 10px rgba(0,0,0,.2);box-shadow:0 2px 10px rgba(0,0,0,.2);display:none;outline:none;overflow:hidden;position:absolute;right:0;top:44px;-webkit-animation:gb__a .2s;animation:gb__a .2s;-webkit-border-radius:2px;border-radius:2px;-webkit-user-select:text}.gb_rb.gb_Sa .gb_qa,.gb_rb.gb_Sa .gb_ra,.gb_rb.gb_Sa .gb_O{display:block}.gb_oc{position:absolute;right:0;top:44px;z-index:-1}.gb_ia .gb_qa,.gb_ia .gb_ra,.gb_ia .gb_O{margin-top:-10px}.gb_ea{-webkit-background-size:32px 32px;background-size:32px 32px;-webkit-border-radius:50%;border-radius:50%;display:block;margin:-1px;height:32px;width:32px}.gb_ea:hover,.gb_ea:focus{-webkit-box-shadow:0 1px 0 rgba(0,0,0,.15);box-shadow:0 1px 0 rgba(0,0,0,.15)}.gb_ea:active{-webkit-box-shadow:inset 0 2px 0 rgba(0,0,0,.15);box-shadow:inset 0 2px 0 rgba(0,0,0,.15)}.gb_ea:active::after{background:rgba(0,0,0,.1);-webkit-border-radius:50%;border-radius:50%;content:'';display:block;height:100%}.gb_fa:not(.gb_k) .gb_ea::before,.gb_fa:not(.gb_k) .gb_ga::before{content:none}.gb_ha{cursor:pointer;line-height:30px;min-width:30px;overflow:hidden;vertical-align:middle;width:auto;text-overflow:ellipsis}.gb_ia .gb_ha,.gb_ia .gb_ja{line-height:26px}#gb#gb.gb_ia a.gb_ha,.gb_ia .gb_ja{color:#666;font-size:11px;height:auto}#gb#gb.gb_ia a.gb_ha:hover,#gb#gb.gb_ia a.gb_ha:focus{color:#000}.gb_ka{border-top:4px solid #404040;border-left:4px dashed transparent;border-right:4px dashed transparent;display:inline-block;margin-left:6px;vertical-align:middle}.gb_ia .gb_ka{border-top-color:#999}.gb_la:hover .gb_ka{border-top-color:#000}.gb_u .gb_ha{font-weight:bold;text-shadow:0 1px 1px rgba(255,255,255,.9)}.gb_v .gb_ha{font-weight:bold;text-shadow:0 1px 1px rgba(0,0,0,.6)}#gb#gb.gb_v.gb_v a.gb_ha{color:#fff}.gb_v.gb_v .gb_ka{border-top-color:#fff}.gb_u .gb_ea,.gb_v .gb_ea{-webkit-box-shadow:0 1px 2px rgba(0,0,0,.2);box-shadow:0 1px 2px rgba(0,0,0,.2)}.gb_u .gb_ea:hover,.gb_v .gb_ea:hover,.gb_u .gb_ea:focus,.gb_v .gb_ea:focus{-webkit-box-shadow:0 1px 0 rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.2);box-shadow:0 1px 0 rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.2)}.gb_ma .gb_na,.gb_oa .gb_na{position:absolute;right:1px}.gb_na.gb_o,.gb_pa.gb_o,.gb_la.gb_o{-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex:0 1 main-size;flex:0 1 main-size}.gb_fa.gb_t .gb_ha{width:30px!important}.gb_5b{display:none!important}.gb_k .gb_K .gb_L::before{left:-326px;top:-52px}.gb_k.gb_u .gb_K .gb_L::before{left:-97px;top:-57px}.gb_k.gb_v .gb_K .gb_L::before{left:-214px;top:0}.gb_M .gb_N{position:relative}.gb_k .gb_Za .gb_1a::before{left:0;top:-105px}.gb_k.gb_v .gb_Za .gb_1a::before{left:-97px;top:-92px}.gb_k.gb_u .gb_Za .gb_1a::before{left:-97px;top:0}.gb_k .gb_2a{background-image:none!important}.gb_k .gb_3a{visibility:visible}.gb_M .gb_4a span{background:transparent}.gb_k .gb_7a::before{left:-56px;top:0}.gb_k .gb_8a .gb_7a::before{left:-291px;top:-103px}.gb_k.gb_u .gb_L .gb_7a::before{left:-167px;top:-57px}.gb_k.gb_u .gb_8a .gb_7a::before{left:-132px;top:-57px}.gb_k.gb_v .gb_L .gb_7a::before{left:-326px;top:-87px}.gb_k.gb_v .gb_8a .gb_7a::before{left:0;top:-70px}.gb_M .gb_fb{border:1px solid #fff;color:#fff}.gb_M.gb_u .gb_fb{border-color:#000;color:#000}.gb_k .gb_fb.gb_gb::before,.gb_M.gb_k.gb_v .gb_fb.gb_gb::before{left:-214px;top:-117px}.gb_k .gb_fb.gb_hb::before,.gb_M.gb_k.gb_v .gb_fb.gb_hb::before{left:-256px;top:-73px}.gb_k.gb_v .gb_fb.gb_gb::before,.gb_M.gb_k.gb_u .gb_fb.gb_gb::before{left:-326px;top:-122px}.gb_k.gb_v .gb_fb.gb_hb::before,.gb_M.gb_k.gb_u .gb_fb.gb_hb::before{left:-214px;top:-92px}.gb_kb{display:none;margin:28px;margin-bottom:-12px;outline:none;position:relative;width:264px;z-index:1;-webkit-border-radius:2px;border-radius:2px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.1),0 0 1px rgba(0,0,0,0.1);box-shadow:0 1px 2px rgba(0,0,0,0.1),0 0 1px rgba(0,0,0,0.1)}.gb_kb.gb_Sa{display:block}.gb_jb{-webkit-background-size:64px 64px;background-size:64px 64px;display:inline-block;margin:12px;vertical-align:top;height:64px;width:64px}.gb_mb{display:inline-block;padding:16px 16px 16px 0;vertical-align:top;white-space:normal}.gb_jb~.gb_mb{margin-right:88px}.gb_mb:first-child{padding-left:16px}.gb_nb{color:#262626;font:16px/24px Arial,sans-serif}.gb_ob{color:#737373;font:13px/18px Arial,sans-serif}#gb#gb .gb_kb .gb_pb{color:#427fed;text-decoration:none}#gb#gb .gb_kb .gb_pb:hover{text-decoration:underline}.gb_kb .gb_lb{background-position:-256px 0;cursor:pointer;opacity:.27;outline:none;position:absolute;right:4px;top:4px;height:12px;width:12px}.gb_kb .gb_lb:hover{opacity:.55}.gb_rb.gb_sb{padding:0}.gb_sb .gb_O{padding:26px 26px 22px 13px;background:#ffffff}.gb_tb.gb_sb .gb_O{background:#4d90fe}a.gb_ub{color:#666666!important;font-size:22px;height:9px;opacity:.8;position:absolute;right:14px;top:4px;text-decoration:none!important;width:9px}.gb_tb a.gb_ub{color:#c1d1f4!important}a.gb_ub:hover,a.gb_ub:active{opacity:1}.gb_vb{padding:0;width:258px;white-space:normal;display:table}.gb_tb .gb_vb{width:200px}.gb_wb{color:#333333;font-size:16px;line-height:20px;margin:0;margin-bottom:16px}.gb_tb .gb_wb{color:#ffffff}.gb_xb{color:#666666;line-height:17px;margin:0;margin-bottom:5px}.gb_tb .gb_xb{color:#ffffff}.gb_yb{position:absolute;background:transparent;top:-999px;z-index:-1;visibility:hidden;margin-top:1px;margin-left:1px}#gb .gb_sb{margin:0}.gb_sb .gb_6{background:#4d90fe;border-color:#3079ed;margin-top:15px}#gb .gb_sb a.gb_6.gb_6{color:#ffffff}.gb_sb .gb_6:hover{background:#357ae8;border-color:#2f5bb7}.gb_zb .gb_6a .gb_qa{border-bottom-color:#ffffff;display:block}.gb_Ab .gb_6a .gb_qa{border-bottom-color:#4d90fe;display:block}.gb_zb .gb_6a .gb_ra,.gb_Ab .gb_6a .gb_ra{display:block}.gb_Bb,.gb_Cb{display:table-cell}.gb_Bb{vertical-align:middle}.gb_Cb{padding-left:13px;width:100%}.gb_Db{margin-bottom:32px;font-size:small}.gb_Db .gb_Eb{margin-right:5px}.gb_Db .gb_Fb{color:red}.gb_Hb{color:#ffffff;font-size:13px;font-weight:bold;height:25px;line-height:19px;padding-top:5px;padding-left:12px;position:relative;background-color:#4d90fe}.gb_Hb .gb_lb{color:#ffffff;cursor:default;font-size:22px;font-weight:normal;position:absolute;right:12px;top:5px}.gb_Hb .gb_pb,.gb_Hb .gb_Ib{color:#ffffff;display:inline-block;font-size:11px;margin-left:16px;padding:0 8px;white-space:nowrap}.gb_Jb{background:none;background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0.16)),to(rgba(0,0,0,0.2)));background-image:-webkit-linear-gradient(top,rgba(0,0,0,0.16),rgba(0,0,0,0.2));background-image:linear-gradient(top,rgba(0,0,0,0.16),rgba(0,0,0,0.2));background-image:-webkit-linear-gradient(top,rgba(0,0,0,0.16),rgba(0,0,0,0.2));border-radius:2px;border:1px solid #dcdcdc;border:1px solid rgba(0,0,0,0.1);cursor:default!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#160000ff,endColorstr=#220000ff);text-decoration:none!important;-webkit-border-radius:2px}.gb_Jb:hover{background:none;background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0.14)),to(rgba(0,0,0,0.2)));background-image:-webkit-linear-gradient(top,rgba(0,0,0,0.14),rgba(0,0,0,0.2));background-image:linear-gradient(top,rgba(0,0,0,0.14),rgba(0,0,0,0.2));background-image:-webkit-linear-gradient(top,rgba(0,0,0,0.14),rgba(0,0,0,0.2));border:1px solid rgba(0,0,0,0.2);box-shadow:0 1px 1px rgba(0,0,0,0.1);-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.1);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#14000000,endColorstr=#22000000)}.gb_Jb:active{box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3)}.gb_qb{display:none}.gb_qb.gb_Sa{display:block}.gb_k .gb_jb{background-image:none!important}.gb_k .gb_jb::before{display:inline-block;-webkit-transform:scale(.5);transform:scale(.5);-webkit-transform-origin:0 0;transform-origin:0 0}.gb_k .gb_kb .gb_lb{position:absolute}.gb_k .gb_kb .gb_lb::before{left:-256px;top:0}.gb_k .gb_0b .gb_L::before{left:-326px;top:-17px}.gb_k.gb_u .gb_0b .gb_L::before{left:-256px;top:-103px}.gb_k.gb_v .gb_0b .gb_L::before{left:0;top:-35px}.gb_M .gb_ra{border:0;border-left:1px solid rgba(0,0,0,.2);border-top:1px solid rgba(0,0,0,.2);height:14px;width:14px;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.gb_M .gb_qa{border:0;border-left:1px solid rgba(0,0,0,.2);border-top:1px solid rgba(0,0,0,.2);height:14px;width:14px;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-color:#fff;background:#fff}.gb_k .gb_Rc::before{clip:rect(-0 51px 16px 35px);left:-13px;top:22px}.gb_k .gb_1a.gb_Sc{position:absolute}.gb_k .gb_Sc::before{clip:rect(17px 307px 33px 291px);left:-261px;top:5px}.gb_k .gb_ma .gb_Rc::before{left:-5px}@media (min-resolution:1.25dppx),(-webkit-min-device-pixel-ratio:1.25),(min-device-pixel-ratio:1.25){.gb_k .gb_Rc::before{clip:rect(-0 102px 32px 70px)}.gb_k .gb_Sc::before{clip:rect(34px 614px 66px 582px)}}.gb_k .gb_1a,.gb_k .gbii,.gb_k .gbip{background-image:none;overflow:hidden;position:relative}.gb_k .gb_1a::before{content:url('//ssl.gstatic.com/gb/images/i1_71651352.png');position:absolute}@media (min-resolution:1.25dppx),(-webkit-min-device-pixel-ratio:1.25),(min-device-pixel-ratio:1.25){.gb_k .gb_1a::before{content:url('//ssl.gstatic.com/gb/images/i2_9ef0f6fa.png');-webkit-transform:scale(.5);transform:scale(.5);-webkit-transform-origin:0 0;transform-origin:0 0}}.gb_M a:focus{outline:1px dotted #fff!important}sentinel{}
 [End Tag        ] </style>
-[Start Tag      ] <div id='xjsd'>
+[Start Tag      ] <div id="xjsd">
 [End Tag        ] </div>
-[Start Tag      ] <div id='xjsi' data-jiis='bp'>
+[Start Tag      ] <div id="xjsi" data-jiis="bp">
 [Start Tag      ] <script>
 [Raw Text       ] (function(){function c(b){window.setTimeout(function(){var a=document.createElement("script");a.src=b;document.getElementById("xjsd").appendChild(a)},0)}google.dljp=function(b,a){google.xjsu=b;c(a)};google.dlj=c;})();(function(){window.google.xjsrm=[];})();if(google.y)google.y.first=[];if(!google.xjs){window._=window._||{};window._._DumpException=function(e){throw e};if(google.timers&&google.timers.load.t){google.timers.load.t.xjsls=new Date().getTime();}google.dljp('/xjs/_/js/k\x3dxjs.s.en.3E4y86ueYGo.O/m\x3dsx,c,sb,cdos,cr,elog,jsa,r,hsm,j,p,d,csi/am\x3dhET9LYYQlAXVBNQB/rt\x3dj/d\x3d1/t\x3dzcms/rs\x3dACT90oEFk4auu6gw1QIbj4HXzziPaGFeAg','/xjs/_/js/k\x3dxjs.s.en.3E4y86ueYGo.O/m\x3dsx,c,sb,cdos,cr,elog,jsa,r,hsm,j,p,d,csi/am\x3dhET9LYYQlAXVBNQB/rt\x3dj/d\x3d1/t\x3dzcms/rs\x3dACT90oEFk4auu6gw1QIbj4HXzziPaGFeAg');google.xjs=1;}google.pmc={"sx":{},"c":{"mcr":5},"sb":{"agen":false,"cgen":true,"client":"hp","dh":true,"ds":"","exp":"msedr","fl":true,"fpol":true,"host":"google.co.jp","jam":1,"msgs":{"che":"Not listening. Something went wrong.","ched":"Help","cher":"Restart listening","chh":"Say \"Ok Google\"","cht":"Hotword detection is off.","chtr":"Start listening for \"Ok Google\"","chtt":"Listening for \"Ok Google\"","cibl":"Clear Search","dym":"Did you mean:","lcky":"I\u0026#39;m Feeling Lucky","lml":"Learn more","oskt":"Input tools","psrc":"This search was removed from your \u003Ca href=\"/history\"\u003EWeb History\u003C/a\u003E","psrl":"Remove","sbit":"Search by image","srch":"Google Search","srtt":"Search by voice"},"ovr":{},"pfof":true,"pq":"","psy":"p","refoq":true,"refpd":true,"rfs":[],"scd":10,"sce":4,"sre":true,"stok":"gIu7KtYzefk4namKBWjxviEe6cA","token":"UkGjHDPDqOaj2wITi323FQ"},"abd":{"abd":false,"dabp":false,"deb":false,"der":false,"det":false,"psa":false,"sup":false},"aldd":{},"async":{},"cdos":{},"cr":{"eup":false,"qir":false,"rctj":true,"ref":false,"uff":false},"ddls":{},"elog":{},"erh":{},"foot":{"pf":true,"po":false,"qe":false},"fpe":{"js":true},"gf":{"pid":196,"si":true},"hv":{},"idck":{},"ipv6":{},"jsa":{},"jsaleg":{},"lc":{},"llc":{},"lu":{},"m":{"ab":{"on":true},"ajax":{"gl":"jp","hl":"en","q":""},"css":{"showTopNav":true},"exp":{"lrb":true,"tnav":true},"msgs":{"details":"Result details","hPers":"Hide private results","hPersD":"Currently hiding private results","loading":"Still loading...","mute":"Mute","noPreview":"Preview not available","sPers":"Show all results","sPersD":"Currently showing private results","unmute":"Unmute"},"time":{"hUnit":1500}},"r":{},"rk":{"bl":"Feedback","db":"Reported","di":"Thank you.","dl":"Report another problem","efe":true,"rb":"Wrong?","ri":"Please report the problem.","rl":"Cancel"},"rkab":{},"rmcl":{"bl":"Feedback","db":"Reported","di":"Thank you.","dl":"Report another problem","rb":"Wrong?","ri":"Please report the problem.","rl":"Cancel"},"sf":{},"spch":{"ae":"Please check your microphone.  \u003Ca href=\"https://support.google.com/chrome/?p=ui_voice_search\" target=\"_blank\"\u003ELearn more\u003C/a\u003E","hen":true,"hl":"en-JP","htt":"Listening for \"Ok Google\"","im":"Click \u003Cb\u003EAllow\u003C/b\u003E to start voice search","iw":"Waiting...","lm":"Listening...","lu":"%1$s voice search not available","ne":"No Internet connection","nt":"Didn't get that. \u003Cspan\u003ETry again\u003C/span\u003E","nv":"Please check your microphone and audio levels.  \u003Ca href=\"https://support.google.com/chrome/?p=ui_voice_search\" target=\"_blank\"\u003ELearn more\u003C/a\u003E","pe":"Voice search has been turned off.  \u003Ca href=\"https://support.google.com/chrome/?p=ui_voice_search\" target=\"_blank\"\u003EDetails\u003C/a\u003E","rm":"Speak now"},"st":{},"vm":{"bv":90491159,"d":"c2E","tc":true,"te":true,"tk":true,"ts":true},"hsm":{},"j":{"ajrp":true,"cmt":true,"icmt":false,"lbtfdr":10000,"lcuwl":true,"mcr":5,"miml":true,"prwnj":true,"scmt":true,"tct":" \\u3000?","tlh":true,"witu":false},"p":{"ae":true,"avgTtfc":2000,"brba":false,"dlen":24,"dper":3,"eae":true,"fbdc":500,"fbdu":-1,"fbh":true,"fd":1000000,"focus":true,"gpsj":true,"hiue":true,"hpt":310,"iavgTtfc":2000,"ime":true,"knrt":true,"maxCbt":1500,"mds":"prc,sp,mbl_he,mbl_hs,mbl_re,mbl_rs,mbl_sv","msg":{"dym":"Did you mean:","gs":"Google Search","kntt":"Use the up and down arrow keys to select each result. Press Enter to go to the selection.","pcnt":"New Tab","sif":"Search instead for","srf":"Showing results for"},"nprr":1,"ohpt":false,"ophe":true,"pmt":250,"pq":true,"rpt":15,"sc":"psy-ab","tdur":50,"ufl":true},"d":{},"csi":{"acsi":true},"TG8rFw":{"sd":"1"},"hLaaFQ":{"ed":"Please enter a description.","eu":"Please enter a valid URL."},"q1cupA":{},"8AF24Q":{},"bnhGTQ":{},"4RZUyg":{},"/nNC3A":{},"CjL7kw":{},"ITl3wQ":{},"FmbnUA":{},"c+PT4g":{},"/1S6iw":{},"GqeGtQ":{},"+idT0Q":{},"NpA8BQ":{},"ADSBcg":{},"BwDLOw":{},"A/Ucpg":{},"63G1zA":{},"cm4D8w":{},"GfrcvQ":{}};google.y.first.push(function(){google.loadAll(['abd','async','erh','foot','fpe','hv','idck','ipv6','lc','lu','m','sf','spch','vm'].concat(google.xjsrm||[]));if(google.med){google.med('init');google.initHistory();google.med('history');}});if(google.j&&google.j.en&&google.j.xi){window.setTimeout(google.j.xi,0);}
 

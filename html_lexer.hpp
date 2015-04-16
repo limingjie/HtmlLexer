@@ -119,6 +119,7 @@ public:
     void append_to_attribute_name(char c) {_attribute_name.push_back(c);}
     void append_to_attribute_value(char c) {_attribute_value.push_back(c);}
     void set_self_closing() {_is_self_closing = true;}
+    bool get_self_closing() {return _is_self_closing;}
 
     static void split_classes_to_set(std::string &classes, std::set<std::string> &classes_set)
     {
@@ -178,7 +179,7 @@ public:
             std::cout << ' ' << attribute.first;
             if (attribute.second.size() != 0)
             {
-                std::cout << "='" << attribute.second << "'";
+                std::cout << "=\"" << attribute.second << "\"";
             }
         }
         if (_is_self_closing)
@@ -352,8 +353,10 @@ public:
     static const size_t npos = -1;
     size_t size() {return _tokens.size();}
 
+    html_token *get_token(size_t pos) {return _tokens[pos];}
     size_t find_tag(bool start_tag, std::string tag_name, size_t pos);
     size_t find_tag_by_class_names(std::string tag_name, std::string classes, size_t pos);
+    size_t find_matching_tag(size_t pos);
 
     void print()
     {
