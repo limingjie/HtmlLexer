@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/limingjie/HtmlLexer.svg?branch=master)](https://travis-ci.org/limingjie/HtmlLexer)
+
 # HtmlLexer
 A HTML Lexical Analyzer.
 
