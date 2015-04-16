@@ -2,7 +2,7 @@
 A HTML Lexical Analyzer.
 
 ## HTML Specification
-The HtmlLexer follows [HTML5 Specification](http://www.w3.org/TR/html5/).
+The library follows [HTML5 Specification](http://www.w3.org/TR/html5/).
 - [8 The HTML syntax](http://www.w3.org/TR/html5/syntax.html#syntax)
   - [8.2 Parsing HTML documents](http://www.w3.org/TR/html5/syntax.html#parsing)
     - [8.2.4 Tokenization](http://www.w3.org/TR/html5/syntax.html#tokenization)
@@ -76,6 +76,9 @@ demo.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
 - Code: [demo.cpp](https://github.com/limingjie/HtmlLexer/blob/master/demo.cpp)
 - Input: [google.html](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html)
 - Output: [google.html.output.txt](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html.output.txt)
+
+## Known Issue
+The library only process ASCII or UTF-8 encoded HTML.
 
 ## License
 Public Domain
