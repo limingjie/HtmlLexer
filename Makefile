@@ -17,15 +17,15 @@ test: demo.exe cleanoutput \
 	sample/google.html sample/netease.html sample/quora.html \
 	sample/stackoverflow.html sample/wikipedia.html sample/wikiwand.html
 	@echo "==>Unit Test..."
-	demo.exe sample/baidu.html         > sample/baidu.html.output.txt
-	demo.exe sample/facebook.html      > sample/facebook.html.output.txt
-	demo.exe sample/github.html        > sample/github.html.output.txt
-	demo.exe sample/google.html        > sample/google.html.output.txt
-	demo.exe sample/netease.html       > sample/netease.html.output.txt
-	demo.exe sample/quora.html         > sample/quora.html.output.txt
-	demo.exe sample/stackoverflow.html > sample/stackoverflow.html.output.txt
-	demo.exe sample/wikipedia.html     > sample/wikipedia.html.output.txt
-	demo.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
+	./demo.exe sample/baidu.html         > sample/baidu.html.output.txt
+	./demo.exe sample/facebook.html      > sample/facebook.html.output.txt
+	./demo.exe sample/github.html        > sample/github.html.output.txt
+	./demo.exe sample/google.html        > sample/google.html.output.txt
+	./demo.exe sample/netease.html       > sample/netease.html.output.txt
+	./demo.exe sample/quora.html         > sample/quora.html.output.txt
+	./demo.exe sample/stackoverflow.html > sample/stackoverflow.html.output.txt
+	./demo.exe sample/wikipedia.html     > sample/wikipedia.html.output.txt
+	./demo.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
 	@echo "==>Done."
 
 cleanoutput:
