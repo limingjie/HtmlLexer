@@ -1,0 +1,17 @@
+language: cpp
+
+before_install:
+  - g++ -v
+
+script: make && make test
+
+branches:
+  only:
+  - travis-ci
+
+notifications:
+  email: false
+
+os:
+  - linux
+  - osx
