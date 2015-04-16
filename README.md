@@ -12,21 +12,31 @@ The library follows [HTML5 Specification](http://www.w3.org/TR/html5/).
 // define lexer and tokenize html.
 html_lexer lexer(html);
 
+size_t start, end, list_start, list_end, start_pos, end_pos;
+
 // find <ul> tag that has classes "header-nav" and "right" from beginning.
-size_t start = lexer.find_tag_by_class_names("ul","header-nav right", 0);
+start = lexer.find_tag_by_class_names("ul","header-nav right", 0);
+
+// check result
+if (start == html_lexer::npos)
+{
+    // failed
+}
 
 // find the <ul> tag's end tag </ul>.
-size_t end = lexer.find_matching_tag(start);
+end = lexer.find_matching_tag(start);
 
 // find </li> tag after <ul> tag which we found.
-size_t list_end = find_tag_by_name("li", false, start + 1);
+list_end = lexer.find_tag_by_name("li", false, start + 1);
 
 // find the </li> tag's start tag <li>
-size_t list_start = lexer.find_matching_tag(list_end);
+list_start = lexer.find_matching_tag(list_end);
 
 // get the original position in html [start_pos, end_pos)
-size_t start_pos lexer.get_token(list_start)->get_start_position();
-size_t end_pos lexer.get_token(list_end)->get_end_position();
+start_pos = lexer.get_token(list_start)->get_start_position();
+end_pos = lexer.get_token(list_end)->get_end_position();
+
+std::cerr << html.substr(start_pos, end_pos - start_pos) << std::endl;
 ```
 
 ## Build
