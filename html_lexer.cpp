@@ -714,13 +714,25 @@ bool html_lexer::tokenize(std::string &html)
     return true;
 }
 
+// get nth token, return nullptr if out of range
+html_token *html_lexer::get_token(size_t pos)
+{
+    size_t size = _tokens.size();
+    if (pos < 0 || pos >= size) return nullptr;
+
+    return _tokens[pos];
+}
+
+
 // find tag by name, return npos if not found
 size_t html_lexer::find_tag_by_name(
     std::string tag_name, bool start_tag, size_t pos)
 {
+    size_t size = _tokens.size();
+    if (pos < 0 || pos >= size) return npos;
+
     html_token *token;
     html_token::token_type type;
-    size_t size = _tokens.size();
     for (size_t idx = pos; idx < size; ++idx)
     {
         token = _tokens[idx];
@@ -730,7 +742,6 @@ size_t html_lexer::find_tag_by_name(
         {
             if (iequals(((html_tag_token *)token)->get_name(), tag_name))
             {
-                token->print(_html);
                 return idx;
             }
         }
@@ -743,12 +754,14 @@ size_t html_lexer::find_tag_by_name(
 size_t html_lexer::find_tag_by_class_names(
     std::string tag_name, std::string classes, size_t pos)
 {
+    size_t size = _tokens.size();
+    if (pos < 0 || pos >= size) return npos;
+
     html_token *token;
     html_token::token_type type;
     std::set<std::string> classes_set;
     html_start_tag_token::split_classes_to_set(classes, classes_set);
 
-    size_t size = _tokens.size();
     for (size_t idx = pos; idx < size; ++idx)
     {
         token = _tokens[idx];
@@ -772,6 +785,9 @@ size_t html_lexer::find_tag_by_class_names(
 // return position after pos, if nth tag is start tag
 size_t html_lexer::find_matching_tag(size_t pos)
 {
+    size_t size = _tokens.size();
+    if (pos < 0 || pos >= size) return npos;
+
     html_token *token = _tokens[pos];
     html_token::token_type type = token->get_type();
     std::string tag_name;
@@ -787,7 +803,6 @@ size_t html_lexer::find_matching_tag(size_t pos)
         }
 
         tag_name = ((html_tag_token *)token)->get_name();
-        size_t size = _tokens.size();
 
         for (size_t i = pos + 1; i < size; ++i)
         {

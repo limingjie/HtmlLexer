@@ -91,7 +91,7 @@ demo.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
 - Output: [google.html.output.txt](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html.output.txt)
 
 ## Known Issue
-The library only process ASCII or UTF-8 encoded HTML.
+The library only supports ASCII or UTF-8 encoded HTML.
 
 ## License
 Public Domain

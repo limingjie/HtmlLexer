@@ -254,6 +254,7 @@ private:
 public:
     html_text_token() {set_type(token_text);}
 
+    // print tokenized information
     void print()
     {
         std::cout << "[Text           ] " << get_readonly_content() << '\n';
@@ -266,6 +267,7 @@ class html_raw_text_token : public html_data_token
 public:
     html_raw_text_token() {set_type(token_raw_text);}
 
+    // print tokenized information
     void print()
     {
         std::cout << "[Raw Text       ] " << get_readonly_content() << '\n';
@@ -351,8 +353,8 @@ public:
     // return the number of tokens
     size_t size() {return _tokens.size();}
 
-    // get nth token, this function does not check whether pos is valid or not
-    html_token *get_token(size_t pos) {return _tokens[pos];}
+    // get nth token, return nullptr if out of range
+    html_token *get_token(size_t pos);
 
     // find tag by name, return npos if not found
     size_t find_tag_by_name(std::string tag_name, bool start_tag, size_t pos);

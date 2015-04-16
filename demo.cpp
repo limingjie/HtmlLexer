@@ -28,29 +28,6 @@ int main(int argc, char **argv)
 
             // print tokens
             lexer.print();
-
-            // // test find_tag_by_class_names() and find_matching_tag()
-            // size_t pos = 0;
-            // while(true)
-            // {
-            //     pos = lexer.find_tag_by_class_names("ul","header-nav right", pos);
-            //     if (pos != html_lexer::npos)
-            //     {
-            //         // test forward search
-            //         size_t pos2 = lexer.find_matching_tag(pos);
-            //         // test backward search
-            //         size_t pos3 = lexer.find_matching_tag(pos2);
-            //         // print original html
-            //         size_t start = lexer.get_token(pos3)->get_start_position();
-            //         size_t length = lexer.get_token(pos2)->get_end_position() - start;
-            //         std::cerr << html.substr(start, length) << std::endl;
-            //
-            //         ++pos;
-            //         continue;
-            //     }
-            //     break;
-            // }
-
         }
         else
         {
