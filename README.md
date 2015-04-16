@@ -7,6 +7,28 @@ The HtmlLexer follows [HTML5 Specification](http://www.w3.org/TR/html5/).
   - [8.2 Parsing HTML documents](http://www.w3.org/TR/html5/syntax.html#parsing)
     - [8.2.4 Tokenization](http://www.w3.org/TR/html5/syntax.html#tokenization)
 
+## Interface
+```c++
+// define lexer and tokenize html.
+html_lexer lexer(html);
+
+// find <ul> tag that has classes "header-nav" and "right" from beginning.
+size_t start = lexer.find_tag_by_class_names("ul","header-nav right", 0);
+
+// find the <ul> tag's end tag </ul>.
+size_t end = lexer.find_matching_tag(start);
+
+// find </li> tag after <ul> tag which we found.
+size_t list_end = find_tag_by_name("li", false, start + 1);
+
+// find the </li> tag's start tag <li>
+size_t list_start = lexer.find_matching_tag(list_end);
+
+// get the original position in html [start_pos, end_pos)
+size_t start_pos lexer.get_token(list_start)->get_start_position();
+size_t end_pos lexer.get_token(list_end)->get_end_position();
+```
+
 ## Build
 Use makefile in Unix/Linux/MinGW.
 ```bash

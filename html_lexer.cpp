@@ -26,6 +26,120 @@ static bool iequals(const std::string &str1, const std::string &str2)
     return true;
 }
 
+//
+// class html_start_tag_token methods
+//
+
+// lexer only, add new attribute and push temp attribute to attribute vector
+void html_start_tag_token::new_attribute()
+{
+    if (_attribute_name.size() != 0)
+    {
+        _attributes.push_back(
+            std::make_pair(_attribute_name, _attribute_value));
+
+        if (_attribute_name == "class")
+        {
+            set_classes(_attribute_value);
+        }
+    }
+
+    _attribute_name.clear();
+    _attribute_value.clear();
+}
+
+// split classes into set
+void html_start_tag_token::split_classes_to_set(
+    std::string &classes, std::set<std::string> &classes_set)
+{
+    size_t first;
+    size_t last = 0;
+
+    while (last != std::string::npos)
+    {
+        first = classes.find_first_not_of("\t\r\n ", last);
+        if (first == std::string::npos) break;
+
+        last = classes.find_first_of("\t\r\n ", first + 1);
+        if (last == std::string::npos)
+        {
+            classes_set.insert(classes.substr(first));
+        }
+        else
+        {
+            classes_set.insert(classes.substr(first, last - first));
+        }
+    }
+}
+
+// check if tag has specific classes
+bool html_start_tag_token::has_classes(std::string &classes)
+{
+    std::set<std::string> classes_set;
+    split_classes_to_set(classes, classes_set);
+
+    return has_classes(classes_set);
+}
+
+// check if tag has specific classes
+bool html_start_tag_token::has_classes(std::set<std::string> &classes_set)
+{
+    for (auto it = classes_set.cbegin(); it != classes_set.cend(); ++it)
+    {
+        // TODO: case sensitive?
+        if (_classes.find(*it) == _classes.end())
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// print tokenized information
+void html_start_tag_token::print()
+{
+    std::cout << "[Start Tag      ] <" << get_name();
+    for (auto attribute : _attributes)
+    {
+        std::cout << ' ' << attribute.first;
+        if (attribute.second.size() != 0)
+        {
+            std::cout << "=\"" << attribute.second << "\"";
+        }
+    }
+    if (_is_self_closing)
+    {
+        std::cout << "/";
+    }
+    std::cout << ">\n";
+}
+
+//
+// class html_text_token methods
+//
+
+// lexer only, remove leading and trailing spaces
+void html_text_token::finalize()
+{
+    std::string &content = get_writable_content();
+
+    // remove leading spaces
+    auto pos = content.find_first_not_of("\t\r\n ");
+    set_start_position(get_start_position() + pos);
+    content.erase(0, pos);
+
+    // remove trailing spaces
+    pos = content.find_last_not_of("\t\r\n ");
+    set_end_position(get_end_position() - (content.size() - pos - 1));
+    content.erase(pos + 1, content.size());
+}
+
+//
+// class html_lexer methods
+//
+
+// add new token to token vector
 void html_lexer::emit_token(size_t token_end_position)
 {
     if (_token != nullptr)
@@ -65,6 +179,7 @@ void html_lexer::emit_token(size_t token_end_position)
     }
 }
 
+// process raw text
 void html_lexer::process_raw_text(std::string &tag_name)
 {
     char c;
@@ -124,6 +239,7 @@ void html_lexer::process_raw_text(std::string &tag_name)
     }
 }
 
+// process markup declaration, <!-- -->, <[CDATA[...]]>, or <!doctype>
 void html_lexer::process_markup_declaration(size_t tag_start_position)
 {
     if (_html[_idx] == '-' && _html[_idx + 1] == '-')
@@ -162,7 +278,8 @@ void html_lexer::process_markup_declaration(size_t tag_start_position)
         }
         else
         {
-            cdata = _html.substr(tag_start_position, pos + 3 - tag_start_position);
+            cdata = _html.substr(tag_start_position,
+                                 pos + 3 - tag_start_position);
             _idx = pos + 2; // point to '>'
         }
         ((html_raw_text_token *)_token)->set_content(cdata);
@@ -185,6 +302,7 @@ void html_lexer::process_markup_declaration(size_t tag_start_position)
     }
 }
 
+// process bogus comment
 void html_lexer::process_bogus_comment(size_t tag_start_position)
 {
     // emit raw text token
@@ -197,7 +315,8 @@ void html_lexer::process_bogus_comment(size_t tag_start_position)
         pos = _size - 1;
     }
 
-    std::string bogus_comment = _html.substr(tag_start_position, pos - tag_start_position + 1);
+    std::string bogus_comment =
+        _html.substr(tag_start_position, pos - tag_start_position + 1);
     token->set_end_position(pos + 1);
     token->set_content(bogus_comment);
     token->finalize();
@@ -207,6 +326,7 @@ void html_lexer::process_bogus_comment(size_t tag_start_position)
     _state = state_data;
 }
 
+// tokenizer, state machine
 bool html_lexer::tokenize(std::string &html)
 {
     // reset state machine
@@ -218,6 +338,7 @@ bool html_lexer::tokenize(std::string &html)
     clear_tokens();
 
     size_t tag_start_position = 0;
+    char _c;
 
     while (_idx < _size)
     {
@@ -315,7 +436,7 @@ bool html_lexer::tokenize(std::string &html)
         // http://www.w3.org/TR/html5/syntax.html#tag-name-_state
         case state_tag_name:
 			// std::cerr << "state_tag_name" << std::endl;
-            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
+            if (_c == ' ' || _c == '\r' || _c == '\n' || _c == '\t')
             {
                 _state = state_before_attribute_name;
             }
@@ -341,7 +462,7 @@ bool html_lexer::tokenize(std::string &html)
         // http://www.w3.org/TR/html5/syntax.html#before-attribute-name-_state
         case state_before_attribute_name:
 			// std::cerr << "state_before_attribute_name" << std::endl;
-            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
+            if (_c == ' ' || _c == '\r' || _c == '\n' || _c == '\t')
             {
                 // ignore
             }
@@ -357,15 +478,16 @@ bool html_lexer::tokenize(std::string &html)
             else if (isupper(_c))
             {
                 ((html_tag_token *)_token)->new_attribute();
-                ((html_tag_token *)_token)->append_to_attribute_name(tolower(_c));
+                ((html_tag_token *)_token)->
+                    append_to_attribute_name(tolower(_c));
                 _state = state_attribute_name;
             }
             else
             {
-                // error
+                // parse error
                 if (_c == '"' || _c == '\'' || _c == '<' || _c == '=')
                 {
-                    // but treat it as anything else
+                    // treat it as attribute name
                 }
 
                 ((html_tag_token *)_token)->new_attribute();
@@ -377,7 +499,7 @@ bool html_lexer::tokenize(std::string &html)
         // http://www.w3.org/TR/html5/syntax.html#attribute-name-_state
         case state_attribute_name:
 			// std::cerr << "state_attribute_name" << std::endl;
-            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
+            if (_c == ' ' || _c == '\r' || _c == '\n' || _c == '\t')
             {
                 _state = state_after_attribute_name;
             }
@@ -396,14 +518,15 @@ bool html_lexer::tokenize(std::string &html)
             }
             else if (isupper(_c))
             {
-                ((html_tag_token *)_token)->append_to_attribute_name(tolower(_c));
+                ((html_tag_token *)_token)->
+                    append_to_attribute_name(tolower(_c));
             }
             else
             {
-                // error
+                // parse error
                 if (_c == '"' || _c == '\'' || _c == '<')
                 {
-                    // but treat it as anything else
+                    // treat it as attribute name
                 }
 
                 ((html_tag_token *)_token)->append_to_attribute_name(_c);
@@ -413,7 +536,7 @@ bool html_lexer::tokenize(std::string &html)
         // http://www.w3.org/TR/html5/syntax.html#after-attribute-name-_state
         case state_after_attribute_name:
 			// std::cerr << "state_after_attribute_name" << std::endl;
-            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
+            if (_c == ' ' || _c == '\r' || _c == '\n' || _c == '\t')
             {
                 // ignore
             }
@@ -433,15 +556,16 @@ bool html_lexer::tokenize(std::string &html)
             else if (isupper(_c))
             {
                 ((html_tag_token *)_token)->new_attribute();
-                ((html_tag_token *)_token)->append_to_attribute_name(tolower(_c));
+                ((html_tag_token *)_token)->
+                    append_to_attribute_name(tolower(_c));
                 _state = state_attribute_name;
             }
             else
             {
-                // error
+                // parse error
                 if (_c == '"' || _c == '\'' || _c == '<')
                 {
-                    // but treat it as anything else
+                    // treat it as attribute name
                 }
 
                 ((html_tag_token *)_token)->new_attribute();
@@ -453,7 +577,7 @@ bool html_lexer::tokenize(std::string &html)
         // http://www.w3.org/TR/html5/syntax.html#before-attribute-value-_state
         case state_before_attribute_value:
 			// std::cerr << "state_before_attribute_value" << std::endl;
-            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
+            if (_c == ' ' || _c == '\r' || _c == '\n' || _c == '\t')
             {
                 // ignore
             }
@@ -472,7 +596,7 @@ bool html_lexer::tokenize(std::string &html)
             }
             else
             {
-                // error
+                // parse error
                 if (_c == '<' || _c == '=' || _c == '`')
                 {
                     // but treat it as anything else
@@ -512,7 +636,7 @@ bool html_lexer::tokenize(std::string &html)
         // http://www.w3.org/TR/html5/syntax.html#attribute-value-(unquoted)-_state
         case state_attribute_value_unquoted:
 			// std::cerr << "state_attribute_value_unquoted" << std::endl;
-            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
+            if (_c == ' ' || _c == '\r' || _c == '\n' || _c == '\t')
             {
                 _state = state_before_attribute_name;
             }
@@ -523,8 +647,9 @@ bool html_lexer::tokenize(std::string &html)
             }
             else
             {
-                // error
-                if (_c == '"' || _c == '\'' || _c == '<' || _c == '=' || _c == '`')
+                // parse error
+                if (_c == '"' || _c == '\'' ||
+                    _c == '<' || _c == '=' || _c == '`')
                 {
                     // but treat it as anything else
                 }
@@ -536,7 +661,7 @@ bool html_lexer::tokenize(std::string &html)
         // http://www.w3.org/TR/html5/syntax.html#after-attribute-value-(quoted)-_state
         case state_after_attribute_value_quoted:
 			// std::cerr << "state_after_attribute_value_quoted" << std::endl;
-            if (_c == '\t' || _c == '\r' || _c == '\n' || _c == ' ')
+            if (_c == ' ' || _c == '\r' || _c == '\n' || _c == '\t')
             {
                 _state = state_before_attribute_name;
             }
@@ -567,7 +692,7 @@ bool html_lexer::tokenize(std::string &html)
             }
             else
             {
-                // error
+                // parse error
                 _state = state_before_attribute_name;
                 continue; // reconsume the character
             }
@@ -589,7 +714,9 @@ bool html_lexer::tokenize(std::string &html)
     return true;
 }
 
-size_t html_lexer::find_tag(bool start_tag, std::string tag_name, size_t pos)
+// find tag by name, return npos if not found
+size_t html_lexer::find_tag_by_name(
+    std::string tag_name, bool start_tag, size_t pos)
 {
     html_token *token;
     html_token::token_type type;
@@ -603,7 +730,6 @@ size_t html_lexer::find_tag(bool start_tag, std::string tag_name, size_t pos)
         {
             if (iequals(((html_tag_token *)token)->get_name(), tag_name))
             {
-                std::cerr << "find " << tag_name << " at idx " << idx << std::endl;
                 token->print(_html);
                 return idx;
             }
@@ -613,7 +739,9 @@ size_t html_lexer::find_tag(bool start_tag, std::string tag_name, size_t pos)
     return npos;
 }
 
-size_t html_lexer::find_tag_by_class_names(std::string tag_name, std::string classes, size_t pos)
+// find tag by name and classes, return npos if not found
+size_t html_lexer::find_tag_by_class_names(
+    std::string tag_name, std::string classes, size_t pos)
 {
     html_token *token;
     html_token::token_type type;
@@ -627,8 +755,8 @@ size_t html_lexer::find_tag_by_class_names(std::string tag_name, std::string cla
         type = token->get_type();
         if (type == html_token::token_start_tag)
         {
-            if ( iequals(((html_start_tag_token *)token)->get_name(), tag_name) &&
-                 ((html_start_tag_token *)token)->match_classes(classes_set))
+            if ( ((html_start_tag_token *)token)->has_classes(classes_set) &&
+                 iequals(((html_start_tag_token *)token)->get_name(), tag_name))
             {
                 return idx;
             }
@@ -638,6 +766,10 @@ size_t html_lexer::find_tag_by_class_names(std::string tag_name, std::string cla
     return npos;
 }
 
+// find matching tag of nth tag
+// return pos, if nth tag is self-closing tag or no match tag
+// return position before pos, if nth tag is close tag
+// return position after pos, if nth tag is start tag
 size_t html_lexer::find_matching_tag(size_t pos)
 {
     html_token *token = _tokens[pos];

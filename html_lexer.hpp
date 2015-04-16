@@ -16,9 +16,13 @@
 #include <cctype> // tolower(), isupper(), islower()
 #include <algorithm> // find()
 
+class html_lexer;
+
 // abstract base class for html tokens
 class html_token
 {
+    friend class html_lexer;
+
 public:
     enum token_type
     {
@@ -32,67 +36,112 @@ public:
     };
 
 private:
-    size_t     _start; // [start, end)
-    size_t     _end;   // [start, end)
+    // the position [start, end) of the token in original html
+    size_t _start;
+    size_t _end;
+
+    // the type of token
     token_type _type;
 
-public:
-    html_token() : _start(0), _end(0), _type(token_null) {}
-    virtual ~html_token() {}
+    // html_lexer only, process token before emitting
+    virtual void finalize() = 0;
 
-    // setter
-    void set_type(token_type type) {_type = type;}
+protected:
+    // html_lexer only, set position [start, end) of original html
+    // class html_text_token could reset positon on trim leading/trailing spaces
     void set_start_position(size_t pos) {_start = pos;}
     void set_end_position(size_t pos) {_end = pos;}
 
-    // getter
+public:
+    html_token() : _start(0), _end(0), _type(token_null) {}
+    virtual ~html_token() {} // to invoke delete from base class
+
+    // set/get token type
+    void set_type(token_type type) {_type = type;}
     token_type get_type() {return _type;}
+
+    // get position [start, end) of original html
     size_t get_start_position() {return _start;}
     size_t get_end_position() {return _end;}
 
-    // process token before emitting
-    virtual void finalize() = 0;
-
+    // print tokenized information
     virtual void print() = 0;
 
+    // print token in original html
     void print(std::string &html)
     {
-        std::cerr << '[' << _start << ", " << _end << ") " << html.substr(_start, _end - _start) << '\n';
+        std::cerr << '[' << _start << ", " << _end << ") "
+                  << html.substr(_start, _end - _start) << '\n';
     }
 };
 
 // abstract class for start and end tag tokens
 class html_tag_token : public html_token
 {
+    friend class html_lexer;
+
 private:
+    // the name of start/end tag
     std::string _tag_name;
 
-public:
-    // setter
-    void set_name(std::string &name) {_tag_name = name;}
+    // html_lexer only, append character to name
     void append_to_name(char c) {_tag_name.push_back(c);}
-    virtual void new_attribute() = 0;
-    virtual void append_to_attribute_name(char c) = 0;
-    virtual void append_to_attribute_value(char c) = 0;
+
+    // the lexer accept self-closing for both start and end tag.
+    // end tag should override the function, emit error or omit it.
     virtual void set_self_closing() = 0;
 
-    // getter
+    // html_lexer only, add new attribute
+    virtual void new_attribute() = 0;
+
+    // html_lexer only, append character to attribute name/value
+    virtual void append_to_attribute_name(char c) = 0;
+    virtual void append_to_attribute_value(char c) = 0;
+
+public:
+    // set/get tag name
+    void set_name(std::string &name) {_tag_name = name;}
     std::string get_name() {return _tag_name;}
 };
 
+// start tag token
 class html_start_tag_token : public html_tag_token
 {
-private:
-    std::set<std::string>                            _classes;
-    std::vector<std::pair<std::string, std::string>> _attributes;
-    std::string                                      _attribute_name;
-    std::string                                      _attribute_value;
-    bool                                             _is_self_closing;
+    friend class html_lexer;
 
+private:
+    // attributes
+    std::vector<std::pair<std::string, std::string>> _attributes;
+
+    // html_lexer only, temp variables for attribute name/value
+    std::string _attribute_name;
+    std::string _attribute_value;
+
+    // classes, class="..."
+    std::set<std::string> _classes;
+
+    // self-closing
+    bool _is_self_closing;
+
+    // set classes
     void set_classes(std::string &classes)
     {
         split_classes_to_set(classes, _classes);
     }
+
+    // html_lexer only, add new attribute and push temp attribute to attributes
+    void new_attribute();
+
+    // html_lexer only, append character to attribute name/value
+    void append_to_attribute_name(char c) {_attribute_name.push_back(c);}
+    void append_to_attribute_value(char c) {_attribute_value.push_back(c);}
+
+    // html_lexer only, before emitting, push new attribute into set
+    void finalize() {new_attribute();}
+
+    // static function, split classes into set
+    static void split_classes_to_set(
+        std::string &classes, std::set<std::string> &classes_set);
 
 public:
     html_start_tag_token() : _is_self_closing(false)
@@ -100,112 +149,39 @@ public:
         set_type(token_start_tag);
     }
 
-    // setter
-    void new_attribute()
-    {
-        if (_attribute_name.size() != 0)
-        {
-            _attributes.push_back(std::make_pair(_attribute_name, _attribute_value));
-
-            if (_attribute_name == "class")
-            {
-                set_classes(_attribute_value);
-            }
-        }
-
-        _attribute_name.clear();
-        _attribute_value.clear();
-    }
-    void append_to_attribute_name(char c) {_attribute_name.push_back(c);}
-    void append_to_attribute_value(char c) {_attribute_value.push_back(c);}
+    // get/set self closing
     void set_self_closing() {_is_self_closing = true;}
     bool get_self_closing() {return _is_self_closing;}
 
-    static void split_classes_to_set(std::string &classes, std::set<std::string> &classes_set)
-    {
-        size_t first;
-        size_t last = 0;
+    // check if tag has specific classes
+    bool has_classes(std::string &classes);
+    bool has_classes(std::set<std::string> &classes_set);
 
-        while (last != std::string::npos)
-        {
-            first = classes.find_first_not_of("\t\r\n ", last);
-            if (first == std::string::npos) break;
-
-            last = classes.find_first_of("\t\r\n ", first + 1);
-            if (last == std::string::npos)
-            {
-                classes_set.insert(classes.substr(first));
-            }
-            else
-            {
-                classes_set.insert(classes.substr(first, last - first));
-            }
-        }
-    }
-
-    bool match_classes(std::string &classes)
-    {
-        std::set<std::string> classes_set;
-        split_classes_to_set(classes, classes_set);
-
-        return match_classes(classes_set);
-    }
-
-    bool match_classes(std::set<std::string> &classes_set)
-    {
-        for (auto it = classes_set.cbegin(); it != classes_set.cend(); ++it)
-        {
-            // TODO: case sensitive?
-            if (_classes.find(*it) == _classes.end())
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    void finalize()
-    {
-        // push the last attribute
-        new_attribute();
-    }
-
-    void print()
-    {
-        std::cout << "[Start Tag      ] <" << get_name();
-        for (auto attribute : _attributes)
-        {
-            std::cout << ' ' << attribute.first;
-            if (attribute.second.size() != 0)
-            {
-                std::cout << "=\"" << attribute.second << "\"";
-            }
-        }
-        if (_is_self_closing)
-        {
-            std::cout << "/";
-        }
-        std::cout << ">\n";
-    }
+    // print tokenized information
+    void print();
 };
 
+// end tag token
 class html_end_tag_token : public html_tag_token
 {
-public:
-    html_end_tag_token()
-    {
-        set_type(token_end_tag);
-    }
+    friend class html_lexer;
 
-    // setter
+private:
+    // html_lexer only, end tag should not have attribute, omit if any.
     void new_attribute() {} // parse error
     void append_to_attribute_name(char c) {} // parse error
     void append_to_attribute_value(char c) {} // parse error
+
+    // html_lexer only, end tag should not self-closing
     void set_self_closing() {} // parse error
 
+    // html_lexer only, nothing to finalize for end tag
     void finalize() {}
 
+public:
+    html_end_tag_token() {set_type(token_end_tag);}
+
+    // print tokenized information
     void print()
     {
         std::cout << "[End Tag        ] </" << get_name() << ">\n";
@@ -215,66 +191,68 @@ public:
 // abstract class for text and comment tokens
 class html_data_token : public html_token
 {
+    friend class html_lexer;
+
 private:
+    // text or comment
     std::string _data;
 
-public:
-    // setter
+    // html_lexer only, set content
     void set_content(std::string &content) {_data = content;}
 
-    // getter
+    // html_lexer only, nothing to finalize for data token
+    void finalize() {}
+
+public:
+    // get content
     const std::string &get_readonly_content() {return _data;}
     std::string &get_writable_content() {return _data;}
+
+    // get content size
     size_t get_content_size() {return _data.size();}
 };
 
+// comment token
 class html_comment_token : public html_data_token
 {
 public:
     html_comment_token() {set_type(token_comment);}
 
-    void finalize() {}
-
+    // print tokenized information
     void print()
     {
-        std::cout << "[Comment        ] <!--" << get_readonly_content() << "-->\n";
+        std::cout << "[Comment        ] <!--"
+                  << get_readonly_content() << "-->\n";
     }
 };
 
+// bogus comment token
 class html_bogus_comment_token : public html_data_token
 {
 public:
     html_bogus_comment_token() {set_type(token_bogus_comment);}
 
-    void finalize() {}
-
+    // print tokenized information
     void print()
     {
         std::cout << "[Bogus Comment  ] " << get_readonly_content() << '\n';
     }
 };
 
+// text token
 class html_text_token : public html_data_token
 {
-public:
-    html_text_token() {set_type(token_text);}
+    friend class html_lexer;
 
+private:
+    // html_lexer only, append character to text
     void append_to_content(char c) {get_writable_content().push_back(c);}
 
-    void finalize()
-    {
-        std::string &content = get_writable_content();
+    // html_lexer only, remove leading and trailing spaces
+    void finalize();
 
-        // remove leading spaces
-        auto pos = content.find_first_not_of("\t\r\n ");
-        set_start_position(get_start_position() + pos);
-        content.erase(0, pos);
-
-        // remove trailing spaces
-        pos = content.find_last_not_of("\t\r\n ");
-        set_end_position(get_end_position() - (content.size() - pos - 1));
-        content.erase(pos + 1, content.size());
-    }
+public:
+    html_text_token() {set_type(token_text);}
 
     void print()
     {
@@ -282,12 +260,11 @@ public:
     }
 };
 
+// raw text token
 class html_raw_text_token : public html_data_token
 {
 public:
     html_raw_text_token() {set_type(token_raw_text);}
-
-    void finalize() {}
 
     void print()
     {
@@ -298,7 +275,7 @@ public:
 class html_lexer
 {
 private:
-    // states
+    // state
     enum state_type
     {
         state_data,
@@ -318,15 +295,27 @@ private:
         state_markup_declaration_open
     };
 
-    std::string                _html;
-    size_t                     _size;
-    size_t                     _idx;
-    char                       _c;
-    state_type                 _state;
-    html_token                *_token;
+    // a copy of html
+    std::string _html;
+
+    // the size of html
+    size_t _size;
+
+    // for state machine, tokenize(), process_...() functions
+    // current processing position of html
+    size_t _idx;
+    // state machine state
+    state_type  _state;
+    // new token
+    html_token *_token;
+
+    // all tokens
     std::vector<html_token *>  _tokens;
 
+    // add new token to token vector
     void emit_token(size_t token_end_position);
+
+    // release memory
     void clear_tokens()
     {
         for (auto token : _tokens)
@@ -336,43 +325,65 @@ private:
         _tokens.clear();
     }
 
+    // process raw text
     void process_raw_text(std::string &tag_name);
+
+    // process markup declaration, <!-- -->, <[CDATA[...]]>, or <!doctype>
     void process_markup_declaration(size_t tag_start_position);
+
+    // process bogus comment <!...> or <?...>
     void process_bogus_comment(size_t tag_start_position);
 
 public:
+    // constructor
     html_lexer() {};
     html_lexer(std::string &html) {tokenize(html);}
-    ~html_lexer()
-    {
-        clear_tokens();
-    }
 
+    // destructor
+    ~html_lexer() {clear_tokens();}
+
+    // npos for not found
+    static const size_t npos = -1;
+
+    // tokenizer, state machine
     bool tokenize(std::string &html);
 
-    static const size_t npos = -1;
+    // return the number of tokens
     size_t size() {return _tokens.size();}
 
+    // get nth token, this function does not check whether pos is valid or not
     html_token *get_token(size_t pos) {return _tokens[pos];}
-    size_t find_tag(bool start_tag, std::string tag_name, size_t pos);
-    size_t find_tag_by_class_names(std::string tag_name, std::string classes, size_t pos);
+
+    // find tag by name, return npos if not found
+    size_t find_tag_by_name(std::string tag_name, bool start_tag, size_t pos);
+
+    // find tag by name and classes, return npos if not found
+    size_t find_tag_by_class_names(std::string tag_name,
+                                   std::string classes, size_t pos);
+
+    // find matching tag of nth tag
+    // return pos, if nth tag is self-closing tag or no match tag
+    // return position before pos, if nth tag is close tag
+    // return position after pos, if nth tag is start tag
     size_t find_matching_tag(size_t pos);
 
+    // print tokenized information
     void print()
     {
         for (auto token : _tokens)
         {
             token->print();
-            // token->print(_html);
         }
         std::cout.flush();
     }
 
+    // print original html of nth element
     void print(size_t pos)
     {
         if (pos < _tokens.size())
         {
             _tokens[pos]->print(_html);
         }
+        std::cout.flush();
     }
 };
