@@ -14,7 +14,6 @@
 #include <set>
 #include <iostream>
 #include <cctype> // tolower(), isupper(), islower()
-#include <algorithm> // find()
 
 class html_lexer;
 
@@ -47,6 +46,9 @@ private:
     virtual void finalize() = 0;
 
 protected:
+    // set token type, only visible by subtype
+    void set_type(token_type type) {_type = type;}
+
     // html_lexer only, set position [start, end) of original html
     // class html_text_token could reset positon on trim leading/trailing spaces
     void set_start_position(size_t pos) {_start = pos;}
@@ -56,8 +58,7 @@ public:
     html_token() : _start(0), _end(0), _type(token_null) {}
     virtual ~html_token() {} // to invoke delete from base class
 
-    // set/get token type
-    void set_type(token_type type) {_type = type;}
+    // get token type
     token_type get_type() {return _type;}
 
     // get position [start, end) of original html
@@ -98,9 +99,12 @@ private:
     virtual void append_to_attribute_name(char c) = 0;
     virtual void append_to_attribute_value(char c) = 0;
 
-public:
-    // set/get tag name
+protected:
+    // set tag name
     void set_name(std::string &name) {_tag_name = name;}
+
+public:
+    // get tag name
     std::string get_name() {return _tag_name;}
 };
 
@@ -122,6 +126,9 @@ private:
 
     // self-closing
     bool _is_self_closing;
+
+    // html_lexer only, set self-closing
+    void set_self_closing() {_is_self_closing = true;}
 
     // set classes
     void set_classes(std::string &classes)
@@ -149,8 +156,7 @@ public:
         set_type(token_start_tag);
     }
 
-    // get/set self closing
-    void set_self_closing() {_is_self_closing = true;}
+    // get self-closing
     bool get_self_closing() {return _is_self_closing;}
 
     // check if tag has specific classes
@@ -194,19 +200,19 @@ class html_data_token : public html_token
     friend class html_lexer;
 
 private:
-    // text or comment
-    std::string _data;
-
     // html_lexer only, set content
     void set_content(std::string &content) {_data = content;}
 
-    // html_lexer only, nothing to finalize for data token
+    // html_lexer only, by default nothing to finalize for data token
     void finalize() {}
+
+protected:
+    // text or comment
+    std::string _data;
 
 public:
     // get content
     const std::string &get_readonly_content() {return _data;}
-    std::string &get_writable_content() {return _data;}
 
     // get content size
     size_t get_content_size() {return _data.size();}
@@ -246,7 +252,7 @@ class html_text_token : public html_data_token
 
 private:
     // html_lexer only, append character to text
-    void append_to_content(char c) {get_writable_content().push_back(c);}
+    void append_to_content(char c) {_data.push_back(c);}
 
     // html_lexer only, remove leading and trailing spaces
     void finalize();
@@ -314,7 +320,7 @@ private:
     // all tokens
     std::vector<html_token *>  _tokens;
 
-    // add new token to token vector
+    // finalize new token and add it to token vector
     void emit_token(size_t token_end_position);
 
     // release memory
