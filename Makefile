@@ -28,6 +28,16 @@ test: demo.exe cleanoutput \
 	./demo.exe sample/wikiwand.html      > sample/wikiwand.html.output.txt
 	@echo "==>Done."
 
+checkmemoryleak:
+	@echo "==>Compiling/Linking with -g..."
+	g++ -c -o html_lexer_g.o -Wall -g -std=c++0x html_lexer.cpp
+	g++ -c -o demo_g.o -Wall -g -std=c++0x demo.cpp
+	g++ -Wall -g -std=c++0x -o demo_g.exe html_lexer_g.o demo_g.o
+	@echo "==>Run valgrind..."
+	valgrind --leak-check=yes ./demo_g.exe sample/wikipedia.html > /dev/null
+	@echo "==>Cleanup..."
+	rm -rf html_lexer_g.o demo_g.o demo_g.exe
+	
 cleanoutput:
 	@echo "==>Clean Output Files..."
 	rm -rf sample/*.output.txt
