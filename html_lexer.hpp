@@ -8,6 +8,8 @@
 // Date   - Apr 12, 2015
 // Github - https://github.com/limingjie/HtmlLexer
 //
+#ifndef __HTML_LEXER__
+#define __HTML_LEXER__
 
 #include <string>
 #include <vector>
@@ -395,3 +397,5 @@ public:
         std::cout.flush();
     }
 };
+
+#endif // __HTML_LEXER__
