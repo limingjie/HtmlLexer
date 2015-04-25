@@ -716,7 +716,7 @@ bool html_lexer::tokenize(std::string &html)
 html_token *html_lexer::get_token(size_t pos)
 {
     size_t size = _tokens.size();
-    if (pos < 0 || pos >= size) return nullptr;
+    if (pos >= size) return nullptr;
 
     return _tokens[pos];
 }
@@ -727,7 +727,7 @@ size_t html_lexer::find_tag_by_name(
     std::string tag_name, bool start_tag, size_t pos)
 {
     size_t size = _tokens.size();
-    if (pos < 0 || pos >= size) return npos;
+    if (pos >= size) return npos;
 
     html_token *token;
     html_token::token_type type;
@@ -753,7 +753,7 @@ size_t html_lexer::find_tag_by_class_names(
     std::string tag_name, std::string classes, size_t pos)
 {
     size_t size = _tokens.size();
-    if (pos < 0 || pos >= size) return npos;
+    if (pos >= size) return npos;
 
     html_token *token;
     html_token::token_type type;
@@ -784,7 +784,7 @@ size_t html_lexer::find_tag_by_class_names(
 size_t html_lexer::find_matching_tag(size_t pos)
 {
     size_t size = _tokens.size();
-    if (pos < 0 || pos >= size) return npos;
+    if (pos >= size) return npos;
 
     html_token *token = _tokens[pos];
     html_token::token_type type = token->get_type();
