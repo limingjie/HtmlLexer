@@ -31,12 +31,12 @@ int main(int argc, char **argv)
         }
         else
         {
-            cout << "Failed to open file: " << argv[1] << endl;
+            cerr << "Failed to open file: " << argv[1] << endl;
         }
     }
     else
     {
-        cout << "Usage: " << argv[0] << " filename.html" << endl;
+        cerr << "Usage: " << argv[0] << " filename.html" << endl;
     }
 
     return 0;

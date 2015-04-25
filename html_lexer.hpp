@@ -314,13 +314,15 @@ private:
     // for state machine, tokenize(), process_...() functions
     // current processing position of html
     size_t _idx;
+
     // state machine state
-    state_type  _state;
+    state_type _state;
+
     // new token
     html_token *_token;
 
     // all tokens
-    std::vector<html_token *>  _tokens;
+    std::vector<html_token *> _tokens;
 
     // finalize new token and add it to token vector
     void emit_token(size_t token_end_position);

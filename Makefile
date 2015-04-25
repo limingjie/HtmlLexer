@@ -1,22 +1,22 @@
 # Check OS
 uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
 
-ifeq ($(OS),Windows_NT)
+ifneq (,$(findstring MINGW,$(uname_S)))
 	X=.exe
-else
-	ifneq (,$(findstring MINGW,$(uname_S)))
-		X=.exe
-	endif
 endif
 
-# Check CXX flage.
+ifeq ($(OS),Windows_NT)
+	X=.exe
+endif
+
+# Check CXX flag.
 ifeq ($(CXX),clang++)
 	CXX=clang++
 else
 	CXX=g++
 endif
 
-CXXFLAGS = -Wall -O2 -std=c++0x
+CXXFLAGS = -Wall -g -O2 -std=c++0x
 
 all: demo$(X)
 
