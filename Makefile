@@ -48,15 +48,9 @@ test: demo$(X) cleanoutput \
 	./demo$(X) sample/wikiwand.html      > sample/wikiwand.html.output.txt
 	@echo "==>Done."
 
-checkmemoryleak:
-	@echo "==>Compiling/Linking with -g..."
-	$(CXX) -c -Wall -g -std=c++0x -o html_lexer_d.o html_lexer.cpp
-	$(CXX) -c -Wall -g -std=c++0x -o demo_d.o demo.cpp
-	$(CXX) -o demo_d$(X) html_lexer_d.o demo_d.o
+checkmemoryleak: demo$(X)
 	@echo "==>Run valgrind..."
-	valgrind --leak-check=yes ./demo_d$(X) sample/wikipedia.html > /dev/null
-	@echo "==>Cleanup..."
-	rm -rf html_lexer_d.o demo_d.o demo_d$(X)
+	valgrind --leak-check=yes ./demo$(X) sample/wikipedia.html > /dev/null
 	
 cleanoutput:
 	@echo "==>Clean Output Files..."
