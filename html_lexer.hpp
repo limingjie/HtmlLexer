@@ -71,7 +71,7 @@ public:
     virtual void print() = 0;
 
     // print token in original html
-    void print(std::string &html)
+    void print(const std::string &html)
     {
         std::cerr << '[' << _start << ", " << _end << ") "
                   << html.substr(_start, _end - _start) << '\n';
@@ -103,7 +103,7 @@ private:
 
 protected:
     // set tag name
-    void set_name(std::string &name) {_tag_name = name;}
+    void set_name(const std::string &name) {_tag_name = name;}
 
 public:
     // get tag name
@@ -133,7 +133,7 @@ private:
     void set_self_closing() {_is_self_closing = true;}
 
     // set classes
-    void set_classes(std::string &classes)
+    void set_classes(const std::string &classes)
     {
         split_classes_to_set(classes, _classes);
     }
@@ -150,7 +150,7 @@ private:
 
     // static function, split classes into set
     static void split_classes_to_set(
-        std::string &classes, std::set<std::string> &classes_set);
+        const std::string &classes, std::set<std::string> &classes_set);
 
 public:
     html_start_tag_token() : _is_self_closing(false)
@@ -162,8 +162,8 @@ public:
     bool get_self_closing() {return _is_self_closing;}
 
     // check if tag has specific classes
-    bool has_classes(std::string &classes);
-    bool has_classes(std::set<std::string> &classes_set);
+    bool has_classes(const std::string &classes);
+    bool has_classes(const std::set<std::string> &classes_set);
 
     // print tokenized information
     void print();
@@ -203,7 +203,7 @@ class html_data_token : public html_token
 
 private:
     // html_lexer only, set content
-    void set_content(std::string &content) {_data = content;}
+    void set_content(const std::string &content) {_data = content;}
 
     // html_lexer only, by default nothing to finalize for data token
     void finalize() {}
@@ -338,7 +338,7 @@ private:
     }
 
     // process raw text
-    void process_raw_text(std::string &tag_name);
+    void process_raw_text(const std::string &tag_name);
 
     // process markup declaration, <!-- -->, <[CDATA[...]]>, or <!doctype>
     void process_markup_declaration(size_t tag_start_position);
@@ -349,7 +349,7 @@ private:
 public:
     // constructor
     html_lexer() {};
-    html_lexer(std::string &html) {tokenize(html);}
+    html_lexer(const std::string &html) {tokenize(html);}
 
     // destructor
     ~html_lexer() {clear_tokens();}
@@ -358,7 +358,7 @@ public:
     static const size_t npos = -1;
 
     // tokenizer, state machine
-    bool tokenize(std::string &html);
+    bool tokenize(const std::string &html);
 
     // return the number of tokens
     size_t size() {return _tokens.size();}
@@ -367,11 +367,14 @@ public:
     html_token *get_token(size_t pos);
 
     // find tag by name, return npos if not found
-    size_t find_tag_by_name(std::string tag_name, bool start_tag, size_t pos);
+    size_t find_tag_by_name(const std::string &tag_name,
+                            bool start_tag,
+                            size_t pos);
 
     // find tag by name and classes, return npos if not found
-    size_t find_tag_by_class_names(std::string tag_name,
-                                   std::string classes, size_t pos);
+    size_t find_tag_by_class_names(const std::string &tag_name,
+                                   const std::string &classes,
+                                   size_t pos);
 
     // find matching tag of nth tag
     // return pos, if nth tag is self-closing tag or no match tag

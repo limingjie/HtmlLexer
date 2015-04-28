@@ -51,7 +51,7 @@ void html_start_tag_token::new_attribute()
 
 // split classes into set
 void html_start_tag_token::split_classes_to_set(
-    std::string &classes, std::set<std::string> &classes_set)
+    const std::string &classes, std::set<std::string> &classes_set)
 {
     size_t first;
     size_t last = 0;
@@ -74,7 +74,7 @@ void html_start_tag_token::split_classes_to_set(
 }
 
 // check if tag has specific classes
-bool html_start_tag_token::has_classes(std::string &classes)
+bool html_start_tag_token::has_classes(const std::string &classes)
 {
     std::set<std::string> classes_set;
     split_classes_to_set(classes, classes_set);
@@ -83,7 +83,7 @@ bool html_start_tag_token::has_classes(std::string &classes)
 }
 
 // check if tag has specific classes
-bool html_start_tag_token::has_classes(std::set<std::string> &classes_set)
+bool html_start_tag_token::has_classes(const std::set<std::string> &classes_set)
 {
     for (auto it = classes_set.cbegin(); it != classes_set.cend(); ++it)
     {
@@ -179,7 +179,7 @@ void html_lexer::emit_token(size_t token_end_position)
 }
 
 // process raw text
-void html_lexer::process_raw_text(std::string &tag_name)
+void html_lexer::process_raw_text(const std::string &tag_name)
 {
     char c;
     std::string name;
@@ -326,7 +326,7 @@ void html_lexer::process_bogus_comment(size_t tag_start_position)
 }
 
 // tokenizer, state machine
-bool html_lexer::tokenize(std::string &html)
+bool html_lexer::tokenize(const std::string &html)
 {
     // reset state machine
     _html  = html; // copy
@@ -724,7 +724,7 @@ html_token *html_lexer::get_token(size_t pos)
 
 // find tag by name, return npos if not found
 size_t html_lexer::find_tag_by_name(
-    std::string tag_name, bool start_tag, size_t pos)
+    const std::string &tag_name, bool start_tag, size_t pos)
 {
     size_t size = _tokens.size();
     if (pos >= size) return npos;
@@ -750,7 +750,7 @@ size_t html_lexer::find_tag_by_name(
 
 // find tag by name and classes, return npos if not found
 size_t html_lexer::find_tag_by_class_names(
-    std::string tag_name, std::string classes, size_t pos)
+    const std::string &tag_name, const std::string &classes, size_t pos)
 {
     size_t size = _tokens.size();
     if (pos >= size) return npos;
