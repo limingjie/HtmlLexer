@@ -107,7 +107,7 @@ protected:
 
 public:
     // get tag name
-    std::string get_name() {return _tag_name;}
+    const std::string get_name() {return _tag_name;}
 };
 
 // start tag token
