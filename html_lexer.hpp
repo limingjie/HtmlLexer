@@ -340,7 +340,7 @@ private:
     // process raw text
     void process_raw_text(const std::string &tag_name);
 
-    // process markup declaration, <!-- -->, <[CDATA[...]]>, or <!doctype>
+    // process markup declaration, <!-- -->, <![CDATA[...]]>, or <!doctype>
     void process_markup_declaration(size_t tag_start_position);
 
     // process bogus comment <!...> or <?...>

@@ -238,7 +238,7 @@ void html_lexer::process_raw_text(const std::string &tag_name)
     }
 }
 
-// process markup declaration, <!-- -->, <[CDATA[...]]>, or <!doctype>
+// process markup declaration, <!-- -->, <![CDATA[...]]>, or <!doctype>
 void html_lexer::process_markup_declaration(size_t tag_start_position)
 {
     if (_html[_idx] == '-' && _html[_idx + 1] == '-')
