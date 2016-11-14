@@ -1,0 +1,29 @@
+{
+    // MinGW integration
+    "version": "0.1.0",
+    "command": "c:/MinGW/msys-10.4/bin/bash.exe",
+    "isShellCommand": true,
+    "args": ["-c"],
+    "showOutput": "always",
+    "options": {
+        "env": {
+            "PATH": ".:/usr/local/bin:/mingw/bin:/bin:/mingw/git/bin:/mingw/git/mingw64/bin"
+        }
+    },
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "make",
+            "args": ["make"],
+            "isBuildCommand": true
+        },
+        {
+            "taskName": "make clean",
+            "args": ["make clean"]
+        },
+        {
+            "taskName": "make test",
+            "args": ["make test"],
+            "isTestCommand": true
+        }
+    ]}

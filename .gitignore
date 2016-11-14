@@ -28,4 +28,4 @@
 *.app
 
 # VS Code files
-.vscode/*
+.vscode/.BROWSE.VC.DB*
