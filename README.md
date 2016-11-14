@@ -1,15 +1,19 @@
+# HtmlLexer
+
 [![Build Status](https://travis-ci.org/limingjie/HtmlLexer.svg?branch=master)](https://travis-ci.org/limingjie/HtmlLexer)
 
-# HtmlLexer
 A HTML Lexical Analyzer.
 
 ## HTML Specification
+
 The library follows [HTML5 Specification](http://www.w3.org/TR/html5/).
+
 - [8 The HTML syntax](http://www.w3.org/TR/html5/syntax.html#syntax)
   - [8.2 Parsing HTML documents](http://www.w3.org/TR/html5/syntax.html#parsing)
     - [8.2.4 Tokenization](http://www.w3.org/TR/html5/syntax.html#tokenization)
 
 ## Interface
+
 ```c++
 // define lexer and tokenize html.
 html_lexer lexer(html);
@@ -43,13 +47,22 @@ std::cout << html.substr(start_pos, end_pos - start_pos) << std::endl;
 ```
 
 ## Build
+
 Use makefile in Unix/Linux/MinGW.
+
 ```bash
 $ make clean
 $ make
+==>Compiling html_lexer.o...
+g++ -c -Wall -g -O2 -std=c++0x -o html_lexer.o html_lexer.cpp
+==>Compiling demo.o...
+g++ -c -Wall -g -O2 -std=c++0x -o demo.o demo.cpp
+==>Linking demo.exe...
+g++ -o demo.exe html_lexer.o demo.o
 ```
 
 ## Unit Test
+
 ```bash
 $ make test
 ==>Clean Output Files...
@@ -86,12 +99,15 @@ rm -rf sample/*.output.txt
 ```
 
 ## Sample
+
 - Code: [demo.cpp](https://github.com/limingjie/HtmlLexer/blob/master/demo.cpp)
 - Input: [google.html](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html)
 - Output: [google.html.output.txt](https://github.com/limingjie/HtmlLexer/blob/master/sample/google.html.output.txt)
 
 ## Known Issue
+
 The library only supports ASCII or UTF-8 encoded HTML.
 
 ## License
+
 Public Domain

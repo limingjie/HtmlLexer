@@ -51,7 +51,7 @@ test: demo$(X) cleanoutput \
 checkmemoryleak: demo$(X)
 	@echo "==>Run valgrind..."
 	valgrind --leak-check=yes ./demo$(X) sample/wikipedia.html > /dev/null
-	
+
 cleanoutput:
 	@echo "==>Clean Output Files..."
 	rm -rf sample/*.output.txt
